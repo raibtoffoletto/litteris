@@ -17,33 +17,41 @@ public class Litteris.AppMenu : Gtk.Popover {
             dark_mode.halign = Gtk.Align.CENTER;
             dark_mode.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
 
+            var settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
+            if (settings.get_boolean ("dark-mode")) {
+                dark_mode.active = true;
+            }
+
         var menu_separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
             menu_separator.margin = 6;
+        var menu_separator2 = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
+            menu_separator2.margin = 6;
 
-        var menu_about = new Gtk.MenuItem ();
-            menu_about.label = "About";
-            //menu_about.action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_TOGGLE_SIDEBAR;
+        var menu_import = new Gtk.ModelButton ();
+            menu_import.centered = true;
+            menu_import.text = "Import";
+
+        var menu_export = new Gtk.ModelButton ();
+            menu_export.centered = true;
+            menu_export.text = "Export";
+
+        var menu_about = new Gtk.ModelButton ();
+            menu_about.centered = true;
+            menu_about.text = "About";
+            menu_about.action_name = "win.about-action";
 
         var menu_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             menu_grid.margin = 6;
             menu_grid.pack_start (dark_mode);
             menu_grid.pack_start (menu_separator);
+            menu_grid.pack_start (menu_import);
+            menu_grid.pack_start (menu_export);
+            menu_grid.pack_start (menu_separator2);
             menu_grid.pack_start (menu_about);
-            // menu_grid.attach (new_view_menuitem, 0, 4, 3, 1);
-            // menu_grid.attach (remove_view_menuitem, 0, 5, 3, 1);
-            // menu_grid.attach (preferences_menuitem, 0, 6, 3, 1);
             menu_grid.show_all ();
 
         add (menu_grid);
 
     }
-
-		// var menu_item_preferences = new Gtk.MenuItem.with_label ("Preferences");
-//          var menu_item_about = new Gtk.MenuItem.with_label ("About");
-//          var menu_overlay = new Gtk.Menu ();
-//          	menu_overlay.append (menu_item_preferences);
-//          	menu_overlay.append (menu_item_about);
-		// 	menu_overlay.show_all ();
-		
 
 }

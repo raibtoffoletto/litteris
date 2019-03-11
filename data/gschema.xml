@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schemalist>
+    <schema path="/com/github/raibtoffoletto/litteris/" id="com.github.raibtoffoletto.litteris">
+        <key name="pos-x" type="i">
+            <default>190</default>
+            <summary>Horizontal Position</summary>
+            <description>Saved Window Horizontal Position</description>
+        </key>
+        <key name="pos-y" type="i">
+            <default>140</default>
+            <summary>Vertical Position</summary>
+            <description>Saved Window Vertical Position</description>
+        </key>
+        <key name="win-w" type="i">
+            <default>980</default>
+            <summary>Window Width</summary>
+            <description>Saved Window Width</description>
+        </key>
+        <key name="win-h" type="i">
+            <default>460</default>
+            <summary>Window Height</summary>
+            <description>Saved Window Height</description>
+        </key>
+        <key name="dark-mode" type="b">
+            <default>false</default>
+            <summary>Dark Theme</summary>
+            <description>Use Dark Theme</description>
+        </key>
+    </schema>
+</schemalist>
