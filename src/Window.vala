@@ -1,6 +1,16 @@
 public class Litteris.Window : Gtk.ApplicationWindow {
 
     public GLib.Settings settings;
+    public SimpleActionGroup actions { get; construct; }
+
+    public const string ACTION_PREFIX = "win.";
+    public const string ACTION_ABOUT_DIALOG = "about-dialog";
+    public const string ACTION_IMPORT_DB = "import-db";
+    public const string ACTION_EXPORT_DB = "export-db";
+
+    private const ActionEntry[] action_entries = {
+        { ACTION_ABOUT_DIALOG, about_dialog }
+    };
 
 	public Window (Gtk.Application app) {
 		Object (
@@ -15,9 +25,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     construct {
         settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
 
-        SimpleAction about_action = new SimpleAction ("about-action", null);
-		about_action.activate.connect (about_window);
-		add_action (about_action);
+        actions = new SimpleActionGroup ();
+        actions.add_action_entries (action_entries, this);
+        insert_action_group ("win", actions);
 
         var window_header = new Litteris.Header ();
         var window_panels = new Litteris.Panels ();
@@ -55,7 +65,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         return false;
     }
 
-    public void about_window () {
+    public void about_dialog () {
         var about_dialog = new Gtk.AboutDialog ();
             about_dialog.set_transient_for (this);
             about_dialog.set_modal (true);

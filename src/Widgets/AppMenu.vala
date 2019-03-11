@@ -16,6 +16,7 @@ public class Litteris.AppMenu : Gtk.Popover {
             dark_mode.valign = Gtk.Align.CENTER;
             dark_mode.halign = Gtk.Align.CENTER;
             dark_mode.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+            dark_mode.margin = 12;
 
             var settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
             if (settings.get_boolean ("dark-mode")) {
@@ -30,15 +31,17 @@ public class Litteris.AppMenu : Gtk.Popover {
         var menu_import = new Gtk.ModelButton ();
             menu_import.centered = true;
             menu_import.text = "Import";
+            menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_IMPORT_DB;
 
         var menu_export = new Gtk.ModelButton ();
             menu_export.centered = true;
             menu_export.text = "Export";
+            menu_export.action_name =  Window.ACTION_PREFIX + Window.ACTION_EXPORT_DB;
 
         var menu_about = new Gtk.ModelButton ();
             menu_about.centered = true;
             menu_about.text = "About";
-            menu_about.action_name = "win.about-action";
+            menu_about.action_name =  Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
 
         var menu_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             menu_grid.margin = 6;
