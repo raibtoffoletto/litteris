@@ -8,6 +8,7 @@ executable(
     'src/Window.vala',
     'src/Widgets/AppMenu.vala',
     'src/Widgets/ContactList.vala',
+    'src/Widgets/SearchEntry.vala',
     'src/Widgets/Welcome.vala',
     dependencies: [
         dependency('gtk+-3.0'),
