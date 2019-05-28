@@ -1,5 +1,17 @@
 install_data(
-    'gschema.xml',
-    install_dir: join_paths(get_option ('datadir'), 'glib-2.0', 'schemas'),
-    rename: meson.project_name () + '.gschema.xml'
+    join_paths(meson.project_name() + '.gschema.xml'),
+    install_dir: join_paths(get_option ('datadir'), 'glib-2.0', 'schemas')
 )
+
+i18n.merge_file(
+    input: join_paths(meson.project_name() + '.appdata.xml.in'),
+    output: meson.project_name() + '.appdata.xml',
+    po_dir: join_paths(meson.source_root(), 'po'),
+    install: false,
+    install_dir: join_paths(get_option('datadir'), 'metainfo')
+)
+
+#install_data(
+#    join_paths('icons', 'com.github.raibtoffoletto.adstruo.svg'),
+#    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'apps')
+#)

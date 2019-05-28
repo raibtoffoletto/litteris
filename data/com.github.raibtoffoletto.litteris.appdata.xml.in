@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Raí B. Toffoletto <rai@toffoletto.me> -->
+<component type="addon">
+  <id>com.github.raibtoffoletto.litteris</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>Litteris</name>
+  <summary>_("Penpal Correspondence Organized")</summary>
+  <description>
+    <p>_("description")</p>
+  </description>
+
+  <custom>
+    <value key="x-appcenter-color-primary">#800080</value>
+    <value key="x-appcenter-color-primary-text">#223355</value>
+    <value key="x-appcenter-suggested-price">0</value>
+  </custom>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://github.com/raibtoffoletto/litteris/raw/master/data/com.github.raibtoffoletto.litteris.screenshot.png</image>
+    </screenshot>
+  </screenshots>
+
+  <developer_name>Raí B. Toffoletto</developer_name>
+  <url type="homepage">https://toffoletto.me</url>
+  <url type="bugtracker">https://github.com/raibtoffoletto/litteris/issues</url>
+  <url type="help">https://github.com/raibtoffoletto/litteris/issues</url>
+
+  <releases>
+    <release version="0.1.0" date="2019-">
+​      <description>
+        <p>_("Initial Release")</p>
+​      </description>
+​    </release>
+​  </releases>
+
+</component>

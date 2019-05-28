@@ -1,22 +1,12 @@
 project('com.github.raibtoffoletto.litteris', 'vala', 'c')
 
-executable(
-    meson.project_name(),
-    'src/Application.vala',
-    'src/Header.vala',
-    'src/Panels.vala',
-    'src/Window.vala',
-    'src/Widgets/AppMenu.vala',
-    'src/Widgets/ContactList.vala',
-    'src/Widgets/SearchEntry.vala',
-    'src/Widgets/Welcome.vala',
-    dependencies: [
-        dependency('gtk+-3.0'),
-        dependency('granite')
-    ],
-    install: true
-)
+i18n = import('i18n')
+gnome = import('gnome')
+gettext_name = meson.project_name()
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format(gettext_name), language:'c')
 
+subdir ('src')
 subdir ('data')
+subdir ('po')
 
 meson.add_install_script('meson/post_install.py')
