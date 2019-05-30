@@ -1,12 +1,13 @@
 public class Litteris.Window : Gtk.ApplicationWindow {
-
-    public GLib.Settings settings;
     public SimpleActionGroup actions { get; construct; }
-
     public const string ACTION_PREFIX = "win.";
     public const string ACTION_ABOUT_DIALOG = "about-dialog";
     public const string ACTION_IMPORT_DB = "import-db";
     public const string ACTION_EXPORT_DB = "export-db";
+    public int win_w;
+    public int win_h;
+    public int pos_x;
+    public int pos_y;
 
     private const ActionEntry[] action_entries = {
         { ACTION_ABOUT_DIALOG, about_dialog }
@@ -16,51 +17,52 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 		Object (
 		    application: app,
     		height_request: 640,
-            width_request: 980,
+            width_request: 860,
             border_width: 0,
             window_position: Gtk.WindowPosition.CENTER
 		);
 	}
 
     construct {
-        settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
-
         actions = new SimpleActionGroup ();
         actions.add_action_entries (action_entries, this);
         insert_action_group ("win", actions);
+
+        Application.settings.get ("window-position", "(ii)", out pos_x, out pos_y);
+        Application.settings.get ("window-size", "(ii)", out win_w, out win_h);
+
+        if (pos_x != -1 || pos_y != -1) {
+            move (pos_x, pos_y);
+        }
+
+        resize (win_w, win_h);
+
+        if (Application.settings.get_boolean ("window-maximized")) {
+            maximize ();
+        }
 
         var window_header = new Litteris.Header ();
         var window_panels = new Litteris.Panels ();
 
         set_titlebar (window_header);
         add (window_panels);
+	 	show_all ();
 
-        //Centres the window in first use
-        if (!(settings.get_int ("pos-x") == 190 && settings.get_int ("pos-y") == 140)) {
-            move (settings.get_int ("pos-x"), settings.get_int ("pos-y"));
-        }
-        //Loads user settings
-        resize (settings.get_int ("win-w"), settings.get_int ("win-h"));
-
-        //Saves user settings
         delete_event.connect (e => {
             return app_quit ();
         });
 
-	 	show_all ();
     }
 
     public bool app_quit () {
-        int win_w, win_h, pos_x, pos_y;
 
         get_size (out win_w, out win_h);
         get_position (out pos_x, out pos_y);
 
-        settings.set_int ("win-w", win_w);
-        settings.set_int ("win-h", win_h);
-        settings.set_int ("pos-x", pos_x);
-        settings.set_int ("pos-y", pos_y);
-        settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
+        Application.settings.set ("window-position", "(ii)",pos_x, pos_y);
+        Application.settings.set ("window-size", "(ii)", win_w, win_h);
+        Application.settings.set_boolean ("window-maximized", this.is_maximized);
+        Application.settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
 
         return false;
     }

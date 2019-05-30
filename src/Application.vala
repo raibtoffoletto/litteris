@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2019 Raí B. Toffoletto (https://raibtoffoletto.com)
+* Copyright (c) 2019 Raí B. Toffoletto (https://toffoletto.me)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -16,12 +16,12 @@
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301 USA
 *
-* Authored by: Raí B. Toffoletto <contact@raibtoffoletto.com>
+* Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
 public class Litteris.Application : Gtk.Application {
-
     public Litteris.Window main_window;
+    public static GLib.Settings settings;
 
     public Application () {
         Object (
@@ -30,12 +30,13 @@ public class Litteris.Application : Gtk.Application {
         );
     }
 
+    static construct {
+        settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
+    }
+
     protected override void activate () {
-
-        // Verifies if Litteris is already running
-
         if (get_windows ().length () > 0) {
-            stdout.printf("\n\nThe app is already running \n");
+            print ("\nThe app is already running... \n");
             main_window.present ();
         } else {
             main_window = new Litteris.Window (this);
