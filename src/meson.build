@@ -6,11 +6,11 @@ dependencies = [
 src_files = [
     'Application.vala',
     'Header.vala',
-    'Panels.vala',
     'Window.vala',
     'Widgets/AppMenu.vala',
     'Widgets/ContactList.vala',
     'Widgets/SearchEntry.vala',
+    'Widgets/Stack.vala',
     'Widgets/Welcome.vala'
 ]
 

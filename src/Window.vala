@@ -4,10 +4,10 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     public const string ACTION_ABOUT_DIALOG = "about-dialog";
     public const string ACTION_IMPORT_DB = "import-db";
     public const string ACTION_EXPORT_DB = "export-db";
-    public int win_w;
-    public int win_h;
-    public int pos_x;
-    public int pos_y;
+    public int window_width;
+    public int window_height;
+    public int position_x;
+    public int position_y;
 
     private const ActionEntry[] action_entries = {
         { ACTION_ABOUT_DIALOG, about_dialog }
@@ -28,24 +28,29 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         actions.add_action_entries (action_entries, this);
         insert_action_group ("win", actions);
 
-        Application.settings.get ("window-position", "(ii)", out pos_x, out pos_y);
-        Application.settings.get ("window-size", "(ii)", out win_w, out win_h);
+        Application.settings.get ("window-position", "(ii)", out position_x, out position_y);
+        Application.settings.get ("window-size", "(ii)", out window_width, out window_height);
 
-        if (pos_x != -1 || pos_y != -1) {
-            move (pos_x, pos_y);
+        if (position_x != -1 || position_y != -1) {
+            move (position_x, position_y);
         }
 
-        resize (win_w, win_h);
+        resize (window_width, window_height);
 
         if (Application.settings.get_boolean ("window-maximized")) {
             maximize ();
         }
 
         var window_header = new Litteris.Header ();
-        var window_panels = new Litteris.Panels ();
+        var left_panel = new Litteris.ContactList ();
+        var right_panel = new Litteris.Stack ();
+        var panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            panels.position = 180;
+            panels.add1 (left_panel);
+            panels.add2 (right_panel);
 
         set_titlebar (window_header);
-        add (window_panels);
+        add (panels);
 	 	show_all ();
 
         delete_event.connect (e => {
@@ -56,11 +61,11 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
     public bool app_quit () {
 
-        get_size (out win_w, out win_h);
-        get_position (out pos_x, out pos_y);
+        get_size (out window_width, out window_height);
+        get_position (out position_x, out position_y);
 
-        Application.settings.set ("window-position", "(ii)",pos_x, pos_y);
-        Application.settings.set ("window-size", "(ii)", win_w, win_h);
+        Application.settings.set ("window-position", "(ii)",position_x, position_y);
+        Application.settings.set ("window-size", "(ii)", window_width, window_height);
         Application.settings.set_boolean ("window-maximized", this.is_maximized);
         Application.settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
 
