@@ -9,6 +9,7 @@ src_files = [
     'Window.vala',
     'Widgets/AppMenu.vala',
     'Widgets/ContactList.vala',
+    'Widgets/Penpal.vala',
     'Widgets/SearchEntry.vala',
     'Widgets/Stack.vala',
     'Widgets/Welcome.vala'
