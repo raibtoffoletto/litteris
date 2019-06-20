@@ -22,6 +22,7 @@
 public class Litteris.Application : Gtk.Application {
     public Litteris.Window main_window;
     public static GLib.Settings settings;
+    //database propertie
 
     public Application () {
         Object (
@@ -32,21 +33,23 @@ public class Litteris.Application : Gtk.Application {
 
     static construct {
         settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
+        //database propertie
     }
 
     protected override void activate () {
         if (get_windows ().length () > 0) {
-            print ("\nThe app is already running... \n");
             main_window.present ();
         } else {
             main_window = new Litteris.Window (this);
             add_window (main_window);
             main_window.present ();
         }
+
     }
 
     public static int main (string[] args) {
         var app = new Litteris.Application ();
         return app.run (args);
     }
+
 }

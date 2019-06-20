@@ -1,16 +1,15 @@
 public class Litteris.AppMenu : Gtk.Popover {
-
     public AppMenu () {
-		Object (
-			relative_to : null,
-			modal : true
-		);
-	}
+        Object (
+            relative_to : null,
+            modal : true
+        );
+    }
 
     construct {
-
         var gtk_settings = Gtk.Settings.get_default ();
-        var dark_mode = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        var dark_mode = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic",
+                                                                "weather-clear-night-symbolic");
             dark_mode.primary_icon_tooltip_text = ("Light Mode");
             dark_mode.secondary_icon_tooltip_text = ("Dark Mode");
             dark_mode.valign = Gtk.Align.CENTER;
@@ -18,10 +17,9 @@ public class Litteris.AppMenu : Gtk.Popover {
             dark_mode.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
             dark_mode.margin = 12;
 
-            var settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
-            if (settings.get_boolean ("dark-mode")) {
-                dark_mode.active = true;
-            }
+        if (Application.settings.get_boolean ("dark-mode")) {
+            dark_mode.active = true;
+        }
 
         var menu_separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
             menu_separator.margin = 6;
@@ -31,17 +29,17 @@ public class Litteris.AppMenu : Gtk.Popover {
         var menu_import = new Gtk.ModelButton ();
             menu_import.centered = true;
             menu_import.text = "Restore backup";
-            menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_IMPORT_DB;
+            // menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_IMPORT_DB;
 
         var menu_export = new Gtk.ModelButton ();
             menu_export.centered = true;
             menu_export.text = "Create a backup";
-            menu_export.action_name =  Window.ACTION_PREFIX + Window.ACTION_EXPORT_DB;
+            // menu_export.action_name =  Window.ACTION_PREFIX + Window.ACTION_EXPORT_DB;
 
         var menu_about = new Gtk.ModelButton ();
             menu_about.centered = true;
             menu_about.text = "About";
-            menu_about.action_name =  Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
+            // menu_about.action_name =  Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
 
         var menu_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             menu_grid.margin = 6;
@@ -54,7 +52,6 @@ public class Litteris.AppMenu : Gtk.Popover {
             menu_grid.show_all ();
 
         add (menu_grid);
-
     }
 
 }

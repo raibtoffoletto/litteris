@@ -1,17 +1,17 @@
 public class Litteris.Window : Gtk.ApplicationWindow {
-    public SimpleActionGroup actions { get; construct; }
-    public const string ACTION_PREFIX = "win.";
-    public const string ACTION_ABOUT_DIALOG = "about-dialog";
-    public const string ACTION_IMPORT_DB = "import-db";
-    public const string ACTION_EXPORT_DB = "export-db";
+    // public SimpleActionGroup actions { get; construct; }
+    // public const string ACTION_PREFIX = "win.";
+    // public const string ACTION_ABOUT_DIALOG = "about-dialog";
+    // public const string ACTION_IMPORT_DB = "import-db";
+    // public const string ACTION_EXPORT_DB = "export-db";
     public int window_width;
     public int window_height;
     public int position_x;
     public int position_y;
 
-    private const ActionEntry[] action_entries = {
-        { ACTION_ABOUT_DIALOG, about_dialog }
-    };
+    // private const ActionEntry[] action_entries = {
+    //     { ACTION_ABOUT_DIALOG, about_dialog }
+    // };
 
 	public Window (Gtk.Application app) {
 		Object (
@@ -24,9 +24,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 	}
 
     construct {
-        actions = new SimpleActionGroup ();
-        actions.add_action_entries (action_entries, this);
-        insert_action_group ("win", actions);
+        // actions = new SimpleActionGroup ();
+        // actions.add_action_entries (action_entries, this);
+        // insert_action_group ("win", actions);
 
         Application.settings.get ("window-position", "(ii)", out position_x, out position_y);
         Application.settings.get ("window-size", "(ii)", out window_width, out window_height);
@@ -42,16 +42,18 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         }
 
         var window_header = new Litteris.Header ();
-        var left_panel = new Litteris.ContactList ();
-        var right_panel = new Litteris.Stack ();
+        var list_panel = new Litteris.PenpalList ();
+        var welcome_panel = new Litteris.Welcome ();
         var panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             panels.position = 180;
-            panels.add1 (left_panel);
-            panels.add2 (right_panel);
+            panels.add1 (list_panel);
+            panels.add2 (welcome_panel);
 
         set_titlebar (window_header);
         add (panels);
 	 	show_all ();
+
+        //monitor and cheange panel ()
 
         delete_event.connect (e => {
             return app_quit ();
@@ -60,7 +62,6 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     }
 
     public bool app_quit () {
-
         get_size (out window_width, out window_height);
         get_position (out position_x, out position_y);
 
@@ -74,10 +75,10 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
     public void about_dialog () {
         var about_dialog = new Gtk.AboutDialog ();
-            about_dialog.set_transient_for (this);
-            about_dialog.set_modal (true);
+            about_dialog.transient_for = this;
+            about_dialog.modal = true;
             about_dialog.program_name = "Litteris";
-            about_dialog.comments = "Penpal Correspondence Organized";
+            about_dialog.comments = _("Penpal Correspondence Organized");
             about_dialog.copyright = "Copyright © 2019 Raí B. Toffoletto";
             about_dialog.license_type = Gtk.License.GPL_3_0;
             about_dialog.logo = null;
@@ -89,6 +90,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 			        about_dialog.hide_on_delete ();
 		        }
 	        });
+
             about_dialog.present ();
     }
 
