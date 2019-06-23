@@ -31,10 +31,11 @@
 ### Dependencies:
  - libgtk-3-0
  - libgranite-dev
+ - libsqlite3-dev
  - meson
  - valac
 
-`$ sudo apt-get install elementary-sdk`
+`$ sudo apt-get install elementary-sdk libsqlite3-dev`
 
 ### Clone and Compile
 ```bash

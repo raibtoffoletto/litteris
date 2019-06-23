@@ -1,5 +1,5 @@
-public class Litteris.Penpal : Gtk.ScrolledWindow {
-    public Penpal () {
+public class Litteris.PenpalView : Gtk.ScrolledWindow {
+    public PenpalView () {
         /* header */
         var penpal_name = new Gtk.Label ("<b> Meu Penpal Name </b>");
             penpal_name.halign = Gtk.Align.START;

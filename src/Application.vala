@@ -21,8 +21,8 @@
 
 public class Litteris.Application : Gtk.Application {
     public Litteris.Window main_window;
+    public static Litteris.DataBase database;
     public static GLib.Settings settings;
-    //database propertie
 
     public Application () {
         Object (
@@ -33,10 +33,11 @@ public class Litteris.Application : Gtk.Application {
 
     static construct {
         settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
-        //database propertie
+        database = new Litteris.DataBase ();
     }
 
     protected override void activate () {
+        database.verify_database ();
         if (get_windows ().length () > 0) {
             main_window.present ();
         } else {
