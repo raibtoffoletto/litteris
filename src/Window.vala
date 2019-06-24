@@ -1,4 +1,5 @@
 public class Litteris.Window : Gtk.ApplicationWindow {
+    
     // public SimpleActionGroup actions { get; construct; }
     // public const string ACTION_PREFIX = "win.";
     // public const string ACTION_ABOUT_DIALOG = "about-dialog";
@@ -53,12 +54,17 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         add (panels);
 	 	show_all ();
 
-        //monitor and cheange panel ()
+        window_header.search_content_changed.connect ((search_content) => {
+            list_panel.load_list (search_content);
+        });
+
+        list_panel.penpal_selected.connect ((penpal) => {
+            stdout.printf ("Selected %s \n", penpal);
+        });
 
         delete_event.connect (e => {
             return app_quit ();
         });
-
     }
 
     public bool app_quit () {

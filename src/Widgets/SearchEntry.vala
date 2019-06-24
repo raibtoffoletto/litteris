@@ -1,7 +1,7 @@
 public class Litteris.Search : Gtk.Box {
+    public signal void search_content_changed (string search_content = "");
     public signal void show_find_button ();
     public signal void show_search_entry ();
-    public signal void search_content_changed (string search_content);
 
     public Search () {
         Object (
@@ -36,6 +36,7 @@ public class Litteris.Search : Gtk.Box {
 
         search_entry.focus_out_event.connect(() => {
             this.show_find_button ();
+            this.search_content_changed ();
             return true;
         });
 

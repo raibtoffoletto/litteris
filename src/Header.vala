@@ -1,4 +1,6 @@
 public class Litteris.Header : Gtk.HeaderBar {
+    public signal void search_content_changed (string search_content = "");
+
     public Header () {
         Object (
             title: "Litteris",
@@ -30,8 +32,11 @@ public class Litteris.Header : Gtk.HeaderBar {
         pack_start (button_del);
         pack_end (button_menu);
         pack_end (penpal_search);
-
         show_all ();
+
+        penpal_search.search_content_changed.connect ((search_content) => {
+            this.search_content_changed (search_content);
+        });
     }
 
 }
