@@ -29,17 +29,19 @@ public class Litteris.DataBase {
         }
     }
 
+    public void open_database (out Sqlite.Database database) {
+        var connexion = Sqlite.Database.open (get_database_path (), out database);
+        if (connexion != Sqlite.OK) {
+            stderr.printf ("Can't open database: %d: %s\n", database.errcode (), database.errmsg ());
+        }
+    }
+
     public void initialize_database () {
         Sqlite.Database db;
+        open_database (out db);
 
-        var db_connexion = Sqlite.Database.open (get_database_path (), out db);
-    	if (db_connexion != Sqlite.OK) {
-		    stderr.printf ("Can't open database: %d: %s\n", db.errcode (), db.errmsg ());
-		    return;
-	    }
-
-	    string create_tables = """
-	        CREATE TABLE `dates` (
+        string create_tables = """
+            CREATE TABLE `dates` (
               `date` TEXT NOT NULL,
               `penpal` INTEGER NOT NULL,
               `type` INT NOT NULL,
@@ -52,13 +54,16 @@ public class Litteris.DataBase {
               `address` TEXT NULL,
               `country` TEXT NOT NULL
             );
-		""";
+            CREATE TABLE `starred` (
+              `penpal` INTEGER NOT NULL
+            );
+        """;
 
-	    var query = db.exec (create_tables);
-	    if (query != Sqlite.OK) {
-		    print ("Something went wrong...\n");
-		    return;
-	    }
+        var query = db.exec (create_tables);
+        if (query != Sqlite.OK) {
+            print ("Couldn't initialize database...\n");
+            return;
+        }
     }
 
 }

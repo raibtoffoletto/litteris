@@ -1,14 +1,46 @@
-public class Litteris.PenpalList : Granite.Widgets.SourceList {
-	public PenpalList () {
+public class Litteris.PenpalList : Gtk.Grid {
+    private Gtk.Label label;
+    private Sqlite.Database db;
+    private string errmsg;
 
-        var favorites = new Granite.Widgets.SourceList.ExpandableItem (_("  Starred"));
-            favorites.collapsible = false;
-        var fav1 = new Granite.Widgets.SourceList.Item ("My PenPal");
-            favorites.add (fav1);
-        root.add(favorites);
+    public PenpalList () {
+        Application.database.open_database (out db);
 
-        var pal = new Granite.Widgets.SourceList.ExpandableItem (_("  Penpals"));
-            pal.expand_all ();
+        label = new Gtk.Label ("");
+        attach (label, 0, 0);
 
-	}
+        get_starred ();
+        get_penpal ();
+    }
+
+    public void get_starred () {
+        var querry = """
+            SELECT penpals.rowid, penpals.name
+                FROM penpals, starred
+                WHERE starred.penpal LIKE penpals.rowid
+                ORDER BY penpals.name ASC;
+            """;
+
+        var exec_querry = this.db.exec (querry, (n, v, c) => {
+                this.label.label += " - %s (%s) \n".printf (v[1], v[0]);
+                return 0;
+            }, out errmsg);
+
+        if (exec_querry != Sqlite.OK) {
+            stderr.printf ("Error: %s\n", errmsg);
+        }
+    }
+
+    public void get_penpal () {
+        var querry = "SELECT rowid, name FROM penpals ORDER BY name ASC;";
+        var exec_querry = this.db.exec (querry, (n, v, c) => {
+                this.label.label += " - %s (%s) \n".printf (v[1], v[0]);
+                return 0;
+            }, out errmsg);
+
+        if (exec_querry != Sqlite.OK) {
+            stderr.printf ("Error: %s\n", errmsg);
+        }
+    }
+
 }

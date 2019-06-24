@@ -38,6 +38,7 @@ public class Litteris.Application : Gtk.Application {
 
     protected override void activate () {
         database.verify_database ();
+
         if (get_windows ().length () > 0) {
             main_window.present ();
         } else {
@@ -45,7 +46,6 @@ public class Litteris.Application : Gtk.Application {
             add_window (main_window);
             main_window.present ();
         }
-
     }
 
     public static int main (string[] args) {
