@@ -34,19 +34,17 @@ public class Litteris.Search : Gtk.Box {
     public void create_search_entry () {
         var search_entry = new Gtk.SearchEntry ();
 
-        search_entry.focus_out_event.connect(() => {
-            this.show_find_button ();
-            this.search_content_changed ();
-            return true;
-        });
-
         search_entry.search_changed.connect (() => {
 			this.search_content_changed (search_entry.text);
+
+            if (search_entry.text == "") {
+                search_entry.stop_search ();
+            }
         });
 
-        //work around to avoid multiple deletions
         search_entry.stop_search.connect (() => {
-            search_entry.move_focus (Gtk.DirectionType.TAB_FORWARD);
+            this.search_content_changed ();
+            this.show_find_button ();
         });
 
         this.remove_widgets ();

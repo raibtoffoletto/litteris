@@ -1,5 +1,5 @@
 public class Litteris.Window : Gtk.ApplicationWindow {
-    
+
     // public SimpleActionGroup actions { get; construct; }
     // public const string ACTION_PREFIX = "win.";
     // public const string ACTION_ABOUT_DIALOG = "about-dialog";
@@ -59,7 +59,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         });
 
         list_panel.penpal_selected.connect ((penpal) => {
-            stdout.printf ("Selected %s \n", penpal);
+            list_panel.active_penpal = penpal;
+            stdout.printf ("Selected %s\n   %s is active \n", penpal, list_panel.active_penpal);
         });
 
         delete_event.connect (e => {

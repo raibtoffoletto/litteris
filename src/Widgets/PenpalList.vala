@@ -1,5 +1,6 @@
 public class Litteris.PenpalList : Gtk.ScrolledWindow {
     public signal void penpal_selected (string penpal);
+    public string active_penpal;
     public Granite.Widgets.SourceList source_list;
     private Sqlite.Database db;
     private string errmsg;
@@ -14,9 +15,7 @@ public class Litteris.PenpalList : Gtk.ScrolledWindow {
     construct {
         Application.database.open_database (out db);
 
-        source_list = new Granite.Widgets.SourceList ();
-        add (source_list);
-
+        clear_list ();
         load_list ();
     }
 
@@ -34,40 +33,28 @@ public class Litteris.PenpalList : Gtk.ScrolledWindow {
 
             var starred = new Granite.Widgets.SourceList.ExpandableItem ("Starred");
                 starred.collapsible = false;
-            get_starred (starred);
+            get_penpals (true, starred);
 
             var penpals = new Granite.Widgets.SourceList.ExpandableItem ("Penpals");
                 penpals.expand_all ();
-            get_penpal (penpals);
+            get_penpals (false, penpals);
 
             this.source_list.root.add (starred);
             this.source_list.root.add (penpals);
         }
     }
 
-    public void get_starred (Granite.Widgets.SourceList.ExpandableItem group) {
+    public void get_penpals (bool starred, Granite.Widgets.SourceList.ExpandableItem group) {
+        var starred_querry = starred ? "" : " NOT";
         var query = """
-            SELECT penpals.rowid, penpals.name
-                FROM penpals, starred
-                WHERE starred.penpal LIKE penpals.rowid
-                ORDER BY penpals.name ASC;
+            SELECT name
+                FROM penpals
+                WHERE""" + starred_querry + """ EXISTS (SELECT * FROM starred WHERE penpals.rowid = starred.penpal)
+                ORDER BY name ASC;
             """;
 
         var exec_query = this.db.exec (query, (n, v, c) => {
-                var pal = new Granite.Widgets.SourceList.Item (v[1]);
-                    group.add (pal);
-                return 0;
-            }, out errmsg);
-
-        if (exec_query != Sqlite.OK) {
-            stderr.printf ("Error: %s\n", errmsg);
-        }
-    }
-
-    public void get_penpal (Granite.Widgets.SourceList.ExpandableItem group) {
-        var query = "SELECT rowid, name FROM penpals ORDER BY name ASC;";
-        var exec_query = this.db.exec (query, (n, v, c) => {
-                var pal = new Granite.Widgets.SourceList.Item (v[1]);
+                var pal = new Granite.Widgets.SourceList.Item (v[0]);
                     group.add (pal);
                 return 0;
             }, out errmsg);
@@ -99,10 +86,13 @@ public class Litteris.PenpalList : Gtk.ScrolledWindow {
     }
 
     public void clear_list () {
-        remove (source_list);
+        if (source_list != null ) {
+            remove (source_list);
+        }
+
         source_list = new Granite.Widgets.SourceList ();
+
         source_list.item_selected.connect ((item) => {
-            source_list.tree.set_selected (item, true);
             penpal_selected (item.name);
         });
 
