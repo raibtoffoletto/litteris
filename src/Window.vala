@@ -58,11 +58,6 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             list_panel.load_list (search_content);
         });
 
-        list_panel.penpal_selected.connect ((penpal) => {
-            list_panel.active_penpal = penpal;
-            stdout.printf ("Selected %s\n   %s is active \n", penpal, list_panel.active_penpal);
-        });
-
         delete_event.connect (e => {
             return app_quit ();
         });
