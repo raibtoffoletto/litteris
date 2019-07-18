@@ -1,3 +1,24 @@
+/*
+* Copyright (c) 2019 Raí B. Toffoletto (https://toffoletto.me)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*
+* Authored by: Raí B. Toffoletto <rai@toffoletto.me>
+*/
+
 public class Litteris.Window : Gtk.ApplicationWindow {
 
     // public SimpleActionGroup actions { get; construct; }
@@ -5,6 +26,10 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     // public const string ACTION_ABOUT_DIALOG = "about-dialog";
     // public const string ACTION_IMPORT_DB = "import-db";
     // public const string ACTION_EXPORT_DB = "export-db";
+    public Litteris.Header window_header;
+    public Litteris.PenpalList list_panel;
+    public Litteris.Welcome welcome_panel;
+    public Gtk.Paned panels;
     public int window_width;
     public int window_height;
     public int position_x;
@@ -42,25 +67,43 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             maximize ();
         }
 
-        var window_header = new Litteris.Header ();
-        var list_panel = new Litteris.PenpalList ();
-        var welcome_panel = new Litteris.Welcome ();
-        var panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-            panels.position = 180;
-            panels.add1 (list_panel);
-            panels.add2 (welcome_panel);
+        window_header = new Litteris.Header (this);
+        list_panel = new Litteris.PenpalList (this);
+        welcome_panel = new Litteris.Welcome ();
+
+        panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+        panels.position = Application.settings.get_int ("panel-position");
+        panels.pack1 (list_panel, true, false);
+        panels.pack2 (welcome_panel, false, false);
 
         set_titlebar (window_header);
         add (panels);
 	 	show_all ();
 
-        window_header.search_content_changed.connect ((search_content) => {
+        window_header.penpal_search.search_content_changed.connect ((search_content) => {
             list_panel.load_list (search_content);
+        });
+
+        list_panel.notify["active-penpal"].connect (() => {
+            load_penpal ();
         });
 
         delete_event.connect (e => {
             return app_quit ();
         });
+    }
+
+    public void load_penpal () {
+        panels.remove (panels.get_child2 ());
+
+        if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
+            var label = new Gtk.Label (list_panel.active_penpal);
+            panels.pack2 (label, false, false);
+        } else {
+            panels.pack2 (welcome_panel, false, false);
+        }
+
+        show_all ();
     }
 
     public bool app_quit () {
@@ -71,6 +114,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         Application.settings.set ("window-size", "(ii)", window_width, window_height);
         Application.settings.set_boolean ("window-maximized", this.is_maximized);
         Application.settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
+        Application.settings.set_int ("panel-position", panels.get_position ());
 
         return false;
     }

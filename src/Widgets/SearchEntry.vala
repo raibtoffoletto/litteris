@@ -1,3 +1,24 @@
+/*
+* Copyright (c) 2019 Raí B. Toffoletto (https://toffoletto.me)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*
+* Authored by: Raí B. Toffoletto <rai@toffoletto.me>
+*/
+
 public class Litteris.Search : Gtk.Box {
     public signal void search_content_changed (string search_content = "");
     public signal void show_find_button ();
@@ -22,12 +43,12 @@ public class Litteris.Search : Gtk.Box {
             find_button.image = new Gtk.Image.from_icon_name ("edit-find", Gtk.IconSize.LARGE_TOOLBAR);
             find_button.tooltip_text = _("Find Contact");
             find_button.clicked.connect (() => {
-                this.show_search_entry ();
+                show_search_entry ();
             });
 
-        this.remove_widgets ();
-        this.pack_end (find_button);
-        this.show_all ();
+        remove_widgets ();
+        pack_end (find_button);
+        show_all ();
         find_button.grab_focus ();
     }
 
@@ -35,13 +56,13 @@ public class Litteris.Search : Gtk.Box {
         var search_entry = new Gtk.SearchEntry ();
 
         search_entry.focus_out_event.connect(() => {
-            this.show_find_button ();
-            this.search_content_changed ();
+            show_find_button ();
+            search_content_changed ();
             return true;
         });
 
         search_entry.search_changed.connect (() => {
-            this.search_content_changed (search_entry.text);
+            search_content_changed (search_entry.text);
         });
 
         //work around to avoid multiple deletions
@@ -49,16 +70,21 @@ public class Litteris.Search : Gtk.Box {
             search_entry.move_focus (Gtk.DirectionType.TAB_FORWARD);
         });
 
-        this.remove_widgets ();
-        this.pack_end (search_entry);
-        this.show_all ();
+        search_entry.activate.connect (() => {
+            search_entry.move_focus (Gtk.DirectionType.TAB_FORWARD);
+         });
+
+        remove_widgets ();
+        pack_end (search_entry);
+        show_all ();
+
         search_entry.grab_focus ();
     }
 
     public void remove_widgets () {
-        var box_children = this.get_children ();
+        var box_children = get_children ();
         foreach (var x in box_children) {
-                this.remove (x);
+            remove (x);
         }
     }
 

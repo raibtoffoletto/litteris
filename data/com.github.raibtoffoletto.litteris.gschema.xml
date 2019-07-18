@@ -21,6 +21,11 @@
             <summary>Dark Theme</summary>
             <description>Use the offical dark theme</description>
         </key>
+        <key name="panel-position" type="i">
+            <default>180</default>
+            <summary>Paned Position</summary>
+            <description>Position of the paned divider</description>
+        </key>
     </schema>
 </schemalist>
 
