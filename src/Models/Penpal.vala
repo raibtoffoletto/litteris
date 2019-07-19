@@ -19,16 +19,88 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
-public class Litteris.Penpal {
-    public int id;
-    public string name;
-    public string nickname;
-    public string notes;
-    public string address;
-    public string country;
-    public Litteris.MailDate[] dates;
+public class Litteris.Penpal : Object {
+    public string rowid {get; construct;}
+    public string name {get; construct;}
+    public string nickname {get; construct;}
+    public string notes {get; construct;}
+    public string address {get; construct;}
+    public string country {get; construct;}
+    public string active_penpal {get; construct;}
+    public Gee.ArrayList<Litteris.MailDate> mail_sent;
+    public Gee.ArrayList<Litteris.MailDate> mail_received;
+    private string errmsg;
+    private Sqlite.Database db;
 
-    public Penpal (int db_id ) {
-        id = db_id;
+    public Penpal (string penpal ) {
+        Object (
+            active_penpal: penpal
+        );
     }
+
+    construct {
+        Application.database.open_database (out db);
+
+        mail_sent = new Gee.ArrayList<Litteris.MailDate> ();
+        mail_received = new Gee.ArrayList<Litteris.MailDate> ();
+
+        load_penpal ();
+        load_dates ();
+    }
+
+    public void load_penpal () {
+        var query = """
+            SELECT rowid, *
+                FROM penpals
+                WHERE name LIKE '""" + active_penpal + """';
+            """;
+
+        var exec_query = db.exec (query, (n, v, c) => {
+                for (int i = 0; i < n; i++) {
+                    set_property (c[i], v[i]);
+                }
+                return 0;
+            }, out errmsg);
+
+        if (exec_query != 0) {
+            stdout.printf ("Querry error: %s\n", errmsg);
+        }
+
+    }
+
+    public void load_dates () {
+        if (rowid != null) {
+            var query = """
+                SELECT *
+                    FROM dates
+                    WHERE penpal = """ + rowid + """
+                    ORDER BY date ASC;
+                """;
+
+            var exec_query = db.exec (query, (n, v, c) => {
+                    var mail = new Litteris.MailDate ();
+                        mail.date = v[0];
+                        mail.mail_type = (int.parse (v[2]) == 0) ? Litteris.MailDate.MailType.LETTER
+                                                                : Litteris.MailDate.MailType.POSTCARD;
+                        mail.direction = (int.parse (v[3]) == 0) ? Litteris.MailDate.Direction.SENT
+                                                                : Litteris.MailDate.Direction.RECEIVED;
+                    if (mail.direction == Litteris.MailDate.Direction.SENT) {
+                        mail_sent.add (mail);
+                    } else {
+                        mail_received.add (mail);
+                    }
+
+                    return 0;
+                }, out errmsg);
+
+            if (exec_query != 0) {
+                stdout.printf ("Querry error: %s\n", errmsg);
+            }
+
+        } else {
+            print ("Error: No penpal set.\n");
+        }
+
+    }
+
 }

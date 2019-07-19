@@ -19,7 +19,7 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
-public class Litteris.MailDate {
+public class Litteris.MailDate : Object {
     public enum MailType {
         LETTER,
         POSTCARD
@@ -29,7 +29,7 @@ public class Litteris.MailDate {
         RECEIVED
     }
 
-    public string date;
-    public MailType type;
-    public Direction direction;
+    public string date {get; set;}
+    public MailType mail_type {get; set;}
+    public Direction direction {get; set;}
 }

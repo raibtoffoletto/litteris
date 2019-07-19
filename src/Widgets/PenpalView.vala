@@ -1,7 +1,24 @@
 public class Litteris.PenpalView : Gtk.ScrolledWindow {
-    public PenpalView () {
+    public Litteris.Window main_window {get; construct;}
+
+    public PenpalView (Litteris.Window main_window) {
+        Object (
+            main_window: main_window
+        );
+    }
+
+    construct {
+        var meu_penpal = new Litteris.Penpal (main_window.list_panel.active_penpal);
+
+        foreach (var x in meu_penpal.mail_sent) {
+            stdout.printf ("sent: %s (%s)\n", x.date, x.mail_type.to_string ());
+        }
+        foreach (var x in meu_penpal.mail_received) {
+            stdout.printf ("received: %s (%s)\n", x.date, x.mail_type.to_string ());
+        }
+
         /* header */
-        var penpal_name = new Gtk.Label ("<b> Meu Penpal Name </b>");
+        var penpal_name = new Gtk.Label ("<b>"+meu_penpal.name+"</b>");
             penpal_name.halign = Gtk.Align.START;
             penpal_name.use_markup = true;
             penpal_name.margin_start = 12;

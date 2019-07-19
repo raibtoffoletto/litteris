@@ -2,7 +2,8 @@ dependencies = [
     dependency('gio-2.0'),
     dependency('gtk+-3.0'),
     dependency('granite'),
-    dependency('sqlite3')
+    dependency('sqlite3'),
+    dependency('gee-0.8')
 ]
 
 src_files = [

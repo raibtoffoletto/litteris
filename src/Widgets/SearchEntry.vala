@@ -21,8 +21,8 @@
 
 public class Litteris.Search : Gtk.Box {
     public signal void search_content_changed (string search_content = "");
-    public signal void show_find_button ();
-    public signal void show_search_entry ();
+    private signal void show_find_button ();
+    private signal void show_search_entry ();
 
     public Search () {
         Object (

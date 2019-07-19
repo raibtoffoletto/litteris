@@ -26,14 +26,14 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     // public const string ACTION_ABOUT_DIALOG = "about-dialog";
     // public const string ACTION_IMPORT_DB = "import-db";
     // public const string ACTION_EXPORT_DB = "export-db";
-    public Litteris.Header window_header;
+    private Litteris.Header window_header;
     public Litteris.PenpalList list_panel;
-    public Litteris.Welcome welcome_panel;
-    public Gtk.Paned panels;
-    public int window_width;
-    public int window_height;
-    public int position_x;
-    public int position_y;
+    private Litteris.Welcome welcome_panel;
+    private Gtk.Paned panels;
+    private int window_width;
+    private int window_height;
+    private int position_x;
+    private int position_y;
 
     // private const ActionEntry[] action_entries = {
     //     { ACTION_ABOUT_DIALOG, about_dialog }
@@ -97,8 +97,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         panels.remove (panels.get_child2 ());
 
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
-            var label = new Gtk.Label (list_panel.active_penpal);
-            panels.pack2 (label, false, false);
+            var penpal = new Litteris.PenpalView (this);
+            panels.pack2 (penpal, false, false);
         } else {
             panels.pack2 (welcome_panel, false, false);
         }
