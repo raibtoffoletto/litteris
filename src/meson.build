@@ -13,6 +13,7 @@ src_files = [
     'Models/Penpal.vala',
     'Models/MailDate.vala',
     'Services/DataBase.vala',
+    'Services/CountryCodes.vala',
     'Widgets/AppMenu.vala',
     'Widgets/PenpalList.vala',
     'Widgets/PenpalView.vala',

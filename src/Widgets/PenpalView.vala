@@ -8,70 +8,63 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
     }
 
     construct {
-        var meu_penpal = new Litteris.Penpal (main_window.list_panel.active_penpal);
-
-        foreach (var x in meu_penpal.mail_sent) {
-            stdout.printf ("sent: %s (%s)\n", x.date, x.mail_type.to_string ());
-        }
-        foreach (var x in meu_penpal.mail_received) {
-            stdout.printf ("received: %s (%s)\n", x.date, x.mail_type.to_string ());
-        }
+        var active_penpal = new Litteris.Penpal (main_window.list_panel.active_penpal);
 
         /* header */
-        var penpal_name = new Gtk.Label ("<b>"+meu_penpal.name+"</b>");
-            penpal_name.halign = Gtk.Align.START;
-            penpal_name.use_markup = true;
-            penpal_name.margin_start = 12;
-            penpal_name.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        var label_name = new Gtk.Label ("<b>"+active_penpal.name+"</b>");
+            label_name.halign = Gtk.Align.START;
+            label_name.use_markup = true;
+            label_name.margin_start = 12;
+            label_name.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var penpal_nickname = new Gtk.Label ("(E o seu Nickname)");
-            penpal_nickname.halign = Gtk.Align.START;
-            penpal_nickname.margin_start = 20;
-            penpal_nickname.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        var label_nickname = new Gtk.Label (active_penpal.nickname);
+            label_nickname.halign = Gtk.Align.START;
+            label_nickname.margin_start = 20;
+            label_nickname.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-        var penpal_names = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            penpal_names.halign = Gtk.Align.FILL;
-            penpal_names.hexpand = true;
-            penpal_names.pack_start (penpal_name);
-            penpal_names.pack_start (penpal_nickname);
+        var box_names = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            box_names.halign = Gtk.Align.FILL;
+            box_names.hexpand = true;
+            box_names.pack_start (label_name);
+            box_names.pack_start (label_nickname);
 
-        var penpal_flag = new Gtk.Label ("🇧🇷️");
-            penpal_flag.halign = Gtk.Align.END;
-            penpal_flag.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
+        var emoji_flag = new Gtk.Label (active_penpal.country_emoji);
+            emoji_flag.halign = Gtk.Align.END;
+            emoji_flag.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
 
         var icon_sent = new Gtk.Image.from_icon_name ("mail-send", Gtk.IconSize.LARGE_TOOLBAR);
             icon_sent.halign = Gtk.Align.END;
-        var icon_sent_label = new Gtk.Label ("12");
+        var icon_sent_label = new Gtk.Label (active_penpal.mail_sent.size.to_string ());
             icon_sent_label.halign = Gtk.Align.START;
             icon_sent_label.get_style_context ().add_class (Granite.STYLE_CLASS_WELCOME);
 
         var icon_received = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
             icon_received.halign = Gtk.Align.END;
-        var icon_received_label = new Gtk.Label ("15");
+        var icon_received_label = new Gtk.Label (active_penpal.mail_received.size.to_string ());
             icon_received_label.halign = Gtk.Align.START;
             icon_received_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 
-        var header_icons = new Gtk.Grid ();
-            header_icons.hexpand = false;
-            header_icons.height_request = 60;
-            header_icons.width_request = 80;
-            header_icons.column_homogeneous = true;
-            header_icons.row_homogeneous = true;
-            header_icons.row_spacing = 6;
-            header_icons.column_spacing = 6;
-            header_icons.attach (icon_sent, 0, 0);
-            header_icons.attach (icon_sent_label, 1, 0);
-            header_icons.attach (icon_received, 0, 1);
-            header_icons.attach (icon_received_label, 1, 1);
+        var grid_icons = new Gtk.Grid ();
+            grid_icons.hexpand = false;
+            grid_icons.height_request = 60;
+            grid_icons.width_request = 80;
+            grid_icons.column_homogeneous = true;
+            grid_icons.row_homogeneous = true;
+            grid_icons.row_spacing = 6;
+            grid_icons.column_spacing = 6;
+            grid_icons.attach (icon_sent, 0, 0);
+            grid_icons.attach (icon_sent_label, 1, 0);
+            grid_icons.attach (icon_received, 0, 1);
+            grid_icons.attach (icon_received_label, 1, 1);
 
-        var header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            header.hexpand = true;
-            header.homogeneous = false;
-            header.halign = Gtk.Align.FILL;
-            header.pack_start (header_icons, false, false);
-            header.pack_start (penpal_names, true, true);
-            header.pack_end (penpal_flag, false, false);
+        var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            header_box.hexpand = true;
+            header_box.homogeneous = false;
+            header_box.halign = Gtk.Align.FILL;
+            header_box.pack_start (grid_icons, false, false);
+            header_box.pack_start (box_names, true, true);
+            header_box.pack_end (emoji_flag, false, false);
 
         /* left column */
         var notes_label = new Gtk.Label ("<b>Notes : </b>");
@@ -132,10 +125,10 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             main_grid.column_spacing = 24;
             main_grid.row_homogeneous = false;
             main_grid.column_homogeneous = true;
-            main_grid.attach (header, 0, 0, 2, 1);
+            main_grid.attach (header_box, 0, 0, 2, 1);
             main_grid.attach (separator, 0, 1, 2, 1);
-            main_grid.attach (left_column, 0, 2);
-            main_grid.attach (right_column, 1, 2);
+            // main_grid.attach (left_column, 0, 2);
+            // main_grid.attach (right_column, 1, 2);
 
         add (main_grid);
     }

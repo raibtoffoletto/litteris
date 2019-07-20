@@ -26,11 +26,14 @@ public class Litteris.Penpal : Object {
     public string notes {get; construct;}
     public string address {get; construct;}
     public string country {get; construct;}
+    public string country_name {get; construct;}
+    public string country_emoji {get; construct;}
     public string active_penpal {get; construct;}
     public Gee.ArrayList<Litteris.MailDate> mail_sent;
     public Gee.ArrayList<Litteris.MailDate> mail_received;
     private string errmsg;
     private Sqlite.Database db;
+    private Litteris.CountryCodes countries_api;
 
     public Penpal (string penpal ) {
         Object (
@@ -40,6 +43,7 @@ public class Litteris.Penpal : Object {
 
     construct {
         Application.database.open_database (out db);
+        countries_api = new Litteris.CountryCodes ();
 
         mail_sent = new Gee.ArrayList<Litteris.MailDate> ();
         mail_received = new Gee.ArrayList<Litteris.MailDate> ();
@@ -66,6 +70,8 @@ public class Litteris.Penpal : Object {
             stdout.printf ("Querry error: %s\n", errmsg);
         }
 
+        set_property ("country-name", countries_api.get_country_name (country));
+        set_property ("country-emoji", countries_api.get_country_emoji (country));
     }
 
     public void load_dates () {
