@@ -28,8 +28,8 @@ public class Litteris.MailDate : Object {
         SENT,
         RECEIVED
     }
-
-    public string date {get; set;}
+    public string rowid {get; set;}
+    public int64 date {get; set;}
     public MailType mail_type {get; set;}
     public Direction direction {get; set;}
 }

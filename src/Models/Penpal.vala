@@ -30,7 +30,9 @@ public class Litteris.Penpal : Object {
     public string country_emoji {get; construct;}
     public string active_penpal {get; construct;}
     public Gee.ArrayList<Litteris.MailDate> mail_sent;
+    public Gee.ArrayList<string> mail_sent_years;
     public Gee.ArrayList<Litteris.MailDate> mail_received;
+    public Gee.ArrayList<string> mail_received_years;
     private string errmsg;
     private Sqlite.Database db;
     private Litteris.CountryCodes countries_api;
@@ -46,7 +48,9 @@ public class Litteris.Penpal : Object {
         countries_api = new Litteris.CountryCodes ();
 
         mail_sent = new Gee.ArrayList<Litteris.MailDate> ();
+        mail_sent_years = new Gee.ArrayList<string> ();
         mail_received = new Gee.ArrayList<Litteris.MailDate> ();
+        mail_received_years = new Gee.ArrayList<string> ();
 
         load_penpal ();
         load_dates ();
@@ -77,25 +81,21 @@ public class Litteris.Penpal : Object {
     public void load_dates () {
         if (rowid != null) {
             var query = """
-                SELECT *
+                SELECT rowid, date, type, direction
                     FROM dates
                     WHERE penpal = """ + rowid + """
-                    ORDER BY date ASC;
+                    ORDER BY date DESC;
                 """;
 
             var exec_query = db.exec (query, (n, v, c) => {
                     var mail = new Litteris.MailDate ();
-                        mail.date = v[0];
+                        mail.rowid = v[0];
+                        mail.date = int64.parse (v[1]);
                         mail.mail_type = (int.parse (v[2]) == 0) ? Litteris.MailDate.MailType.LETTER
                                                                 : Litteris.MailDate.MailType.POSTCARD;
                         mail.direction = (int.parse (v[3]) == 0) ? Litteris.MailDate.Direction.SENT
                                                                 : Litteris.MailDate.Direction.RECEIVED;
-                    if (mail.direction == Litteris.MailDate.Direction.SENT) {
-                        mail_sent.add (mail);
-                    } else {
-                        mail_received.add (mail);
-                    }
-
+                    add_mail (mail);
                     return 0;
                 }, out errmsg);
 
@@ -106,7 +106,25 @@ public class Litteris.Penpal : Object {
         } else {
             print ("Error: No penpal set.\n");
         }
+    }
 
+    private void add_mail (Litteris.MailDate mail) {
+        var date = new DateTime.from_unix_utc (mail.date);
+        var year = "%i\n".printf (date.get_year ());
+
+        if (mail.direction == Litteris.MailDate.Direction.SENT) {
+            if (! mail_sent_years.contains (year)) {
+                mail_sent_years.add (year);
+            }
+
+            mail_sent.add (mail);
+        } else {
+            if (! mail_received_years.contains (year)) {
+                mail_received_years.add (year);
+            }
+
+            mail_received.add (mail);
+        }
     }
 
 }
