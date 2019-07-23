@@ -93,8 +93,8 @@ public class Litteris.Penpal : Object {
                         mail.date = int64.parse (v[1]);
                         mail.mail_type = (int.parse (v[2]) == 0) ? Litteris.MailDate.MailType.LETTER
                                                                 : Litteris.MailDate.MailType.POSTCARD;
-                        mail.direction = (int.parse (v[3]) == 0) ? Litteris.MailDate.Direction.SENT
-                                                                : Litteris.MailDate.Direction.RECEIVED;
+                        mail.direction = (int.parse (v[3]) == 0) ? Litteris.MailDate.Direction.RECEIVED
+                                                                : Litteris.MailDate.Direction.SENT;
                     add_mail (mail);
                     return 0;
                 }, out errmsg);

@@ -1,11 +1,12 @@
 public class Litteris.PenpalView : Gtk.ScrolledWindow {
     public Litteris.Window main_window {get; construct;}
     public Litteris.Penpal loaded_penpal {get; set;}
-    private Gtk.Box box_sent_dates;
-    private Gtk.Box box_received_dates;
+    private Gtk.Box box_sent;
+    private Gtk.Box box_received;
 
     public PenpalView (Litteris.Window main_window) {
         Object (
+            width_request: 580,
             main_window: main_window
         );
     }
@@ -80,7 +81,8 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             label_notes_content.halign = Gtk.Align.START;
             label_notes_content.valign = Gtk.Align.START;
             label_notes_content.justify = Gtk.Justification.FILL;
-            label_notes_content.margin_start = 16;
+            label_notes_content.margin_start = 12;
+            label_notes_content.margin_end = 24;
             label_notes_content.selectable = true;
 
         var label_address = new Gtk.Label ("<b>Address : </b>");
@@ -93,35 +95,26 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             label_address_content.halign = Gtk.Align.START;
             label_address_content.valign = Gtk.Align.START;
             label_address_content.justify = Gtk.Justification.FILL;
-            label_address_content.margin_start = 16;
+            label_address_content.margin_start = 12;
+            label_address_content.margin_end = 24;
             label_address_content.selectable = true;
 
-        var icon_mail_sent = new Gtk.Image.from_icon_name ("mail-send", Gtk.IconSize.LARGE_TOOLBAR);
         var label_sent = new Gtk.Label ("<b>Sent :</b>");
             label_sent.use_markup = true;
             label_sent.halign = Gtk.Align.START;
 
-        var box_sent = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            box_sent.pack_start (icon_mail_sent, false, false);
-            box_sent.pack_start (label_sent, false, false);
-
-        var icon_mail_received = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
         var label_received = new Gtk.Label ("<b>Received :</b>");
             label_received.use_markup = true;
             label_received.halign = Gtk.Align.START;
 
-        var box_received = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            box_received.pack_start (icon_mail_received, false, false);
-            box_received.pack_start (label_received, false, false);
-
-        box_sent_dates = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-        box_sent_dates.homogeneous = false;
-        box_sent_dates.margin_start = 24;
+        box_sent = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        box_sent.homogeneous = false;
+        box_sent.margin_start = 12;
         load_dates ();
 
-        box_received_dates = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-        box_received_dates.homogeneous = false;
-        box_received_dates.margin_start = 24;
+        box_received = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        box_received.homogeneous = false;
+        box_received.margin_start = 12;
         load_dates (false);
 
         var content_grid = new Gtk.Grid ();
@@ -133,10 +126,10 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             content_grid.attach (label_address_content, 0, 1);
             content_grid.attach (label_notes, 1, 0);
             content_grid.attach (label_notes_content, 1, 1);
-            content_grid.attach (box_sent, 0, 2);
-            content_grid.attach (box_sent_dates, 0, 3);
-            content_grid.attach (box_received, 1, 2);
-            content_grid.attach (box_received_dates, 1, 3);
+            content_grid.attach (label_sent, 0, 2);
+            content_grid.attach (box_sent, 0, 3);
+            content_grid.attach (label_received, 1, 2);
+            content_grid.attach (box_received, 1, 3);
 
         var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
@@ -157,7 +150,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
     public void load_dates (bool sent = true) {
         var dates_list = sent ? loaded_penpal.mail_sent : loaded_penpal.mail_received;
         var dates_years = sent ? loaded_penpal.mail_sent_years : loaded_penpal.mail_received_years;
-        var dates_box = sent ? box_sent_dates : box_received_dates;
+        var dates_box = sent ? box_sent : box_received;
 
         foreach (var year in dates_years) {
             var label_year = new Gtk.Expander ("<b>%i</b>".printf (year));

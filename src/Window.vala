@@ -73,8 +73,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
         panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         panels.position = Application.settings.get_int ("panel-position");
-        panels.pack1 (list_panel, true, false);
-        panels.pack2 (welcome_panel, false, false);
+        panels.pack1 (list_panel, false, false);
+        panels.pack2 (welcome_panel, true, false);
 
         set_titlebar (window_header);
         add (panels);
