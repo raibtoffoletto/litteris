@@ -30,9 +30,9 @@ public class Litteris.Penpal : Object {
     public string country_emoji {get; construct;}
     public string active_penpal {get; construct;}
     public Gee.ArrayList<Litteris.MailDate> mail_sent;
-    public Gee.ArrayList<string> mail_sent_years;
+    public Gee.ArrayList<int> mail_sent_years;
     public Gee.ArrayList<Litteris.MailDate> mail_received;
-    public Gee.ArrayList<string> mail_received_years;
+    public Gee.ArrayList<int> mail_received_years;
     private string errmsg;
     private Sqlite.Database db;
     private Litteris.CountryCodes countries_api;
@@ -48,9 +48,9 @@ public class Litteris.Penpal : Object {
         countries_api = new Litteris.CountryCodes ();
 
         mail_sent = new Gee.ArrayList<Litteris.MailDate> ();
-        mail_sent_years = new Gee.ArrayList<string> ();
+        mail_sent_years = new Gee.ArrayList<int> ();
         mail_received = new Gee.ArrayList<Litteris.MailDate> ();
-        mail_received_years = new Gee.ArrayList<string> ();
+        mail_received_years = new Gee.ArrayList<int> ();
 
         load_penpal ();
         load_dates ();
@@ -110,19 +110,16 @@ public class Litteris.Penpal : Object {
 
     private void add_mail (Litteris.MailDate mail) {
         var date = new DateTime.from_unix_utc (mail.date);
-        var year = "%i\n".printf (date.get_year ());
 
         if (mail.direction == Litteris.MailDate.Direction.SENT) {
-            if (! mail_sent_years.contains (year)) {
-                mail_sent_years.add (year);
+            if (! mail_sent_years.contains (date.get_year ())) {
+                mail_sent_years.add (date.get_year ());
             }
-
             mail_sent.add (mail);
         } else {
-            if (! mail_received_years.contains (year)) {
-                mail_received_years.add (year);
+            if (! mail_received_years.contains (date.get_year ())) {
+                mail_received_years.add (date.get_year ());
             }
-
             mail_received.add (mail);
         }
     }

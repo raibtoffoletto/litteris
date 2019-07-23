@@ -1,5 +1,8 @@
 public class Litteris.PenpalView : Gtk.ScrolledWindow {
     public Litteris.Window main_window {get; construct;}
+    public Litteris.Penpal loaded_penpal {get; set;}
+    private Gtk.Box box_sent_dates;
+    private Gtk.Box box_received_dates;
 
     public PenpalView (Litteris.Window main_window) {
         Object (
@@ -8,16 +11,16 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
     }
 
     construct {
-        Litteris.Penpal active_penpal = new Litteris.Penpal (main_window.list_panel.active_penpal);
+        load_penpal ();
 
         /* header */
-        var label_name = new Gtk.Label ("<b>"+active_penpal.name+"</b>");
+        var label_name = new Gtk.Label ("<b>"+loaded_penpal.name+"</b>");
             label_name.halign = Gtk.Align.START;
             label_name.use_markup = true;
             label_name.margin_start = 12;
             label_name.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var label_nickname = new Gtk.Label (active_penpal.nickname);
+        var label_nickname = new Gtk.Label (loaded_penpal.nickname);
             label_nickname.halign = Gtk.Align.START;
             label_nickname.margin_start = 20;
             label_nickname.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
@@ -28,21 +31,21 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             box_names.pack_start (label_name);
             box_names.pack_start (label_nickname);
 
-        var emoji_flag = new Gtk.Label (active_penpal.country_emoji);
+        var emoji_flag = new Gtk.Label (loaded_penpal.country_emoji);
             emoji_flag.valign = Gtk.Align.START;
             emoji_flag.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
         var icon_sent = new Gtk.Image.from_icon_name ("mail-send", Gtk.IconSize.LARGE_TOOLBAR);
             icon_sent.halign = Gtk.Align.START;
 
-        var icon_sent_label = new Gtk.Label (active_penpal.mail_sent.size.to_string ());
+        var icon_sent_label = new Gtk.Label (loaded_penpal.mail_sent.size.to_string ());
             icon_sent_label.halign = Gtk.Align.END;
             icon_sent_label.get_style_context ().add_class (Granite.STYLE_CLASS_WELCOME);
 
         var icon_received = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
             icon_received.halign = Gtk.Align.START;
 
-        var icon_received_label = new Gtk.Label (active_penpal.mail_received.size.to_string ());
+        var icon_received_label = new Gtk.Label (loaded_penpal.mail_received.size.to_string ());
             icon_received_label.halign = Gtk.Align.END;
             icon_received_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 
@@ -72,7 +75,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             label_notes.use_markup = true;
             label_notes.halign = Gtk.Align.START;
 
-        var label_notes_content = new Gtk.Label (active_penpal.notes);
+        var label_notes_content = new Gtk.Label (loaded_penpal.notes);
             label_notes_content.wrap = true;
             label_notes_content.halign = Gtk.Align.START;
             label_notes_content.valign = Gtk.Align.START;
@@ -84,8 +87,8 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             label_address.use_markup = true;
             label_address.halign = Gtk.Align.START;
 
-        var label_address_content = new Gtk.Label (active_penpal.address);
-            label_address_content.label += "\n\n%s\n".printf (active_penpal.country_name);
+        var label_address_content = new Gtk.Label (loaded_penpal.address);
+            label_address_content.label += "\n\n%s\n".printf (loaded_penpal.country_name);
             label_address_content.wrap = true;
             label_address_content.halign = Gtk.Align.START;
             label_address_content.valign = Gtk.Align.START;
@@ -94,7 +97,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             label_address_content.selectable = true;
 
         var icon_mail_sent = new Gtk.Image.from_icon_name ("mail-send", Gtk.IconSize.LARGE_TOOLBAR);
-        var label_sent = new Gtk.Label ("<b>Mail Sent :</b>");
+        var label_sent = new Gtk.Label ("<b>Sent :</b>");
             label_sent.use_markup = true;
             label_sent.halign = Gtk.Align.START;
 
@@ -103,7 +106,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             box_sent.pack_start (label_sent, false, false);
 
         var icon_mail_received = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
-        var label_received = new Gtk.Label ("<b>Mail Received :</b>");
+        var label_received = new Gtk.Label ("<b>Received :</b>");
             label_received.use_markup = true;
             label_received.halign = Gtk.Align.START;
 
@@ -111,12 +114,15 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             box_received.pack_start (icon_mail_received, false, false);
             box_received.pack_start (label_received, false, false);
 
-// foreach (var x in active_penpal.mail_sent_years) {
-//     stdout.printf ("sent: %s\n", x);
-// }
-// foreach (var x in active_penpal.mail_received_years) {
-//     stdout.printf ("received: %s\n", x);
-// }
+        box_sent_dates = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        box_sent_dates.homogeneous = false;
+        box_sent_dates.margin_start = 24;
+        load_dates ();
+
+        box_received_dates = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        box_received_dates.homogeneous = false;
+        box_received_dates.margin_start = 24;
+        load_dates (false);
 
         var content_grid = new Gtk.Grid ();
             content_grid.column_spacing = 24;
@@ -128,7 +134,9 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             content_grid.attach (label_notes, 1, 0);
             content_grid.attach (label_notes_content, 1, 1);
             content_grid.attach (box_sent, 0, 2);
+            content_grid.attach (box_sent_dates, 0, 3);
             content_grid.attach (box_received, 1, 2);
+            content_grid.attach (box_received_dates, 1, 3);
 
         var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
@@ -139,6 +147,52 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             main_box.pack_start (content_grid, false, false);
 
         add (main_box);
+    }
+
+    public void load_penpal () {
+        var new_loaded_penpal = new Litteris.Penpal (main_window.list_panel.active_penpal);
+        set_property ("loaded-penpal", new_loaded_penpal);
+    }
+
+    public void load_dates (bool sent = true) {
+        var dates_list = sent ? loaded_penpal.mail_sent : loaded_penpal.mail_received;
+        var dates_years = sent ? loaded_penpal.mail_sent_years : loaded_penpal.mail_received_years;
+        var dates_box = sent ? box_sent_dates : box_received_dates;
+
+        foreach (var year in dates_years) {
+            var label_year = new Gtk.Expander ("<b>%i</b>".printf (year));
+                label_year.expanded = true;
+                label_year.use_markup = true;
+                label_year.margin = 3;
+
+            var flowbox_year = new Gtk.FlowBox ();
+                flowbox_year.homogeneous = true;
+                flowbox_year.row_spacing = 3;
+
+            label_year.add (flowbox_year);
+            foreach (var mail_date in dates_list) {
+                var date = new DateTime.from_unix_utc (mail_date.date);
+
+                if (date.get_year () == year) {
+                    var button_date = new Gtk.Button ();
+                        button_date.label = date.format ("%d/%m/%Y");
+                        button_date.relief = Gtk.ReliefStyle.NONE;
+                        button_date.halign = Gtk.Align.START;
+                        button_date.always_show_image = true;
+                        button_date.image_position = Gtk.PositionType.LEFT;
+                    var button_date_icon = new Gtk.Image.from_icon_name
+                                           ("emblem-mail", Gtk.IconSize.SMALL_TOOLBAR);
+                    if (mail_date.mail_type == Litteris.MailDate.MailType.POSTCARD) {
+                        button_date_icon = new Gtk.Image.from_icon_name
+                                           ("image-x-generic", Gtk.IconSize.SMALL_TOOLBAR);
+                    }
+                    button_date.set_image (button_date_icon);
+                    flowbox_year.add (button_date);
+                }
+            }
+
+            dates_box.pack_start (label_year, false, false);
+        }
     }
 
 }

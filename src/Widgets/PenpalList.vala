@@ -123,14 +123,6 @@ public class Litteris.PenpalList : Gtk.ScrolledWindow {
     }
 
     private void clear_list () {
-    // if (source_list.root.children != null ) {
-    //     foreach (var child in source_list.root.children) {
-    //         // foreach (var grand_child in child.children) {
-    //         //     child.remove (grand_child);
-    //         // }
-    //         source_list.root.remove (child);
-    //     }
-    // }
         if (source_list != null) {
             remove (source_list);
         }
