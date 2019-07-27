@@ -22,7 +22,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         load_status_bar ();
     }
 
-    private void load_status_bar () {
+    public void load_status_bar () {
         utils.remove_box_children (this);
 
         var button_new_date = new Gtk.Button.with_label ("Register Mail");
@@ -61,9 +61,15 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         });
     }
 
-    // public void edit_mail () {
-    //     remove_widgets ();
-    // }
+    public void edit_mail (Litteris.MailDate edit_date) {
+        utils.remove_box_children (this);
+        load_edit_mode ();
+
+        new_mail_date.date = new DateTime.from_unix_utc (edit_date.date);
+        new_mail_mailtype.selected = edit_date.mail_type;
+        new_mail_direction.selected = edit_date.direction;
+
+    }
 
     private void load_edit_mode (bool new_mail = true) {
         new_mail_date = new Granite.Widgets.DatePicker ();

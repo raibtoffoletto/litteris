@@ -4,6 +4,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
     public Granite.Widgets.Toast notifications {get; set;}
     private Gtk.Box box_sent;
     private Gtk.Box box_received;
+    private Litteris.PenpalStatusBar status_bar;
     private Litteris.Utils utils;
 
     public PenpalView (Litteris.Window main_window) {
@@ -141,10 +142,10 @@ public class Litteris.PenpalView : Gtk.Overlay {
             content_scrolled.get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
             content_scrolled.add (content_grid);
 
-        var status_bar = new Litteris.PenpalStatusBar (this);
         var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
         var separator_2 = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
+        status_bar = new Litteris.PenpalStatusBar (this);
         notifications = new Granite.Widgets.Toast ("");
 
         var main_grid = new Gtk.Grid ();
@@ -190,13 +191,25 @@ public class Litteris.PenpalView : Gtk.Overlay {
                         button_date.halign = Gtk.Align.START;
                         button_date.always_show_image = true;
                         button_date.image_position = Gtk.PositionType.LEFT;
+
                     var button_date_icon = new Gtk.Image.from_icon_name
                                            ("emblem-mail", Gtk.IconSize.SMALL_TOOLBAR);
+
                     if (mail_date.mail_type == Litteris.MailDate.MailType.POSTCARD) {
                         button_date_icon = new Gtk.Image.from_icon_name
                                            ("image-x-generic", Gtk.IconSize.SMALL_TOOLBAR);
                     }
                     button_date.set_image (button_date_icon);
+
+                    button_date.clicked.connect (() => {
+                        status_bar.edit_mail (mail_date);
+                    });
+
+                    button_date.focus_out_event.connect (() => {
+                        status_bar.load_status_bar ();
+                        return true;
+                    });
+
                     flowbox_year.add (button_date);
                 }
             }
