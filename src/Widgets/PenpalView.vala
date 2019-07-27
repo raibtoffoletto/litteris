@@ -1,8 +1,10 @@
-public class Litteris.PenpalView : Gtk.ScrolledWindow {
+public class Litteris.PenpalView : Gtk.Overlay {
     public Litteris.Window main_window {get; construct;}
     public Litteris.Penpal loaded_penpal {get; set;}
+    public Granite.Widgets.Toast notifications {get; set;}
     private Gtk.Box box_sent;
     private Gtk.Box box_received;
+    private Litteris.Utils utils;
 
     public PenpalView (Litteris.Window main_window) {
         Object (
@@ -12,6 +14,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
     }
 
     construct {
+        utils = new Litteris.Utils ();
         load_penpal ();
 
         /* header */
@@ -65,6 +68,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
 
         var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             header_box.hexpand = true;
+            header_box.margin = 12;
             header_box.homogeneous = false;
             header_box.halign = Gtk.Align.FILL;
             header_box.pack_start (emoji_flag, false, false);
@@ -121,6 +125,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             content_grid.column_spacing = 24;
             content_grid.column_homogeneous = true;
             content_grid.row_spacing = 6;
+            content_grid.margin = 24;
             content_grid.row_homogeneous = false;
             content_grid.attach (label_address, 0, 0);
             content_grid.attach (label_address_content, 0, 1);
@@ -131,15 +136,26 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             content_grid.attach (label_received, 1, 2);
             content_grid.attach (box_received, 1, 3);
 
+        var content_scrolled = new Gtk.ScrolledWindow (null, null);
+            content_scrolled.expand = true;
+            content_scrolled.get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
+            content_scrolled.add (content_grid);
+
+        var status_bar = new Litteris.PenpalStatusBar (this);
         var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
+        var separator_2 = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
-        var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL,12);
-            main_box.margin = 24;
-            main_box.pack_start (header_box, false, false);
-            main_box.pack_start (separator, false, false);
-            main_box.pack_start (content_grid, false, false);
+        notifications = new Granite.Widgets.Toast ("");
 
-        add (main_box);
+        var main_grid = new Gtk.Grid ();
+            main_grid.attach (header_box, 0, 0);
+            main_grid.attach (separator, 0, 1);
+            main_grid.attach (content_scrolled, 0, 2);
+            main_grid.attach (separator_2, 0, 3);
+            main_grid.attach (status_bar, 0, 4);
+
+        add_overlay (main_grid);
+        add_overlay (notifications);
     }
 
     public void load_penpal () {
@@ -151,6 +167,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
         var dates_list = sent ? loaded_penpal.mail_sent : loaded_penpal.mail_received;
         var dates_years = sent ? loaded_penpal.mail_sent_years : loaded_penpal.mail_received_years;
         var dates_box = sent ? box_sent : box_received;
+        utils.remove_box_children (dates_box);
 
         foreach (var year in dates_years) {
             var label_year = new Gtk.Expander ("<b>%i</b>".printf (year));
@@ -185,6 +202,7 @@ public class Litteris.PenpalView : Gtk.ScrolledWindow {
             }
 
             dates_box.pack_start (label_year, false, false);
+            dates_box.show_all ();
         }
     }
 

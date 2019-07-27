@@ -47,11 +47,6 @@ public class Litteris.Penpal : Object {
         Application.database.open_database (out db);
         countries_api = new Litteris.CountryCodes ();
 
-        mail_sent = new Gee.ArrayList<Litteris.MailDate> ();
-        mail_sent_years = new Gee.ArrayList<int> ();
-        mail_received = new Gee.ArrayList<Litteris.MailDate> ();
-        mail_received_years = new Gee.ArrayList<int> ();
-
         load_penpal ();
         load_dates ();
     }
@@ -79,6 +74,11 @@ public class Litteris.Penpal : Object {
     }
 
     public void load_dates () {
+        mail_sent = new Gee.ArrayList<Litteris.MailDate> ();
+        mail_sent_years = new Gee.ArrayList<int> ();
+        mail_received = new Gee.ArrayList<Litteris.MailDate> ();
+        mail_received_years = new Gee.ArrayList<int> ();
+
         if (rowid != null) {
             var query = """
                 SELECT rowid, date, type, direction

@@ -54,6 +54,19 @@ public class Litteris.DataBase {
         }
     }
 
+    public bool exec_query (string query) {
+        Sqlite.Database db;
+        open_database (out db);
+        var exec_query = db.exec (query);
+
+        if (exec_query != Sqlite.OK) {
+            print ("Error executing query:\n%s\n", query);
+            return false;
+        }
+
+        return true;
+    }
+
     public void initialize_database () {
         Sqlite.Database db;
         open_database (out db);
@@ -65,7 +78,7 @@ public class Litteris.DataBase {
               `type` INT NOT NULL,
               `direction` INT NOT NULL
             );
-            
+
             CREATE TABLE `penpals` (
               `name` TEXT NOT NULL,
               `nickname` TEXT NULL,
@@ -73,17 +86,17 @@ public class Litteris.DataBase {
               `address` TEXT NULL,
               `country` TEXT NOT NULL
             );
-            
+
             CREATE TABLE `starred` (
               `penpal` INTEGER NOT NULL
             );
-            
+
             CREATE TABLE `countries_code` (
               `alpha-3` TEXT NOT NULL,
               `country` TEXT NOT NULL,
               `alpha-2` TEXT NOT NULL
             );
-            
+
             INSERT INTO `countries_code` (`alpha-3`, `country`, `alpha-2`) VALUES
                 ('AFG','Afghanistan','AF'),
                 ('ALA','Åland','AX'),

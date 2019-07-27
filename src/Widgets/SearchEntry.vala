@@ -23,7 +23,7 @@ public class Litteris.Search : Gtk.Box {
     public signal void search_content_changed (string search_content = "");
     private signal void show_find_button ();
     private signal void show_search_entry ();
-
+    private Litteris.Utils utils;
     public Search () {
         Object (
             orientation: Gtk.Orientation.HORIZONTAL,
@@ -32,6 +32,7 @@ public class Litteris.Search : Gtk.Box {
     }
 
     construct {
+        utils = new Litteris.Utils ();
         create_find_button ();
 
         show_search_entry.connect (create_search_entry);
@@ -46,7 +47,7 @@ public class Litteris.Search : Gtk.Box {
                 show_search_entry ();
             });
 
-        remove_widgets ();
+        utils.remove_box_children (this);
         pack_end (find_button);
         show_all ();
         find_button.grab_focus ();
@@ -74,18 +75,11 @@ public class Litteris.Search : Gtk.Box {
             search_entry.move_focus (Gtk.DirectionType.TAB_FORWARD);
          });
 
-        remove_widgets ();
+        utils.remove_box_children (this);
         pack_end (search_entry);
         show_all ();
 
         search_entry.grab_focus ();
-    }
-
-    public void remove_widgets () {
-        var box_children = get_children ();
-        foreach (var x in box_children) {
-            remove (x);
-        }
     }
 
 }

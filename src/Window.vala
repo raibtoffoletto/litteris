@@ -98,9 +98,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
             var penpal = new Litteris.PenpalView (this);
-            panels.pack2 (penpal, false, false);
+            panels.pack2 (penpal, true, false);
         } else {
-            panels.pack2 (welcome_panel, false, false);
+            panels.pack2 (welcome_panel, true, false);
         }
 
         show_all ();

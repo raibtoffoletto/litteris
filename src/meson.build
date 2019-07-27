@@ -12,11 +12,13 @@ src_files = [
     'Window.vala',
     'Models/Penpal.vala',
     'Models/MailDate.vala',
-    'Services/DataBase.vala',
     'Services/CountryCodes.vala',
+    'Services/DataBase.vala',
+    'Services/Utils.vala',
     'Widgets/AppMenu.vala',
     'Widgets/PenpalList.vala',
     'Widgets/PenpalView.vala',
+    'Widgets/PenpalStatusBar.vala',
     'Widgets/SearchEntry.vala',
     'Widgets/Welcome.vala'
 ]
