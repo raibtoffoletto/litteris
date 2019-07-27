@@ -19,32 +19,48 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
-public class Litteris.PenpalList : Gtk.ScrolledWindow {
+public class Litteris.PenpalList : Gtk.Box {
     public string active_penpal { get; set; }
     public Granite.Widgets.SourceList source_list;
-    public Litteris.Window main_window {get; construct;}
+    public Gtk.SearchBar search_bar;
     private Sqlite.Database db;
     private string errmsg;
 
-    public PenpalList (Litteris.Window main_window) {
+    public PenpalList () {
         Object (
-            hadjustment: null,
-            vadjustment: null,
-            width_request: 180,
-            min_content_width: 180,
-            main_window: main_window
+            orientation: Gtk.Orientation.VERTICAL,
+            spacing: 0,
+            width_request: 180
         );
     }
 
     construct {
         Application.database.open_database (out db);
 
-        clear_list ();
+        var search_entry = new Gtk.SearchEntry ();
+
+        search_bar = new Gtk.SearchBar ();
+        search_bar.show_close_button = true;
+        search_bar.add (search_entry);
+        search_bar.connect_entry (search_entry);
+
+        search_entry.search_changed.connect (() => {
+            load_list (search_entry.text);
+        });
+
+        pack_start (search_bar, false, false);
         load_list ();
     }
 
     public void load_list (string search_content = "") {
-        clear_list ();
+        if (source_list != null) {
+            remove (source_list);
+        }
+
+        source_list = new Granite.Widgets.SourceList ();
+        source_list.item_selected.connect ((penpal) => {
+            set_property ("active-penpal", penpal.name);
+        });
 
         if (search_content != "") {
             var search = new Granite.Widgets.SourceList.ExpandableItem (_("Search"));
@@ -68,6 +84,9 @@ public class Litteris.PenpalList : Gtk.ScrolledWindow {
             source_list.root.add (penpals);
             get_penpals (penpals);
         }
+
+        pack_end (source_list);
+        show_all ();
     }
 
     private void get_penpals (Granite.Widgets.SourceList.ExpandableItem group, bool starred = false) {
@@ -120,19 +139,6 @@ public class Litteris.PenpalList : Gtk.ScrolledWindow {
         if (exec_query != Sqlite.OK) {
             stderr.printf ("Error: %s\n", errmsg);
         }
-    }
-
-    private void clear_list () {
-        if (source_list != null) {
-            remove (source_list);
-        }
-
-        source_list = new Granite.Widgets.SourceList ();
-        add (source_list);
-
-        source_list.item_selected.connect ((penpal) => {
-            set_property ("active-penpal", penpal.name);
-        });
     }
 
 }

@@ -1,5 +1,5 @@
 public class Litteris.PenpalView : Gtk.Overlay {
-    public Litteris.Window main_window {get; construct;}
+    public string active_penpal {get; construct;}
     public Litteris.Penpal loaded_penpal {get; set;}
     public Granite.Widgets.Toast notifications {get; set;}
     private Gtk.Box box_sent;
@@ -7,10 +7,10 @@ public class Litteris.PenpalView : Gtk.Overlay {
     private Litteris.PenpalStatusBar status_bar;
     private Litteris.Utils utils;
 
-    public PenpalView (Litteris.Window main_window) {
+    public PenpalView (string active_penpal) {
         Object (
             width_request: 580,
-            main_window: main_window
+            active_penpal: active_penpal
         );
     }
 
@@ -89,13 +89,14 @@ public class Litteris.PenpalView : Gtk.Overlay {
             label_notes_content.margin_start = 12;
             label_notes_content.margin_end = 24;
             label_notes_content.selectable = true;
+            label_notes_content.can_focus = false;
 
         var label_address = new Gtk.Label ("<b>Address : </b>");
             label_address.use_markup = true;
             label_address.halign = Gtk.Align.START;
 
         var label_address_content = new Gtk.Label (loaded_penpal.address);
-            label_address_content.label += "\n\n%s\n".printf (loaded_penpal.country_name);
+            label_address_content.label += "\n<strong>%s</strong>\n".printf (loaded_penpal.country_name);
             label_address_content.wrap = true;
             label_address_content.halign = Gtk.Align.START;
             label_address_content.valign = Gtk.Align.START;
@@ -103,6 +104,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
             label_address_content.margin_start = 12;
             label_address_content.margin_end = 24;
             label_address_content.selectable = true;
+            label_address_content.can_focus = false;
 
         var label_sent = new Gtk.Label ("<b>Sent :</b>");
             label_sent.use_markup = true;
@@ -160,7 +162,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
     }
 
     public void load_penpal () {
-        var new_loaded_penpal = new Litteris.Penpal (main_window.list_panel.active_penpal);
+        var new_loaded_penpal = new Litteris.Penpal (active_penpal);
         set_property ("loaded-penpal", new_loaded_penpal);
     }
 

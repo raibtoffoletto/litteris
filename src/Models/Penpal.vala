@@ -37,7 +37,7 @@ public class Litteris.Penpal : Object {
     private Sqlite.Database db;
     private Litteris.CountryCodes countries_api;
 
-    public Penpal (string penpal ) {
+    public Penpal (string penpal) {
         Object (
             active_penpal: penpal
         );

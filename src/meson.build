@@ -19,7 +19,6 @@ src_files = [
     'Widgets/PenpalList.vala',
     'Widgets/PenpalView.vala',
     'Widgets/PenpalStatusBar.vala',
-    'Widgets/SearchEntry.vala',
     'Widgets/Welcome.vala'
 ]
 

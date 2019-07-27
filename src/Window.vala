@@ -20,14 +20,13 @@
 */
 
 public class Litteris.Window : Gtk.ApplicationWindow {
-
     // public SimpleActionGroup actions { get; construct; }
     // public const string ACTION_PREFIX = "win.";
     // public const string ACTION_ABOUT_DIALOG = "about-dialog";
     // public const string ACTION_IMPORT_DB = "import-db";
     // public const string ACTION_EXPORT_DB = "export-db";
     private Litteris.Header window_header;
-    public Litteris.PenpalList list_panel;
+    private Litteris.PenpalList list_panel;
     private Litteris.Welcome welcome_panel;
     private Gtk.Paned panels;
     private int window_width;
@@ -67,8 +66,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             maximize ();
         }
 
-        window_header = new Litteris.Header (this);
-        list_panel = new Litteris.PenpalList (this);
+        window_header = new Litteris.Header ();
+        list_panel = new Litteris.PenpalList ();
         welcome_panel = new Litteris.Welcome ();
 
         panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
@@ -80,12 +79,20 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         add (panels);
 	 	show_all ();
 
-        window_header.penpal_search.search_content_changed.connect ((search_content) => {
-            list_panel.load_list (search_content);
-        });
-
         list_panel.notify["active-penpal"].connect (() => {
             load_penpal ();
+        });
+
+        key_press_event.connect ((event) => {
+            var keyname = Gdk.keyval_name (event.keyval);
+            string[] keys_to_escape = {"Escape", "Return", "KP_Enter"};
+
+            if ((keyname in keys_to_escape) && list_panel.search_bar.get_search_mode ()) {
+                list_panel.search_bar.search_mode_enabled = false;
+                return false;
+            }
+
+            return list_panel.search_bar.handle_event (event);
         });
 
         delete_event.connect (e => {
@@ -97,7 +104,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         panels.remove (panels.get_child2 ());
 
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
-            var penpal = new Litteris.PenpalView (this);
+            var penpal = new Litteris.PenpalView (list_panel.active_penpal);
             panels.pack2 (penpal, true, false);
         } else {
             panels.pack2 (welcome_panel, true, false);

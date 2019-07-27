@@ -20,15 +20,11 @@
 */
 
 public class Litteris.Header : Gtk.HeaderBar {
-    public Litteris.Search penpal_search;
-    public Litteris.Window main_window {get; construct;}
-
-    public Header (Litteris.Window main_window) {
+    public Header () {
         Object (
             title: "Litteris",
             has_subtitle: false,
-            show_close_button: true,
-            main_window: main_window
+            show_close_button: true
         );
     }
 
@@ -41,9 +37,6 @@ public class Litteris.Header : Gtk.HeaderBar {
 
         var button_del = new Gtk.Button.from_icon_name ("edit-delete", Gtk.IconSize.LARGE_TOOLBAR);
         button_del.tooltip_text = _("Delete Penpal");
-        button_del.clicked.connect (() => {
-            main_window.list_panel.set_property ("active-penpal", "");
-        });
 
         var app_menu = new Litteris.AppMenu ();
         var button_menu = new Gtk.MenuButton ();
@@ -51,13 +44,10 @@ public class Litteris.Header : Gtk.HeaderBar {
         button_menu.popover = app_menu;
         button_menu.tooltip_text = _("Options");
 
-        penpal_search = new Litteris.Search ();
-
         pack_start (button_new);
         pack_start (button_edit);
         pack_start (button_del);
         pack_end (button_menu);
-        pack_end (penpal_search);
 
         show_all ();
     }
