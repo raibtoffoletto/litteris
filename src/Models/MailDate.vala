@@ -24,12 +24,15 @@ public class Litteris.MailDate : Object {
         LETTER,
         POSTCARD
     }
+
     public enum Direction {
-        SENT,
-        RECEIVED
+        RECEIVED,
+        SENT
     }
+
     public string rowid {get; set;}
     public int64 date {get; set;}
     public MailType mail_type {get; set;}
     public Direction direction {get; set;}
+
 }

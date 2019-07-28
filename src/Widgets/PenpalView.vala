@@ -118,12 +118,10 @@ public class Litteris.PenpalView : Gtk.Overlay {
         box_sent = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         box_sent.homogeneous = false;
         box_sent.margin_start = 12;
-        load_dates ();
-
         box_received = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         box_received.homogeneous = false;
         box_received.margin_start = 12;
-        load_dates (false);
+        load_all_dates ();
 
         var content_grid = new Gtk.Grid ();
             content_grid.column_spacing = 24;
@@ -162,12 +160,12 @@ public class Litteris.PenpalView : Gtk.Overlay {
         add_overlay (notifications);
     }
 
-    public void load_penpal () {
+    private void load_penpal () {
         var new_loaded_penpal = new Litteris.Penpal (active_penpal);
         set_property ("loaded-penpal", new_loaded_penpal);
     }
 
-    public void load_dates (bool sent = true) {
+    private void load_dates (bool sent = true) {
         var dates_list = sent ? loaded_penpal.mail_sent : loaded_penpal.mail_received;
         var dates_years = sent ? loaded_penpal.mail_sent_years : loaded_penpal.mail_received_years;
         var dates_box = sent ? box_sent : box_received;
@@ -189,7 +187,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
 
                 if (date.get_year () == year) {
                     var button_date = new Gtk.Button ();
-                        button_date.label = date.format ("%d/%m/%Y");
+                        button_date.label = date.format ("%x");
                         button_date.relief = Gtk.ReliefStyle.NONE;
                         button_date.halign = Gtk.Align.START;
                         button_date.can_focus = false;
@@ -223,4 +221,8 @@ public class Litteris.PenpalView : Gtk.Overlay {
         }
     }
 
+    public void load_all_dates () {
+        load_dates (true);
+        load_dates (false);
+    }
 }
