@@ -80,7 +80,14 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         add (panels);
 	 	show_all ();
 
-        list_panel.notify["active-penpal"].connect (load_penpal);
+        list_panel.notify["active-penpal"].connect (() => {
+            if (list_panel.active_penpal != "") {
+                window_header.title = "Litteris ~ " + list_panel.active_penpal;
+            } else {
+                window_header.title = "Litteris";
+            }
+            load_penpal ();
+        });
 
         key_press_event.connect (on_key_pressed);
 
@@ -93,7 +100,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         panels.remove (panels.get_child2 ());
 
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
-            penpal_view = new Litteris.PenpalView (list_panel.active_penpal);
+            penpal_view = new Litteris.PenpalView (this, list_panel.active_penpal);
             panels.pack2 (penpal_view, true, false);
         } else {
             panels.pack2 (welcome_panel, true, false);

@@ -1,5 +1,6 @@
 public class Litteris.PenpalView : Gtk.Overlay {
     public string active_penpal {get; construct;}
+    public Litteris.Window main_window {get; set;}
     public Litteris.Penpal loaded_penpal {get; set;}
     public Granite.Widgets.Toast notifications {get; set;}
     public Litteris.PenpalStatusBar status_bar;
@@ -7,9 +8,10 @@ public class Litteris.PenpalView : Gtk.Overlay {
     private Gtk.Box box_received;
     private Litteris.Utils utils;
 
-    public PenpalView (string active_penpal) {
+    public PenpalView (Litteris.Window window, string active_penpal) {
         Object (
             width_request: 580,
+            main_window: window,
             active_penpal: active_penpal
         );
     }
@@ -170,10 +172,15 @@ public class Litteris.PenpalView : Gtk.Overlay {
         var dates_years = sent ? loaded_penpal.mail_sent_years : loaded_penpal.mail_received_years;
         var dates_box = sent ? box_sent : box_received;
         utils.remove_box_children (dates_box);
-
+        int count = 0;
         foreach (var year in dates_years) {
             var label_year = new Gtk.Expander ("<b>%i</b>".printf (year));
-                label_year.expanded = true;
+                if (count == 0) {
+                    label_year.expanded = true;
+                } else {
+                    label_year.expanded = false;
+                }
+                count++;
                 label_year.use_markup = true;
                 label_year.margin = 3;
 

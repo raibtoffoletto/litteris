@@ -92,7 +92,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         button_cancel = new Gtk.Button.with_label ("Discard Changes");
         button_cancel.clicked.connect (load_status_bar);
 
-        button_destroy = new Gtk.Button.with_label ("Remove Date");
+        button_destroy = new Gtk.Button.with_label ("Remove Mail");
         button_destroy.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         var spacer = new Gtk.Grid ();
@@ -154,20 +154,36 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
         var delete_mail_mailtype = (edit_date.mail_type == Litteris.MailDate.MailType.LETTER) ? "Letter" : "Postcard";
         var delete_mail_date = new DateTime.from_unix_utc (edit_date.date).format ("%x");
-        var dialog_title = "Delete " + delete_mail_mailtype + " from " + delete_mail_date + "?";
+        var dialog_title = "Remove " + delete_mail_mailtype + " from " + delete_mail_date + "?";
+
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
                                 dialog_title,
-                                "This will remove this date from the database permanently!",
+                                "This will delete this date from the database permanently!",
                                 "edit-delete",
                                 Gtk.ButtonsType.CANCEL);
-        var delete_confirm = new Gtk.Button.with_label ("Delete");
-            delete_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        dialog.add_action_widget (delete_confirm, Gtk.ResponseType.ACCEPT);
 
+        var delete_confirm = new Gtk.Button.with_label ("Remove Mail");
+            delete_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+        dialog.add_action_widget (delete_confirm, Gtk.ResponseType.ACCEPT);
+        dialog.transient_for = penpal_view.main_window;
         dialog.show_all ();
+
         if (dialog.run () == Gtk.ResponseType.ACCEPT) {
-            print ("FUCKED!");
+            var exec_query = Application.database.exec_query (query);
+
+            if (exec_query) {
+                penpal_view.loaded_penpal.load_dates ();
+                penpal_view.load_all_dates ();
+                penpal_view.notifications.title = "Mail removed with success!";
+                penpal_view.notifications.send_notification ();
+                load_status_bar ();
+            } else {
+                penpal_view.notifications.title = "Something went wrong...";
+                penpal_view.notifications.send_notification ();
+            }
         }
+
         dialog.destroy ();
     }
 
