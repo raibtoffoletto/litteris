@@ -23,6 +23,7 @@ public class Litteris.PenpalList : Gtk.Box {
     public string active_penpal { get; set; }
     public Granite.Widgets.SourceList source_list;
     public Gtk.SearchBar search_bar;
+    public Gtk.SearchEntry search_entry;
     private Sqlite.Database db;
     private string errmsg;
 
@@ -37,8 +38,7 @@ public class Litteris.PenpalList : Gtk.Box {
     construct {
         Application.database.open_database (out db);
 
-        var search_entry = new Gtk.SearchEntry ();
-
+        search_entry = new Gtk.SearchEntry ();
         search_bar = new Gtk.SearchBar ();
         search_bar.show_close_button = true;
         search_bar.add (search_entry);

@@ -27,6 +27,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     // public const string ACTION_EXPORT_DB = "export-db";
     private Litteris.Header window_header;
     private Litteris.PenpalList list_panel;
+    private Litteris.PenpalView penpal_view;
     private Litteris.Welcome welcome_panel;
     private Gtk.Paned panels;
     private int window_width;
@@ -79,21 +80,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         add (panels);
 	 	show_all ();
 
-        list_panel.notify["active-penpal"].connect (() => {
-            load_penpal ();
-        });
+        list_panel.notify["active-penpal"].connect (load_penpal);
 
-        key_press_event.connect ((event) => {
-            var keyname = Gdk.keyval_name (event.keyval);
-            string[] keys_to_escape = {"Escape", "Return", "KP_Enter"};
-
-            if ((keyname in keys_to_escape) && list_panel.search_bar.get_search_mode ()) {
-                list_panel.search_bar.search_mode_enabled = false;
-                return false;
-            }
-
-            return list_panel.search_bar.handle_event (event);
-        });
+        key_press_event.connect (on_key_pressed);
 
         delete_event.connect (e => {
             return app_quit ();
@@ -104,13 +93,41 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         panels.remove (panels.get_child2 ());
 
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
-            var penpal = new Litteris.PenpalView (list_panel.active_penpal);
-            panels.pack2 (penpal, true, false);
+            penpal_view = new Litteris.PenpalView (list_panel.active_penpal);
+            panels.pack2 (penpal_view, true, false);
         } else {
             panels.pack2 (welcome_panel, true, false);
         }
 
         show_all ();
+    }
+
+    private bool on_key_pressed (Gdk.EventKey event) {
+        var keyname = Gdk.keyval_name (event.keyval);
+        string[] keys_escape = {"Escape", "Return", "KP_Enter"};
+
+        if ((keyname in keys_escape) && list_panel.search_bar.get_search_mode ()) {
+            list_panel.search_bar.search_mode_enabled = false;
+            list_panel.source_list.grab_focus ();
+        }
+
+        if (keyname == "Escape" && penpal_view.status_bar.edit_mode == true) {
+            penpal_view.status_bar.set_property ("edit-mode", false);
+        }
+
+        try {
+            var key_regex = new Regex ("^[a-zA-Z]$", RegexCompileFlags.JAVASCRIPT_COMPAT);
+            if (list_panel.search_bar.get_search_mode ()
+                && !list_panel.search_entry.has_focus
+                && key_regex.match (keyname)) {
+                    list_panel.search_entry.text = "";
+                    list_panel.search_entry.grab_focus ();
+            }
+        } catch (RegexError e) {
+            print ("Error: %s\n", e.message);
+        }
+
+        return list_panel.search_bar.handle_event (event);
     }
 
     public bool app_quit () {

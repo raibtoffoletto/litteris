@@ -2,9 +2,9 @@ public class Litteris.PenpalView : Gtk.Overlay {
     public string active_penpal {get; construct;}
     public Litteris.Penpal loaded_penpal {get; set;}
     public Granite.Widgets.Toast notifications {get; set;}
+    public Litteris.PenpalStatusBar status_bar;
     private Gtk.Box box_sent;
     private Gtk.Box box_received;
-    private Litteris.PenpalStatusBar status_bar;
     private Litteris.Utils utils;
 
     public PenpalView (string active_penpal) {
@@ -96,7 +96,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
             label_address.halign = Gtk.Align.START;
 
         var label_address_content = new Gtk.Label (loaded_penpal.address);
-            label_address_content.label += "\n<strong>%s</strong>\n".printf (loaded_penpal.country_name);
+            label_address_content.label += "\n<b>%s</b>\n".printf (loaded_penpal.country_name);
             label_address_content.wrap = true;
             label_address_content.halign = Gtk.Align.START;
             label_address_content.valign = Gtk.Align.START;
@@ -105,6 +105,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
             label_address_content.margin_end = 24;
             label_address_content.selectable = true;
             label_address_content.can_focus = false;
+            label_address_content.use_markup = true;
 
         var label_sent = new Gtk.Label ("<b>Sent :</b>");
             label_sent.use_markup = true;
@@ -191,6 +192,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
                         button_date.label = date.format ("%d/%m/%Y");
                         button_date.relief = Gtk.ReliefStyle.NONE;
                         button_date.halign = Gtk.Align.START;
+                        button_date.can_focus = false;
                         button_date.always_show_image = true;
                         button_date.image_position = Gtk.PositionType.LEFT;
 

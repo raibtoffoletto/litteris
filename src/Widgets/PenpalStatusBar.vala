@@ -6,6 +6,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     private Gtk.Button button_confirm;
     private Gtk.Button button_cancel;
     private Litteris.Utils utils;
+    public bool edit_mode {get; set;}
 
     public PenpalStatusBar (Litteris.PenpalView penpal_view) {
         Object (
@@ -19,7 +20,15 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
     construct {
         utils = new Litteris.Utils ();
+
+        set_property ("edit-mode", false);
         load_status_bar ();
+
+        notify["edit-mode"].connect (() => {
+            if (edit_mode == false) {
+                load_status_bar ();
+            }
+        });
     }
 
     public void load_status_bar () {
@@ -30,8 +39,11 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
             button_new_date.clicked.connect (register_mail);
 
         pack_end (button_new_date, false, false);
-
         show_all ();
+
+        if (edit_mode != false) {
+            set_property ("edit-mode", false);
+        }
     }
 
     private void register_mail () {
@@ -72,6 +84,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     }
 
     private void load_edit_mode (bool new_mail = true) {
+        set_property ("edit-mode", true);
         new_mail_date = new Granite.Widgets.DatePicker ();
 
         new_mail_mailtype = new Granite.Widgets.ModeButton ();
