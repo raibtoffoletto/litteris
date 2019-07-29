@@ -138,7 +138,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
             if (exec_query) {
                 penpal_view.loaded_penpal.load_dates ();
-                penpal_view.load_all_dates ();
+                penpal_view.get_all_dates ();
                 penpal_view.notifications.title = new_mail ? "Mail Registered" : "Changes Saved";
                 penpal_view.notifications.send_notification ();
                 load_status_bar ();
@@ -174,7 +174,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
             if (exec_query) {
                 penpal_view.loaded_penpal.load_dates ();
-                penpal_view.load_all_dates ();
+                penpal_view.get_all_dates ();
                 penpal_view.notifications.title = "Mail removed with success!";
                 penpal_view.notifications.send_notification ();
                 load_status_bar ();

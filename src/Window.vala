@@ -86,7 +86,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             } else {
                 window_header.title = "Litteris";
             }
-            load_penpal ();
+            load_penpal_view ();
         });
 
         key_press_event.connect (on_key_pressed);
@@ -96,7 +96,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         });
     }
 
-    public void load_penpal () {
+    public void load_penpal_view () {
         panels.remove (panels.get_child2 ());
 
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
@@ -137,17 +137,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         return list_panel.search_bar.handle_event (event);
     }
 
-    public bool app_quit () {
-        get_size (out window_width, out window_height);
-        get_position (out position_x, out position_y);
-
-        Application.settings.set ("window-position", "(ii)",position_x, position_y);
-        Application.settings.set ("window-size", "(ii)", window_width, window_height);
-        Application.settings.set_boolean ("window-maximized", this.is_maximized);
-        Application.settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
-        Application.settings.set_int ("panel-position", panels.get_position ());
-
-        return false;
+    public void edit_penpal_dialog () {
+        // var dialog = new Gtk.Dialog.with_buttons ("Edit penpal", this, Gtk.DialogFlags.MODAL
     }
 
     public void about_dialog () {
@@ -171,4 +162,20 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             about_dialog.present ();
     }
 
+    public bool app_quit () {
+        get_size (out window_width, out window_height);
+        get_position (out position_x, out position_y);
+
+        Application.settings.set ("window-position", "(ii)",position_x, position_y);
+        Application.settings.set ("window-size", "(ii)", window_width, window_height);
+        Application.settings.set_boolean ("window-maximized", this.is_maximized);
+        Application.settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
+        Application.settings.set_int ("panel-position", panels.get_position ());
+
+        return false;
+    }
+
+    public void reload_penpal_list () {
+        list_panel.load_list ();
+    }
 }

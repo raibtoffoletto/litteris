@@ -20,6 +20,7 @@
 */
 
 public class Litteris.Penpal : Object {
+    public bool starred {get; set;}
     public string rowid {get; construct;}
     public string name {get; construct;}
     public string nickname {get; construct;}
@@ -49,6 +50,7 @@ public class Litteris.Penpal : Object {
 
         load_penpal ();
         load_dates ();
+        load_starred ();
     }
 
     public void load_penpal () {
@@ -65,7 +67,7 @@ public class Litteris.Penpal : Object {
                 return 0;
             }, out errmsg);
 
-        if (exec_query != 0) {
+        if (exec_query != Sqlite.OK) {
             stdout.printf ("Querry error: %s\n", errmsg);
         }
 
@@ -99,7 +101,7 @@ public class Litteris.Penpal : Object {
                     return 0;
                 }, out errmsg);
 
-            if (exec_query != 0) {
+            if (exec_query != Sqlite.OK) {
                 stdout.printf ("Querry error: %s\n", errmsg);
             }
 
@@ -121,6 +123,20 @@ public class Litteris.Penpal : Object {
                 mail_received_years.add (date.get_year ());
             }
             mail_received.add (mail);
+        }
+    }
+
+    public void load_starred () {
+        set_property ("starred", false);
+
+        var query = "SELECT * FROM starred WHERE penpal = " + rowid + "; ";
+        var exec_query = db.exec (query, (n, v, c) => {
+                set_property ("starred", true);
+                return 0;
+            }, out errmsg);
+
+        if (exec_query != Sqlite.OK) {
+            stderr.printf ("Error: %s\n", errmsg);
         }
     }
 

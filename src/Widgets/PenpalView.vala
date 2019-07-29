@@ -6,7 +6,9 @@ public class Litteris.PenpalView : Gtk.Overlay {
     public Litteris.PenpalStatusBar status_bar;
     private Gtk.Box box_sent;
     private Gtk.Box box_received;
+    private Gtk.Box box_name_starred;
     private Litteris.Utils utils;
+    private Gtk.Button icon_starred;
 
     public PenpalView (Litteris.Window window, string active_penpal) {
         Object (
@@ -18,7 +20,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
 
     construct {
         utils = new Litteris.Utils ();
-        load_penpal ();
+        get_penpal ();
 
         /* header */
         var label_name = new Gtk.Label ("<b>"+loaded_penpal.name+"</b>");
@@ -26,6 +28,10 @@ public class Litteris.PenpalView : Gtk.Overlay {
             label_name.use_markup = true;
             label_name.margin_start = 12;
             label_name.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+
+        box_name_starred = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        box_name_starred.pack_start (label_name, false, false);
+        get_starred ();
 
         var label_nickname = new Gtk.Label (loaded_penpal.nickname);
             label_nickname.halign = Gtk.Align.START;
@@ -35,7 +41,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
         var box_names = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             box_names.halign = Gtk.Align.FILL;
             box_names.hexpand = true;
-            box_names.pack_start (label_name);
+            box_names.pack_start (box_name_starred);
             box_names.pack_start (label_nickname);
 
         var emoji_flag = new Gtk.Label (loaded_penpal.country_emoji);
@@ -123,7 +129,7 @@ public class Litteris.PenpalView : Gtk.Overlay {
         box_received = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         box_received.homogeneous = false;
         box_received.margin_start = 12;
-        load_all_dates ();
+        get_all_dates ();
 
         var content_grid = new Gtk.Grid ();
             content_grid.column_spacing = 24;
@@ -162,12 +168,12 @@ public class Litteris.PenpalView : Gtk.Overlay {
         add_overlay (notifications);
     }
 
-    private void load_penpal () {
+    private void get_penpal () {
         var new_loaded_penpal = new Litteris.Penpal (active_penpal);
         set_property ("loaded-penpal", new_loaded_penpal);
     }
 
-    private void load_dates (bool sent = true) {
+    private void get_dates (bool sent = true) {
         var dates_list = sent ? loaded_penpal.mail_sent : loaded_penpal.mail_received;
         var dates_years = sent ? loaded_penpal.mail_sent_years : loaded_penpal.mail_received_years;
         var dates_box = sent ? box_sent : box_received;
@@ -228,8 +234,49 @@ public class Litteris.PenpalView : Gtk.Overlay {
         }
     }
 
-    public void load_all_dates () {
-        load_dates (true);
-        load_dates (false);
+    public void get_all_dates () {
+        get_dates (true);
+        get_dates (false);
+    }
+
+    private void get_starred () {
+        if (icon_starred != null) {
+            box_name_starred.remove (icon_starred);
+        }
+
+        if (loaded_penpal.starred) {
+            icon_starred = new Gtk.Button.from_icon_name ("starred", Gtk.IconSize.LARGE_TOOLBAR);
+        } else {
+            icon_starred = new Gtk.Button.from_icon_name ("non-starred", Gtk.IconSize.LARGE_TOOLBAR);
+        }
+
+        icon_starred.relief = Gtk.ReliefStyle.NONE;
+        icon_starred.can_focus = false;
+        icon_starred.clicked.connect (on_starred_clicked);
+
+        box_name_starred.pack_start (icon_starred, false, false);
+        box_name_starred.show_all ();
+    }
+
+    private void on_starred_clicked () {
+        string query = "";
+        var set_unset_starred = loaded_penpal.starred ? false : true;
+
+        if (set_unset_starred) {
+            query = "INSERT INTO starred (penpal) VALUES (" + loaded_penpal.rowid + ");";
+        } else {
+            query = "DELETE FROM starred WHERE penpal = " + loaded_penpal.rowid + ";";
+        }
+
+        var exec_query = Application.database.exec_query (query);
+
+        if (exec_query) {
+            loaded_penpal.set_property ("starred", set_unset_starred);
+            get_starred ();
+            main_window.reload_penpal_list ();
+        } else {
+            notifications.title = "Something went wrong...";
+            notifications.send_notification ();
+        }
     }
 }
