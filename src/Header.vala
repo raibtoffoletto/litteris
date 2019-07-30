@@ -20,6 +20,9 @@
 */
 
 public class Litteris.Header : Gtk.HeaderBar {
+    public Gtk.MenuButton button_menu;
+    public Litteris.AppMenu app_menu;
+
     public Header () {
         Object (
             title: "Litteris",
@@ -30,18 +33,22 @@ public class Litteris.Header : Gtk.HeaderBar {
 
     construct {
         var button_new = new Gtk.Button.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
-        button_new.tooltip_text = _("New Penpal");
+            button_new.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>N"}, _("New Penpal"));
+            button_new.action_name = Window.ACTION_PREFIX + Window.ACTION_NEW_PENPAL;
 
         var button_edit = new Gtk.Button.from_icon_name ("document-edit", Gtk.IconSize.LARGE_TOOLBAR);
-        button_edit.tooltip_text = _("Edit Penpal");
+            button_edit.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>E"}, _("Edit Penpal"));
+            button_edit.action_name = Window.ACTION_PREFIX + Window.ACTION_EDIT_PENPAL;
 
         var button_del = new Gtk.Button.from_icon_name ("edit-delete", Gtk.IconSize.LARGE_TOOLBAR);
-        button_del.tooltip_text = _("Delete Penpal");
+            button_del.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>D"}, _("Delete Penpal"));
+            button_del.action_name = Window.ACTION_PREFIX + Window.ACTION_DELETE_PENPAL;
 
-        var button_menu = new Gtk.MenuButton ();
+        app_menu = new Litteris.AppMenu ();
+        button_menu = new Gtk.MenuButton ();
         button_menu.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
-        button_menu.popover = new Litteris.AppMenu ();
-        button_menu.tooltip_text = _("Options");
+        button_menu.popover = app_menu;
+        button_menu.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>O"}, _("Options"));
 
         pack_start (button_new);
         pack_start (button_edit);

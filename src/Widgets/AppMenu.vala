@@ -20,6 +20,8 @@
 */
 
 public class Litteris.AppMenu : Gtk.Popover {
+    public Granite.ModeSwitch dark_mode { get; set; }
+
     public AppMenu () {
         Object (
             relative_to : null,
@@ -29,14 +31,24 @@ public class Litteris.AppMenu : Gtk.Popover {
 
     construct {
         var gtk_settings = Gtk.Settings.get_default ();
-        var dark_mode = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic",
-                                                                "weather-clear-night-symbolic");
-            dark_mode.primary_icon_tooltip_text = ("Light Mode");
-            dark_mode.secondary_icon_tooltip_text = ("Dark Mode");
-            dark_mode.valign = Gtk.Align.CENTER;
-            dark_mode.halign = Gtk.Align.CENTER;
-            dark_mode.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
-            dark_mode.margin = 12;
+
+        dark_mode = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic",
+                                                            "weather-clear-night-symbolic");
+        dark_mode.primary_icon_tooltip_text = ("Light Mode");
+        dark_mode.secondary_icon_tooltip_text = ("Dark Mode");
+        dark_mode.valign = Gtk.Align.CENTER;
+        dark_mode.halign = Gtk.Align.CENTER;
+        dark_mode.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+        dark_mode.margin = 12;
+
+        var label_dummy = new Gtk.Label ("");
+        var label_dummy_2 = new Gtk.Label ("");
+
+        var box_theme = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            box_theme.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>M"});
+            box_theme.pack_start (label_dummy, true, true);
+            box_theme.pack_start (dark_mode, false, false);
+            box_theme.pack_end (label_dummy_2, true, true);
 
         if (Application.settings.get_boolean ("dark-mode")) {
             dark_mode.active = true;
@@ -60,11 +72,12 @@ public class Litteris.AppMenu : Gtk.Popover {
         var menu_about = new Gtk.ModelButton ();
             menu_about.centered = true;
             menu_about.text = "About";
-            menu_about.action_name =  Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
+            menu_about.action_name = Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
+            menu_about.tooltip_markup = Granite.markup_accel_tooltip ({"F1"});
 
         var menu_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             menu_grid.margin = 6;
-            menu_grid.pack_start (dark_mode);
+            menu_grid.pack_start (box_theme);
             menu_grid.pack_start (menu_separator);
             menu_grid.pack_start (menu_export);
             menu_grid.pack_start (menu_import);

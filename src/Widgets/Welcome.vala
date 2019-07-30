@@ -33,6 +33,7 @@ public class Litteris.Welcome : Granite.Widgets.Welcome {
     construct {
         append ("document-new", _("New Penpal"), _("Add a new friend to start tracking your mail exchange."));
         append ("system-search", _("Search"), _("Too many penpals? Look for their name!"));
+
         activated.connect (i => {
                 var action_group = window.get_action_group ("win");
             switch (i) {
@@ -44,7 +45,6 @@ public class Litteris.Welcome : Granite.Widgets.Welcome {
                     break;
             }
         });
-
     }
 
 }

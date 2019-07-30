@@ -28,6 +28,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     public const string ACTION_EDIT_PENPAL = "edit-penpal";
     public const string ACTION_DELETE_PENPAL = "delete-penpal";
     public const string ACTION_SEARCH = "search";
+    public const string ACTION_OPEN_MENU = "open-menu";
     public const string ACTION_INVERT_THEME = "invert-theme";
     public const string ACTION_ABOUT_DIALOG = "about-dialog";
     public const string ACTION_APP_EXIT = "app-exit";
@@ -38,6 +39,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         { ACTION_EDIT_PENPAL, edit_penpal },
         { ACTION_DELETE_PENPAL, delete_penpal },
         { ACTION_SEARCH, toggle_search_bar },
+        { ACTION_OPEN_MENU, open_menu_popover },
         { ACTION_INVERT_THEME, invert_color_mode },
         // { ACTION_IMPORT_DB, import_db },
         // { ACTION_EXPORT_DB, export_db },
@@ -72,6 +74,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         action_accelerators.set (ACTION_EDIT_PENPAL, "<Control>E");
         action_accelerators.set (ACTION_DELETE_PENPAL, "<Control>D");
         action_accelerators.set (ACTION_SEARCH, "<Control>F");
+        action_accelerators.set (ACTION_OPEN_MENU, "<Control>O");
         action_accelerators.set (ACTION_INVERT_THEME, "<Control>M");
         action_accelerators.set (ACTION_ABOUT_DIALOG, "F1");
         action_accelerators.set (ACTION_APP_EXIT, "<Control>Q");
@@ -180,6 +183,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
         about_dialog.present ();
     }
+
     public void toggle_search_bar () {
         if (list_panel.search_bar.get_search_mode ()) {
             list_panel.search_bar.search_mode_enabled = false;
@@ -231,10 +235,15 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         return list_panel.search_bar.handle_event (event);
     }
 
+    public void open_menu_popover () {
+        window_header.button_menu.activate ();
+    }
+
     public void invert_color_mode () {
         var gtk_settings = Gtk.Settings.get_default ();
         var new_mode = gtk_settings.gtk_application_prefer_dark_theme ? false : true;
 
+        window_header.app_menu.dark_mode.active = new_mode;
         gtk_settings.gtk_application_prefer_dark_theme = new_mode;
     }
 

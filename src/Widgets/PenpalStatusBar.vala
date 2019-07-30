@@ -160,7 +160,8 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
             var exec_query = Application.database.exec_query (query);
 
             if (exec_query) {
-                penpal_view.loaded_penpal.load_dates ();
+                penpal_view.get_penpal ();
+                // penpal_view.loaded_penpal.load_dates ();
                 penpal_view.get_all_dates ();
                 penpal_view.notifications.title = new_mail ? "Mail Registered" : "Changes Saved";
                 penpal_view.notifications.send_notification ();
