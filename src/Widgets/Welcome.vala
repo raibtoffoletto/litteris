@@ -19,16 +19,32 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
-public class Litteris.Welcome : Gtk.Grid {
-    public Welcome () {
-        var welcome_screen = new Granite.Widgets.Welcome ("Litteris", _("Penpal Correspondence Organized"));
+public class Litteris.Welcome : Granite.Widgets.Welcome {
+    public unowned Litteris.Window window { get; construct; }
 
-            welcome_screen.append ("document-new", _("New Penpal"),
-                                    _("Add a new friend to start tracking your mail exchange."));
+    public Welcome (Litteris.Window window) {
+        Object (
+            window: window,
+            title: "Litteris",
+            subtitle: _("Penpal Correspondence Organized")
+        );
+    }
 
-            welcome_screen.append ("system-search", _("Search"), _("Too many penpals? Look for their name!"));
+    construct {
+        append ("document-new", _("New Penpal"), _("Add a new friend to start tracking your mail exchange."));
+        append ("system-search", _("Search"), _("Too many penpals? Look for their name!"));
+        activated.connect (i => {
+                var action_group = window.get_action_group ("win");
+            switch (i) {
+                case 0:
+                    action_group.activate_action (Window.ACTION_NEW_PENPAL, null);
+                    break;
+                case 1:
+                    action_group.activate_action (Window.ACTION_SEARCH, null);
+                    break;
+            }
+        });
 
-        add (welcome_screen);
     }
 
 }
