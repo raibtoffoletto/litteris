@@ -38,10 +38,9 @@ public class Litteris.Header : Gtk.HeaderBar {
         var button_del = new Gtk.Button.from_icon_name ("edit-delete", Gtk.IconSize.LARGE_TOOLBAR);
         button_del.tooltip_text = _("Delete Penpal");
 
-        var app_menu = new Litteris.AppMenu ();
         var button_menu = new Gtk.MenuButton ();
         button_menu.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
-        button_menu.popover = app_menu;
+        button_menu.popover = new Litteris.AppMenu ();
         button_menu.tooltip_text = _("Options");
 
         pack_start (button_new);

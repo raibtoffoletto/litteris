@@ -49,6 +49,7 @@ public class Litteris.DataBase {
 
     public void open_database (out Sqlite.Database database) {
         var connexion = Sqlite.Database.open (get_database_path (), out database);
+
         if (connexion != Sqlite.OK) {
             stderr.printf ("Can't open database: %d: %s\n", database.errcode (), database.errmsg ());
         }
@@ -71,7 +72,7 @@ public class Litteris.DataBase {
         Sqlite.Database db;
         open_database (out db);
 
-        string create_tables = """
+        string query = """
             CREATE TABLE `dates` (
               `date` TEXT NOT NULL,
               `penpal` INTEGER NOT NULL,
@@ -350,8 +351,9 @@ public class Litteris.DataBase {
                 ('ZWE','Zimbabwe','ZW');
             """;
 
-        var query = db.exec (create_tables);
-        if (query != Sqlite.OK) {
+        var exec_query = db.exec (query);
+
+        if (exec_query != Sqlite.OK) {
             print ("Couldn't initialize database...\n");
             return;
         }

@@ -54,11 +54,9 @@ public class Litteris.Penpal : Object {
     }
 
     public void load_penpal () {
-        var query = """
-            SELECT rowid, *
-                FROM penpals
-                WHERE name LIKE '""" + active_penpal + """';
-            """;
+        string query = """SELECT rowid, *
+                            FROM penpals
+                            WHERE name LIKE '""" + active_penpal + """';""";
 
         var exec_query = db.exec (query, (n, v, c) => {
                 for (int i = 0; i < n; i++) {
@@ -82,12 +80,10 @@ public class Litteris.Penpal : Object {
         mail_received_years = new Gee.ArrayList<int> ();
 
         if (rowid != null) {
-            var query = """
-                SELECT rowid, date, type, direction
-                    FROM dates
-                    WHERE penpal = """ + rowid + """
-                    ORDER BY date DESC;
-                """;
+            string query = """SELECT rowid, date, type, direction
+                                FROM dates
+                                WHERE penpal = """ + rowid + """
+                                ORDER BY date DESC;""";
 
             var exec_query = db.exec (query, (n, v, c) => {
                     var mail = new Litteris.MailDate ();
@@ -102,7 +98,7 @@ public class Litteris.Penpal : Object {
                 }, out errmsg);
 
             if (exec_query != Sqlite.OK) {
-                stdout.printf ("Querry error: %s\n", errmsg);
+                stdout.printf ("Query error: %s\n", errmsg);
             }
 
         } else {

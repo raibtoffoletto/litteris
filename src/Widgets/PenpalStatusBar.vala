@@ -1,5 +1,26 @@
+/*
+* Copyright (c) 2019 Raí B. Toffoletto (https://toffoletto.me)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*
+* Authored by: Raí B. Toffoletto <rai@toffoletto.me>
+*/
+
 public class Litteris.PenpalStatusBar : Gtk.Box {
-    public Litteris.PenpalView penpal_view {get; set;}
+    public Litteris.PenpalView penpal_view { get; set; }
     private Granite.Widgets.DatePicker new_mail_date;
     private Granite.Widgets.ModeButton new_mail_mailtype;
     private Granite.Widgets.ModeButton new_mail_direction;
@@ -7,7 +28,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     private Gtk.Button button_destroy;
     private Gtk.Button button_cancel;
     private Litteris.Utils utils;
-    public bool edit_mode {get; set;}
+    public bool edit_mode { get; set; }
 
     public PenpalStatusBar (Litteris.PenpalView penpal_view) {
         Object (
@@ -104,11 +125,12 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         pack_start (new_mail_direction, false, false);
         pack_start (spacer_2, true, true);
         pack_end (button_confirm, false, false);
+
         if (!new_mail) {
             pack_end (button_destroy, false, false);
         }
-        pack_end (button_cancel, false, false);
 
+        pack_end (button_cancel, false, false);
         show_all ();
     }
 
@@ -119,6 +141,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         } else {
             string query = "";
             var insert_date = new_mail_date.date.to_unix ().to_string ();
+
             if (new_mail) {
                 query = """INSERT INTO dates (date, penpal, type, direction)
                                 VALUES ('"""+ insert_date +"""',
@@ -175,7 +198,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
             if (exec_query) {
                 penpal_view.loaded_penpal.load_dates ();
                 penpal_view.get_all_dates ();
-                penpal_view.notifications.title = "Mail removed with success!";
+                penpal_view.notifications.title = "Mail Removed";
                 penpal_view.notifications.send_notification ();
                 load_status_bar ();
             } else {

@@ -60,7 +60,7 @@ public class Litteris.AppMenu : Gtk.Popover {
         var menu_about = new Gtk.ModelButton ();
             menu_about.centered = true;
             menu_about.text = "About";
-            // menu_about.action_name =  Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
+            menu_about.action_name =  Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
 
         var menu_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             menu_grid.margin = 6;

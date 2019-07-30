@@ -21,8 +21,7 @@
 
 public class Litteris.Utils {
     public void remove_box_children (Gtk.Box box) {
-        var box_children = box.get_children ();
-        foreach (var x in box_children) {
+        foreach (var x in box.get_children ()) {
             box.remove (x);
         }
     }

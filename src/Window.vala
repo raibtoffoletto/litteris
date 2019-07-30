@@ -20,11 +20,15 @@
 */
 
 public class Litteris.Window : Gtk.ApplicationWindow {
-    // public SimpleActionGroup actions { get; construct; }
-    // public const string ACTION_PREFIX = "win.";
-    // public const string ACTION_ABOUT_DIALOG = "about-dialog";
+    public SimpleActionGroup actions { get; construct; }
+    public const string ACTION_PREFIX = "win.";
+    public const string ACTION_ABOUT_DIALOG = "about-dialog";
     // public const string ACTION_IMPORT_DB = "import-db";
     // public const string ACTION_EXPORT_DB = "export-db";
+    private const ActionEntry[] action_entries = {
+        { ACTION_ABOUT_DIALOG, about_dialog }
+    };
+
     private Litteris.Header window_header;
     private Litteris.PenpalList list_panel;
     private Litteris.PenpalView penpal_view;
@@ -35,11 +39,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     private int position_x;
     private int position_y;
 
-    // private const ActionEntry[] action_entries = {
-    //     { ACTION_ABOUT_DIALOG, about_dialog }
-    // };
-
-	public Window (Gtk.Application app) {
+	public Window (Litteris.Application app) {
 		Object (
 		    application: app,
     		height_request: 640,
@@ -50,9 +50,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 	}
 
     construct {
-        // actions = new SimpleActionGroup ();
-        // actions.add_action_entries (action_entries, this);
-        // insert_action_group ("win", actions);
+        actions = new SimpleActionGroup ();
+        actions.add_action_entries (action_entries, this);
+        insert_action_group ("win", actions);
 
         Application.settings.get ("window-position", "(ii)", out position_x, out position_y);
         Application.settings.get ("window-size", "(ii)", out window_width, out window_height);
