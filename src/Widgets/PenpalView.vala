@@ -22,9 +22,16 @@
 public class Litteris.PenpalView : Gtk.Overlay {
     public string active_penpal { get; construct; }
     public Litteris.Window main_window { get; set; }
-    public Litteris.Penpal loaded_penpal { get; set; }
     public Granite.Widgets.Toast notifications { get; set; }
+    public Litteris.Penpal loaded_penpal { get; set; }
     public Litteris.PenpalStatusBar status_bar;
+    private Gtk.Label label_name;
+    private Gtk.Label label_nickname;
+    private Gtk.Label emoji_flag;
+    private Gtk.Label icon_sent_label;
+    private Gtk.Label icon_received_label;
+    private Gtk.Label label_notes_content;
+    private Gtk.Label label_address_content;
     private Gtk.Box box_sent;
     private Gtk.Box box_received;
     private Gtk.Box box_name_starred;
@@ -41,23 +48,21 @@ public class Litteris.PenpalView : Gtk.Overlay {
 
     construct {
         utils = new Litteris.Utils ();
-        get_penpal ();
 
         /* header */
-        var label_name = new Gtk.Label ("<b>"+loaded_penpal.name+"</b>");
-            label_name.halign = Gtk.Align.START;
-            label_name.use_markup = true;
-            label_name.margin_start = 12;
-            label_name.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        label_name = new Gtk.Label ("");
+        label_name.halign = Gtk.Align.START;
+        label_name.use_markup = true;
+        label_name.margin_start = 12;
+        label_name.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         box_name_starred = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         box_name_starred.pack_start (label_name, false, false);
-        get_starred ();
 
-        var label_nickname = new Gtk.Label (loaded_penpal.nickname);
-            label_nickname.halign = Gtk.Align.START;
-            label_nickname.margin_start = 20;
-            label_nickname.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        label_nickname = new Gtk.Label ("");
+        label_nickname.halign = Gtk.Align.START;
+        label_nickname.margin_start = 20;
+        label_nickname.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var box_names = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             box_names.halign = Gtk.Align.FILL;
@@ -65,23 +70,23 @@ public class Litteris.PenpalView : Gtk.Overlay {
             box_names.pack_start (box_name_starred);
             box_names.pack_start (label_nickname);
 
-        var emoji_flag = new Gtk.Label (loaded_penpal.country_emoji);
-            emoji_flag.valign = Gtk.Align.START;
-            emoji_flag.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
+        emoji_flag = new Gtk.Label ("");
+        emoji_flag.valign = Gtk.Align.START;
+        emoji_flag.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
         var icon_sent = new Gtk.Image.from_icon_name ("mail-send", Gtk.IconSize.LARGE_TOOLBAR);
             icon_sent.halign = Gtk.Align.START;
 
-        var icon_sent_label = new Gtk.Label (loaded_penpal.mail_sent.size.to_string ());
-            icon_sent_label.halign = Gtk.Align.END;
-            icon_sent_label.get_style_context ().add_class (Granite.STYLE_CLASS_WELCOME);
+        icon_sent_label = new Gtk.Label ("");
+        icon_sent_label.halign = Gtk.Align.END;
+        icon_sent_label.get_style_context ().add_class (Granite.STYLE_CLASS_WELCOME);
 
         var icon_received = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
             icon_received.halign = Gtk.Align.START;
 
-        var icon_received_label = new Gtk.Label (loaded_penpal.mail_received.size.to_string ());
-            icon_received_label.halign = Gtk.Align.END;
-            icon_received_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+        icon_received_label = new Gtk.Label ("");
+        icon_received_label.halign = Gtk.Align.END;
+        icon_received_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 
         var grid_icons = new Gtk.Grid ();
             grid_icons.hexpand = false;
@@ -110,31 +115,30 @@ public class Litteris.PenpalView : Gtk.Overlay {
             label_notes.use_markup = true;
             label_notes.halign = Gtk.Align.START;
 
-        var label_notes_content = new Gtk.Label (loaded_penpal.notes);
-            label_notes_content.wrap = true;
-            label_notes_content.halign = Gtk.Align.START;
-            label_notes_content.valign = Gtk.Align.START;
-            label_notes_content.justify = Gtk.Justification.FILL;
-            label_notes_content.margin_start = 12;
-            label_notes_content.margin_end = 24;
-            label_notes_content.selectable = true;
-            label_notes_content.can_focus = false;
+        label_notes_content = new Gtk.Label ("");
+        label_notes_content.wrap = true;
+        label_notes_content.halign = Gtk.Align.START;
+        label_notes_content.valign = Gtk.Align.START;
+        label_notes_content.justify = Gtk.Justification.FILL;
+        label_notes_content.margin_start = 12;
+        label_notes_content.margin_end = 24;
+        label_notes_content.selectable = true;
+        label_notes_content.can_focus = false;
 
         var label_address = new Gtk.Label ("<b>Address : </b>");
             label_address.use_markup = true;
             label_address.halign = Gtk.Align.START;
 
-        var label_address_content = new Gtk.Label (loaded_penpal.address);
-            label_address_content.label += "\n<b>%s</b>\n".printf (loaded_penpal.country_name);
-            label_address_content.wrap = true;
-            label_address_content.halign = Gtk.Align.START;
-            label_address_content.valign = Gtk.Align.START;
-            label_address_content.justify = Gtk.Justification.FILL;
-            label_address_content.margin_start = 12;
-            label_address_content.margin_end = 24;
-            label_address_content.selectable = true;
-            label_address_content.can_focus = false;
-            label_address_content.use_markup = true;
+        label_address_content = new Gtk.Label ("");
+        label_address_content.wrap = true;
+        label_address_content.halign = Gtk.Align.START;
+        label_address_content.valign = Gtk.Align.START;
+        label_address_content.justify = Gtk.Justification.FILL;
+        label_address_content.margin_start = 12;
+        label_address_content.margin_end = 24;
+        label_address_content.selectable = true;
+        label_address_content.can_focus = false;
+        label_address_content.use_markup = true;
 
         var label_sent = new Gtk.Label ("<b>Sent :</b>");
             label_sent.use_markup = true;
@@ -150,7 +154,6 @@ public class Litteris.PenpalView : Gtk.Overlay {
         box_received = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         box_received.homogeneous = false;
         box_received.margin_start = 12;
-        get_all_dates ();
 
         var content_grid = new Gtk.Grid ();
             content_grid.column_spacing = 24;
@@ -173,11 +176,12 @@ public class Litteris.PenpalView : Gtk.Overlay {
             content_scrolled.add (content_grid);
 
         /* penpal view constructor */
-        var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
-        var separator_2 = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
-
         status_bar = new Litteris.PenpalStatusBar (this);
         notifications = new Granite.Widgets.Toast ("");
+        get_penpal ();
+
+        var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
+        var separator_2 = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
         var main_grid = new Gtk.Grid ();
             main_grid.attach (header_box, 0, 0);
@@ -190,9 +194,20 @@ public class Litteris.PenpalView : Gtk.Overlay {
         add_overlay (notifications);
     }
 
-    private void get_penpal () {
+    public void get_penpal () {
         var new_loaded_penpal = new Litteris.Penpal (active_penpal);
         set_property ("loaded-penpal", new_loaded_penpal);
+
+        label_name.label = "<b>"+loaded_penpal.name+"</b>";
+        label_nickname.label = loaded_penpal.nickname;
+        emoji_flag.label = loaded_penpal.country_emoji;
+        icon_sent_label.label = loaded_penpal.mail_sent.size.to_string ();
+        icon_received_label.label = loaded_penpal.mail_received.size.to_string ();
+        label_notes_content.label = loaded_penpal.notes;
+        label_address_content.label = "%s\n<b>%s</b>\n".printf (loaded_penpal.address, loaded_penpal.country_name);
+
+        get_starred ();
+        get_all_dates ();
     }
 
     private void get_dates (bool sent = true) {
