@@ -151,12 +151,25 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     }
 
     public void new_penpal () {
-        print ("New penpal\n");
-        // var dialog = new Gtk.Dialog.with_buttons ("Edit penpal", this, Gtk.DialogFlags.MODAL
+        var window_dialog = new Litteris.PenpalDialog (this, true);
+            window_dialog.present ();
+            window_dialog.response.connect ((id) => {
+                if (id == Gtk.ResponseType.ACCEPT) {
+                    print ("checks\n");
+                }
+            });
     }
+
     public void edit_penpal () {
-        print ("Edit penpal\n");
-        // var dialog = new Gtk.Dialog.with_buttons ("Edit penpal", this, Gtk.DialogFlags.MODAL
+        if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
+            var window_dialog = new Litteris.PenpalDialog (this, false, list_panel.active_penpal);
+                window_dialog.present ();
+                window_dialog.response.connect ((id) => {
+                    if (id == Gtk.ResponseType.ACCEPT) {
+                        print ("checks\n");
+                    }
+                });
+        }
     }
     public void delete_penpal () {
         print ("Delete penpal\n");
@@ -222,7 +235,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             }
 
             try {
-                var key_regex = new Regex ("^[a-zA-Z]$", RegexCompileFlags.JAVASCRIPT_COMPAT);
+                var key_regex = new Regex ("^\\p{L}$");
                 if (!list_panel.search_entry.has_focus && key_regex.match (keyname)) {
                         list_panel.search_entry.text = "";
                         list_panel.search_entry.grab_focus ();

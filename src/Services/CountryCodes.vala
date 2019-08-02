@@ -20,8 +20,66 @@
 */
 
 public class Litteris.CountryCodes {
+    public enum Format {
+        ALPHA3,
+        COUNTRY,
+        ALPHA2
+    }
+
     private void get_database (out Sqlite.Database database) {
         Application.database.open_database (out database);
+    }
+
+    public Gtk.ListStore load_country_list () {
+        Gtk.ListStore liststore = new Gtk.ListStore (2, typeof (string), typeof (string));
+
+        Sqlite.Database db;
+        string errmsg, query;
+        get_database (out db);
+
+        query = """SELECT `alpha-3`, country
+                    FROM country_codes
+                    ORDER BY country ASC;""";
+
+        var exec_query = db.exec (query, (n, v, c) => {
+                Gtk.TreeIter iter;
+                liststore.append (out iter);
+                liststore.set (iter, 0, v[0], 1, v[1], -1);
+                return 0;
+            }, out errmsg);
+
+        if (exec_query != 0) {
+            stdout.printf ("Querry error: %s\n", errmsg);
+        }
+
+        return liststore;
+    }
+
+    public bool check_country_exists (string country) {
+        Sqlite.Database db;
+        string errmsg, query;
+        int count = 0;
+        get_database (out db);
+
+        query = """SELECT *
+                    FROM country_codes
+                    WHERE country LIKE '""" + country + """%';""";
+
+        var exec_query = db.exec (query, (n, v, c) => {
+                count++;
+                return 0;
+            }, out errmsg);
+
+        if (exec_query != 0) {
+            stdout.printf ("Querry error: %s\n", errmsg);
+            return true;
+        }
+
+        if (count == 0) {
+            return true;
+        }
+
+        return false;
     }
 
     public string get_country_name (string country_code) {
@@ -44,6 +102,28 @@ public class Litteris.CountryCodes {
         }
 
         return country_name;
+    }
+
+    public string get_country_code (string country_name) {
+        Sqlite.Database db;
+        string errmsg, query, country_code = "";
+        get_database (out db);
+
+        query = """SELECT `alpha-3`
+                    FROM country_codes
+                    WHERE country LIKE '""" + country_name + """';""";
+
+        var exec_query = db.exec (query, (n, v, c) => {
+                country_code = v[0];
+                return 0;
+            }, out errmsg);
+
+        if (exec_query != 0) {
+            stdout.printf ("Querry error: %s\n", errmsg);
+            return "not found";
+        }
+
+        return country_code;
     }
 
     public string get_country_emoji (string country_code) {

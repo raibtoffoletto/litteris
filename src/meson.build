@@ -16,6 +16,7 @@ src_files = [
     'Services/DataBase.vala',
     'Services/Utils.vala',
     'Widgets/AppMenu.vala',
+    'Widgets/PenpalDialog.vala',
     'Widgets/PenpalList.vala',
     'Widgets/PenpalView.vala',
     'Widgets/PenpalStatusBar.vala',
