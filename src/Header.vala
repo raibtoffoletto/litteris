@@ -41,7 +41,7 @@ public class Litteris.Header : Gtk.HeaderBar {
             button_edit.action_name = Window.ACTION_PREFIX + Window.ACTION_EDIT_PENPAL;
 
         var button_del = new Gtk.Button.from_icon_name ("edit-delete", Gtk.IconSize.LARGE_TOOLBAR);
-            button_del.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>D"}, _("Delete Penpal"));
+            button_del.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>D"}, _("Remove Penpal"));
             button_del.action_name = Window.ACTION_PREFIX + Window.ACTION_DELETE_PENPAL;
 
         app_menu = new Litteris.AppMenu ();

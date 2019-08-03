@@ -151,29 +151,50 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     }
 
     public void new_penpal () {
-        var window_dialog = new Litteris.PenpalDialog (this, true);
+        var window_dialog = new Litteris.PenpalDialog (this);
             window_dialog.present ();
             window_dialog.response.connect ((id) => {
                 if (id == Gtk.ResponseType.ACCEPT) {
-                    print ("checks\n");
+                    print ("Added\n");
+                    window_dialog.destroy ();
                 }
             });
     }
 
     public void edit_penpal () {
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
-            var window_dialog = new Litteris.PenpalDialog (this, false, list_panel.active_penpal);
+            var window_dialog = new Litteris.PenpalDialog (this);
+                window_dialog.get_penpal_to_edit (list_panel.active_penpal);
                 window_dialog.present ();
                 window_dialog.response.connect ((id) => {
                     if (id == Gtk.ResponseType.ACCEPT) {
-                        print ("checks\n");
+                        print ("Edited\n");
+                        window_dialog.destroy ();
                     }
                 });
         }
     }
     public void delete_penpal () {
-        print ("Delete penpal\n");
-        // var dialog = new Gtk.Dialog.with_buttons ("Edit penpal", this, Gtk.DialogFlags.MODAL
+        if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
+            var dialog_remove_penpal = new Granite.MessageDialog.with_image_from_icon_name (
+                                        "Remove " + list_panel.active_penpal + " ?",
+                                        "This action will permanently remove all data related to this penpal.",
+                                        "user-trash-full",
+                                        Gtk.ButtonsType.CANCEL);
+
+            var remove_confirm = new Gtk.Button.with_label ("Remove " + list_panel.active_penpal);
+                remove_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+            dialog_remove_penpal.add_action_widget (remove_confirm, Gtk.ResponseType.ACCEPT);
+            dialog_remove_penpal.transient_for = this;
+            dialog_remove_penpal.show_all ();
+
+            if (dialog_remove_penpal.run () == Gtk.ResponseType.ACCEPT) {
+                print ("Deleted\n");
+            }
+
+            dialog_remove_penpal.destroy ();
+        }
     }
 
     public void about_dialog () {

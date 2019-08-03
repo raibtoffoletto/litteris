@@ -20,8 +20,7 @@
 */
 
 public class Litteris.PenpalDialog : Gtk.Dialog {
-    public bool new_penpal { get; set; }
-    public string active_penpal { get; set; }
+    public bool edit_penpal { get; set; }
     private Gtk.Entry entry_name;
     private Gtk.Entry entry_nickname;
     private Gtk.TextView entry_notes;
@@ -31,14 +30,12 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
     private Gtk.Entry entry_country;
     private Litteris.CountryCodes countries_api;
 
-    public PenpalDialog (Litteris.Window window, bool new_penpal = false, string active_penpal = "") {
+    public PenpalDialog (Litteris.Window window) {
         Object (
             modal: true,
             destroy_with_parent: true,
             deletable: true,
-            transient_for: window,
-            new_penpal: new_penpal,
-            active_penpal: active_penpal
+            transient_for: window
         );
     }
 
@@ -129,8 +126,12 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
             button_cancel.clicked.connect (confirm_discard);
 
         var button_confirm = new Gtk.Button ();
-            button_confirm.label = new_penpal ? "Add Penpal" : "Save Changes";
+            button_confirm.label = "Add Penpal";
             button_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+
+        notify["edit-penpal"].connect (() => {
+            button_confirm.label = "Save Changes";
+        });
 
         add_action_widget (button_cancel, Gtk.ResponseType.CANCEL);
         add_action_widget (button_confirm, Gtk.ResponseType.ACCEPT);
@@ -192,6 +193,21 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
             }
 
             dialog_discard.destroy ();
+        } else {
+            this.destroy ();
+        }
+    }
+
+    public void get_penpal_to_edit (string penpal) {
+        set_property ("edit-penpal", true);
+        if (penpal != "") {
+            var penpal_to_edit = new Litteris.Penpal (penpal);
+
+            entry_name.text = penpal_to_edit.name;
+            entry_nickname.text = penpal_to_edit.nickname;
+            entry_notes.buffer.text = penpal_to_edit.notes;
+            entry_address.buffer.text = penpal_to_edit.address;
+            combo_country.active_id = penpal_to_edit.country;
         } else {
             this.destroy ();
         }
