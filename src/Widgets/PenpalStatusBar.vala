@@ -21,6 +21,7 @@
 
 public class Litteris.PenpalStatusBar : Gtk.Box {
     public Litteris.PenpalView penpal_view { get; set; }
+    public signal void statusbar_notification (string message);
     private Granite.Widgets.DatePicker new_mail_date;
     private Granite.Widgets.ModeButton new_mail_mailtype;
     private Granite.Widgets.ModeButton new_mail_direction;
@@ -136,8 +137,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
     private void on_confirm_clicked (bool new_mail = true, string rowid = "") {
         if (new_mail_mailtype.selected == -1 || new_mail_direction.selected == -1) {
-            penpal_view.notifications.title = "Please select Letter/Postcard and Received/Sent";
-            penpal_view.notifications.send_notification ();
+            statusbar_notification ("Please select Letter/Postcard and Received/Sent");
         } else {
             string query = "";
             var insert_date = new_mail_date.date.to_unix ().to_string ();
@@ -161,12 +161,10 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
             if (exec_query) {
                 penpal_view.get_penpal ();
-                penpal_view.notifications.title = new_mail ? "Mail Registered" : "Changes Saved";
-                penpal_view.notifications.send_notification ();
+                statusbar_notification (new_mail ? "Mail Registered" : "Changes Saved");
                 load_status_bar ();
             } else {
-                penpal_view.notifications.title = "Something went wrong...";
-                penpal_view.notifications.send_notification ();
+                statusbar_notification ("Something went wrong...");
             }
         }
     }
@@ -196,12 +194,10 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
             if (exec_query) {
                 penpal_view.get_penpal ();
-                penpal_view.notifications.title = "Mail Removed";
-                penpal_view.notifications.send_notification ();
+                statusbar_notification ("Mail Removed");
                 load_status_bar ();
             } else {
-                penpal_view.notifications.title = "Something went wrong...";
-                penpal_view.notifications.send_notification ();
+                statusbar_notification ("Something went wrong...");
             }
         }
 

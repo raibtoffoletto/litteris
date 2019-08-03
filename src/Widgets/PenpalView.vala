@@ -19,10 +19,9 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
-public class Litteris.PenpalView : Gtk.Overlay {
+public class Litteris.PenpalView : Gtk.Grid {
     public string active_penpal { get; construct; }
     public Litteris.Window main_window { get; set; }
-    public Granite.Widgets.Toast notifications { get; set; }
     public Litteris.Penpal loaded_penpal { get; set; }
     public Litteris.PenpalStatusBar status_bar;
     private Gtk.Label label_name;
@@ -177,21 +176,21 @@ public class Litteris.PenpalView : Gtk.Overlay {
 
         /* penpal view constructor */
         status_bar = new Litteris.PenpalStatusBar (this);
-        notifications = new Granite.Widgets.Toast ("");
+
         get_penpal ();
 
         var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
         var separator_2 = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
-        var main_grid = new Gtk.Grid ();
-            main_grid.attach (header_box, 0, 0);
-            main_grid.attach (separator, 0, 1);
-            main_grid.attach (content_scrolled, 0, 2);
-            main_grid.attach (separator_2, 0, 3);
-            main_grid.attach (status_bar, 0, 4);
+        attach (header_box, 0, 0);
+        attach (separator, 0, 1);
+        attach (content_scrolled, 0, 2);
+        attach (separator_2, 0, 3);
+        attach (status_bar, 0, 4);
 
-        add_overlay (main_grid);
-        add_overlay (notifications);
+        status_bar.statusbar_notification.connect ((message) => {
+            main_window.show_mainwindow_notification (message);
+        });
     }
 
     public void get_penpal () {
@@ -313,8 +312,44 @@ public class Litteris.PenpalView : Gtk.Overlay {
             get_starred ();
             main_window.reload_penpal_list ();
         } else {
-            notifications.title = "Something went wrong...";
-            notifications.send_notification ();
+            main_window.show_mainwindow_notification ("Something went wrong...");
+        }
+    }
+
+    public void edit_active_penpal (string name, string nickname,
+                                    string notes, string address, string country) {
+
+        string query = """UPDATE penpals
+                            SET `name` = '""" + name + """',
+                                `nickname` = '""" + nickname + """',
+                                `notes` = '""" + notes + """',
+                                `address` = '""" + address + """',
+                                `country` = '""" + country + """'
+                            WHERE rowid = """ + loaded_penpal.rowid + """;""";
+
+        var exec_query = Application.database.exec_query (query);
+
+        if (exec_query) {
+            main_window.list_panel.set_property ("active-penpal", name);
+            main_window.reload_penpal_list ();
+            main_window.show_mainwindow_notification ("Penpal updated with success!");
+        } else {
+            main_window.show_mainwindow_notification ("Something went wrong...");
+        }
+    }
+
+    public void remove_active_penpal () {
+        string query = """DELETE FROM starred WHERE penpal = """ + loaded_penpal.rowid + """;
+                            DELETE FROM dates WHERE penpal = """ + loaded_penpal.rowid + """;
+                            DELETE FROM penpals WHERE rowid = """ + loaded_penpal.rowid + """;""";
+
+        var exec_query = Application.database.exec_query (query);
+
+        if (exec_query) {
+            main_window.list_panel.set_property ("active-penpal", "");
+            main_window.reload_penpal_list ();
+        } else {
+            main_window.show_mainwindow_notification ("Something went wrong...");
         }
     }
 }

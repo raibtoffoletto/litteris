@@ -48,11 +48,14 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     };
 
     public bool active_penpal_view = false;
+    public signal void show_mainwindow_notification (string message);
+    public Granite.Widgets.Toast notifications { get; set; }
+    public Litteris.PenpalList list_panel;
     private Litteris.Header window_header;
-    private Litteris.PenpalList list_panel;
-    private Litteris.PenpalView penpal_view;
-    private Litteris.Welcome welcome_panel;
     private Gtk.Paned panels;
+    private Gtk.Overlay overlay;
+    private Litteris.Welcome welcome;
+    private Litteris.PenpalView penpal_view;
     private int window_width;
     private int window_height;
     private int position_x;
@@ -106,12 +109,16 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
         window_header = new Litteris.Header ();
         list_panel = new Litteris.PenpalList ();
-        welcome_panel = new Litteris.Welcome (this);
+        welcome = new Litteris.Welcome (this);
+        overlay = new Gtk.Overlay ();
+        notifications = new Granite.Widgets.Toast ("");
+        overlay.add_overlay (welcome);
+        overlay.add_overlay (notifications);
 
         panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         panels.position = Application.settings.get_int ("panel-position");
         panels.pack1 (list_panel, false, false);
-        panels.pack2 (welcome_panel, true, false);
+        panels.pack2 (overlay, true, false);
 
         set_titlebar (window_header);
         add (panels);
@@ -132,21 +139,31 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         delete_event.connect (e => {
             return app_quit ();
         });
+
+        show_mainwindow_notification.connect ((message) => {
+            notifications.title = message;
+            notifications.send_notification ();
+        });
     }
 
     public void load_penpal_view () {
-        panels.remove (panels.get_child2 ());
+        if (active_penpal_view) {
+            overlay.remove (penpal_view);
+        } else {
+            overlay.remove (welcome);
+        }
 
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
             active_penpal_view = true;
             penpal_view = new Litteris.PenpalView (this, list_panel.active_penpal);
-            panels.pack2 (penpal_view, true, false);
+            overlay.add_overlay (penpal_view);
         } else {
             active_penpal_view = false;
-            welcome_panel = new Litteris.Welcome (this);
-            panels.pack2 (welcome_panel, true, false);
+            welcome = new Litteris.Welcome (this);
+            overlay.add_overlay (welcome);
         }
 
+        overlay.reorder_overlay (notifications, 1);
         show_all ();
     }
 
@@ -168,12 +185,17 @@ public class Litteris.Window : Gtk.ApplicationWindow {
                 window_dialog.present ();
                 window_dialog.response.connect ((id) => {
                     if (id == Gtk.ResponseType.ACCEPT) {
-                        print ("Edited\n");
+                        penpal_view.edit_active_penpal (window_dialog.entry_name.text,
+                                                        window_dialog.entry_nickname.text,
+                                                        window_dialog.entry_notes.buffer.text,
+                                                        window_dialog.entry_address.buffer.text,
+                                                        window_dialog.combo_country.active_id);
                         window_dialog.destroy ();
                     }
                 });
         }
     }
+
     public void delete_penpal () {
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
             var dialog_remove_penpal = new Granite.MessageDialog.with_image_from_icon_name (
@@ -190,7 +212,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             dialog_remove_penpal.show_all ();
 
             if (dialog_remove_penpal.run () == Gtk.ResponseType.ACCEPT) {
-                print ("Deleted\n");
+                penpal_view.remove_active_penpal ();
             }
 
             dialog_remove_penpal.destroy ();

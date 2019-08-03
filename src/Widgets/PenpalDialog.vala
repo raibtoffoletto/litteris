@@ -21,12 +21,12 @@
 
 public class Litteris.PenpalDialog : Gtk.Dialog {
     public bool edit_penpal { get; set; }
-    private Gtk.Entry entry_name;
-    private Gtk.Entry entry_nickname;
-    private Gtk.TextView entry_notes;
-    private Gtk.TextView entry_address;
+    public Gtk.Entry entry_name;
+    public Gtk.Entry entry_nickname;
+    public Gtk.TextView entry_notes;
+    public Gtk.TextView entry_address;
+    public Gtk.ComboBox combo_country;
     private Gtk.ListStore list_countries;
-    private Gtk.ComboBox combo_country;
     private Gtk.Entry entry_country;
     private Litteris.CountryCodes countries_api;
 
