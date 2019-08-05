@@ -178,9 +178,11 @@ public class Litteris.Window : Gtk.ApplicationWindow {
                 if (id == Gtk.ResponseType.ACCEPT) {
                     if (window_dialog.entry_name.text != null && window_dialog.entry_name.text != "" &&
                         window_dialog.combo_country.active_id != null && window_dialog.combo_country.active_id != "") {
+                        var new_name = window_dialog.entry_name.text[0].toupper ().to_string () +
+                                    window_dialog.entry_name.text.slice (1, window_dialog.entry_name.text.length);
                         string query = """ INSERT INTO penpals
                                             (`name`, `nickname`, `notes`, `address`, `country`) VALUES
-                                            ('""" + window_dialog.entry_name.text + """',
+                                            ('""" + new_name + """',
                                              '""" + window_dialog.entry_nickname.text + """',
                                              '""" + window_dialog.entry_notes.buffer.text + """',
                                              '""" + window_dialog.entry_address.buffer.text + """',
@@ -289,6 +291,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
     public void reload_penpal_list () {
         list_panel.load_list ();
+        list_panel.source_list.grab_focus ();
     }
 
     private bool on_key_pressed (Gdk.EventKey event) {

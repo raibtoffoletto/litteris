@@ -142,7 +142,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         add_action_widget (button_confirm, Gtk.ResponseType.ACCEPT);
 
         dialog.show_all ();
-        button_cancel.grab_focus ();
+        button_confirm.grab_focus ();
 
         delete_event.connect (() => {
             confirm_discard ();
