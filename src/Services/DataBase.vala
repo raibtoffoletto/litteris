@@ -100,7 +100,7 @@ public class Litteris.DataBase {
 
             INSERT INTO `countries_code` (`alpha-3`, `country`, `alpha-2`) VALUES
                 ('AFG','Afghanistan','AF'),
-                ('ALA','Åland','AX'),
+                ('ALA','Aland','AX'),
                 ('ALB','Albania','AL'),
                 ('DZA','Algeria','DZ'),
                 ('ASM','American Samoa','AS'),

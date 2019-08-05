@@ -41,13 +41,14 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
 
     construct {
         countries_api = new Litteris.CountryCodes ();
+
         string gtk_theme_adjusted = """textview, text {background-color: rgb(245,245,245);}
                                        frame {border-radius: 3px;}
                                        frame, label {color: rgb(127,127,127);}
                                        combobox, box {color: rgb(127,127,127);}""";
 
         if (Gtk.Settings.get_default ().gtk_application_prefer_dark_theme) {
-            gtk_theme_adjusted = """textview, text {background-color: rgb(59,63,69);}
+            gtk_theme_adjusted = """textview, text {background-color: rgb(61,61,61);}
                                     frame {border-radius: 3px;}
                                     frame, label {color: rgb(200,200,200);}
                                     combobox, box {color: rgb(200,200,200);}""";
@@ -142,6 +143,13 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         delete_event.connect (() => {
             confirm_discard ();
             return true;
+        });
+
+        key_press_event.connect (event => {
+            if (Gdk.keyval_name (event.keyval) == "Return" && event.state == Gdk.ModifierType.CONTROL_MASK) {
+                this.response (Gtk.ResponseType.ACCEPT);
+            }
+            return false;
         });
     }
 

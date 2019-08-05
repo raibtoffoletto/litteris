@@ -19,6 +19,17 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
+/*
+TO DO
+
+sanitize edit dialog
+add dialog accel ctrl+enter
+keys arrows to move penpal_list at all cost
+add create penpal
+import/export_db
+sync-DB
+*/
+
 public class Litteris.Window : Gtk.ApplicationWindow {
     public weak Litteris.Application app { get; construct; }
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
