@@ -20,11 +20,6 @@
 */
 
 /*
-TO DO
-
-sanitize edit dialog
-add dialog accel ctrl+enter
-keys arrows to move penpal_list at all cost
 add create penpal
 import/export_db
 sync-DB
@@ -174,7 +169,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             overlay.add_overlay (welcome);
         }
 
-        overlay.reorder_overlay (notifications, 1);
+        overlay.reorder_overlay (notifications, -1);
         show_all ();
     }
 
@@ -183,8 +178,39 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             window_dialog.present ();
             window_dialog.response.connect ((id) => {
                 if (id == Gtk.ResponseType.ACCEPT) {
-                    print ("Added\n");
-                    window_dialog.destroy ();
+                    if (window_dialog.entry_name.text != null && window_dialog.entry_name.text != "" &&
+                        window_dialog.combo_country.active_id != null && window_dialog.combo_country.active_id != "") {
+                        string query = """ INSERT INTO penpals
+                                            (`name`, `nickname`, `notes`, `address`, `country`) VALUES
+                                            ('""" + window_dialog.entry_name.text + """',
+                                             '""" + window_dialog.entry_nickname.text + """',
+                                             '""" + window_dialog.entry_notes.buffer.text + """',
+                                             '""" + window_dialog.entry_address.buffer.text + """',
+                                             '""" + window_dialog.combo_country.active_id + """');""";
+
+                        var exec_query = Application.database.exec_query (query);
+
+                        if (exec_query) {
+                            reload_penpal_list ();
+                            show_mainwindow_notification ("Penpal added with success!");
+                            window_dialog.destroy ();
+                        } else {
+                            show_mainwindow_notification ("Something went wrong...");
+                        }
+
+                    } else {
+                        var dialog_incomplete_message = Markup.escape_text
+                            ("You should provide Name & Country for your new penpal.");
+
+                        var dialog_incomplete = new Granite.MessageDialog.with_image_from_icon_name (
+                                                    "Incomplete data",
+                                                    dialog_incomplete_message,
+                                                    "dialog-error",
+                                                    Gtk.ButtonsType.CLOSE);
+                            dialog_incomplete.transient_for = window_dialog;
+                            dialog_incomplete.run ();
+                            dialog_incomplete.destroy ();
+                    }
                 }
             });
     }
@@ -209,13 +235,14 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
     public void delete_penpal () {
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
+            var penpal_to_remove = list_panel.active_penpal;
             var dialog_remove_penpal = new Granite.MessageDialog.with_image_from_icon_name (
-                                        "Remove " + list_panel.active_penpal + " ?",
+                                        "Remove " + penpal_to_remove + " ?",
                                         "This action will permanently remove all data related to this penpal.",
                                         "user-trash-full",
                                         Gtk.ButtonsType.CANCEL);
 
-            var remove_confirm = new Gtk.Button.with_label ("Remove " + list_panel.active_penpal);
+            var remove_confirm = new Gtk.Button.with_label ("Remove " + penpal_to_remove);
                 remove_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
             dialog_remove_penpal.add_action_widget (remove_confirm, Gtk.ResponseType.ACCEPT);
@@ -224,6 +251,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
             if (dialog_remove_penpal.run () == Gtk.ResponseType.ACCEPT) {
                 penpal_view.remove_active_penpal ();
+                show_mainwindow_notification ("%s removed with success!".printf (penpal_to_remove));
             }
 
             dialog_remove_penpal.destroy ();

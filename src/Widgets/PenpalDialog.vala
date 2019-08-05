@@ -64,7 +64,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         }
 
         entry_name = new Gtk.Entry ();
-        entry_name.placeholder_text = "Name :";
+        entry_name.placeholder_text = "* Name :";
 
         entry_nickname = new Gtk.Entry ();
         entry_nickname.placeholder_text = "Nickname :";
@@ -103,14 +103,17 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
             entry_country_completion.text_column = CountryCodes.Format.COUNTRY;
             entry_country_completion.inline_completion = true;
             entry_country_completion.inline_selection = true;
+            entry_country_completion.action_activated.connect (on_country_changed);
         combo_country = new Gtk.ComboBox.with_model_and_entry (list_countries);
         combo_country.id_column = CountryCodes.Format.ALPHA3;
         combo_country.entry_text_column = CountryCodes.Format.COUNTRY;
         entry_country = (Gtk.Entry)combo_country.get_child ();
-        entry_country.placeholder_text = "Country :";
+        entry_country.placeholder_text = "* Country :";
         entry_country.completion = entry_country_completion;
         entry_country.key_press_event.connect (on_entry_key_pressed);
-        entry_country.notify["text"].connect (on_country_changed);
+        entry_country.focus_out_event.connect (() => {
+            entry_country.set_position (-1);
+        });
 
         dialog.homogeneous = false;
         dialog.spacing = 6;
@@ -172,11 +175,16 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
             print ("Error: %s\n", e.message);
         }
 
+        on_country_changed ();
         return false;
     }
 
     private void on_country_changed () {
-        combo_country.active_id = countries_api.get_country_code (entry_country.text);
+        var country_selected = countries_api.get_country_code (entry_country.text);
+
+        if (country_selected != null && country_selected != "") {
+            combo_country.active_id = country_selected;
+        }
     }
 
     private void confirm_discard () {
