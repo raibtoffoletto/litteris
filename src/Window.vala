@@ -19,10 +19,8 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
-/*
-add create penpal
-import/export_db
-sync-DB
+/* TO-DOs:
+add database sync support (via nextcloud, dropbox folder)
 */
 
 public class Litteris.Window : Gtk.ApplicationWindow {

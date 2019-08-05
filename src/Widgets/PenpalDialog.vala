@@ -111,6 +111,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         entry_country.placeholder_text = "* Country :";
         entry_country.completion = entry_country_completion;
         entry_country.key_press_event.connect (on_entry_key_pressed);
+        entry_country.changed.connect (on_country_changed);
         entry_country.focus_out_event.connect (() => {
             entry_country.set_position (-1);
         });
