@@ -48,6 +48,20 @@ public class Litteris.Application : Gtk.Application {
         }
     }
 
+    public void reload_application () {
+        Gdk.EventAny event = (Gdk.EventAny) new Gdk.Event (Gdk.EventType.DELETE);
+        main_window.delete_event (event);
+        main_window.destroy ();
+
+        database = new Litteris.DataBase ();
+        database.verify_database ();
+
+        main_window = new Litteris.Window (this);
+        add_window (main_window);
+        main_window.present ();
+        main_window.show_mainwindow_notification ("Backup restored with success!");
+    }
+
     public static int main (string[] args) {
         var app = new Litteris.Application ();
         return app.run (args);

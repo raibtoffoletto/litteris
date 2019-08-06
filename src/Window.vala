@@ -45,8 +45,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         { ACTION_SEARCH, toggle_search_bar },
         { ACTION_OPEN_MENU, open_menu_popover },
         { ACTION_INVERT_THEME, invert_color_mode },
-        // { ACTION_IMPORT_DB, import_db },
-        // { ACTION_EXPORT_DB, export_db },
+        { ACTION_IMPORT_DB, import_db },
+        { ACTION_EXPORT_DB, export_db },
         { ACTION_ABOUT_DIALOG, about_dialog },
         { ACTION_APP_EXIT, app_exit }
     };
@@ -84,6 +84,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         action_accelerators.set (ACTION_OPEN_MENU, "<Control>O");
         action_accelerators.set (ACTION_INVERT_THEME, "<Control>M");
         action_accelerators.set (ACTION_ABOUT_DIALOG, "F1");
+        action_accelerators.set (ACTION_IMPORT_DB, "<Control><Shift>I");
+        action_accelerators.set (ACTION_EXPORT_DB, "<Control><Shift>E");
         action_accelerators.set (ACTION_APP_EXIT, "<Control>Q");
     }
 
@@ -256,6 +258,79 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
             dialog_remove_penpal.destroy ();
         }
+    }
+
+    public void import_db () {
+        var confirm_import = new Granite.MessageDialog.with_image_from_icon_name (
+                                    "Restore backup?",
+                                    "This will permanently override the current database.",
+                                    "dialog-error",
+                                    Gtk.ButtonsType.CANCEL);
+        var button_import = new Gtk.Button.with_label ("Restore");
+            button_import.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+        confirm_import.add_action_widget (button_import, Gtk.ResponseType.ACCEPT);
+        confirm_import.transient_for = this;
+        confirm_import.show_all ();
+
+        if (confirm_import.run () == Gtk.ResponseType.ACCEPT) {
+            var file_dialog = new Gtk.FileChooserNative ("Restore backup file",
+                                                            this as Gtk.Window,
+                                                            Gtk.FileChooserAction.OPEN,
+                                                            "Restore","Cancel");
+            var file_filter = new Gtk.FileFilter ();
+                file_filter.add_pattern ("*.db");
+                file_filter.set_filter_name ("Sqlite");
+
+            file_dialog.show_hidden = false;
+            file_dialog.select_multiple = false;
+            file_dialog.add_filter (file_filter);
+
+            if (file_dialog.run () == Gtk.ResponseType.ACCEPT) {
+                var file_name = file_dialog.get_filename ();
+                if (Application.database.import_database (file_name)) {
+                    app.reload_application ();
+                } else {
+                    show_mainwindow_notification ("Something went wrong...");
+                }
+            }
+
+            file_dialog.destroy ();
+        }
+
+        confirm_import.destroy ();
+    }
+
+    public void export_db () {
+        var file_dialog = new Gtk.FileChooserNative ("Create backup file",
+                                                        this as Gtk.Window,
+                                                        Gtk.FileChooserAction.SAVE,
+                                                        "Export","Cancel");
+        var file_filter = new Gtk.FileFilter ();
+            file_filter.add_pattern ("*.db");
+            file_filter.set_filter_name ("Sqlite");
+
+        var date_now = new DateTime.now_local ();
+
+        file_dialog.do_overwrite_confirmation = true;
+        file_dialog.show_hidden = false;
+        file_dialog.set_current_name ("Litteris " + date_now.format ("%F") + ".db");
+        file_dialog.add_filter (file_filter);
+
+        if (file_dialog.run () == Gtk.ResponseType.ACCEPT) {
+            var file_name = file_dialog.get_filename ();
+            if (file_name.slice (-3, file_name.length) != ".db") {
+                file_name += ".db";
+            }
+
+            if (Application.database.export_database (file_name)) {
+                show_mainwindow_notification ("Backup created with success!");
+            } else {
+                show_mainwindow_notification ("Something went wrong...");
+            }
+        }
+
+        file_dialog.destroy ();
     }
 
     public void about_dialog () {

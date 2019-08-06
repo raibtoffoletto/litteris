@@ -28,6 +28,30 @@ public class Litteris.DataBase {
         return Path.build_filename (Environment.get_user_data_dir (), "litteris", "litteris.db");
     }
 
+    public bool export_database (string target_file) {
+        var target = File.new_for_path (target_file);
+        try {
+            get_database ().copy (target, FileCopyFlags.OVERWRITE);
+            return true;
+        } catch (Error e) {
+            stderr.printf ("Error: %s\n", e.message);
+        }
+
+        return false;
+    }
+
+    public bool import_database (string source_file) {
+        var source = File.new_for_path (source_file);
+        try {
+            source.copy (get_database (), FileCopyFlags.OVERWRITE);
+            return true;
+        } catch (Error e) {
+            stderr.printf ("Error: %s\n", e.message);
+        }
+
+        return false;
+    }
+
     public void verify_database () {
         try {
             var path = File.new_build_filename (Environment.get_user_data_dir (), "litteris");
