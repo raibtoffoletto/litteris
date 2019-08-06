@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-28 21:36+0200\n"
+"POT-Creation-Date: 2019-08-06 15:30+0200\n"
 "PO-Revision-Date: 2019-05-28 21:36+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,12 +21,15 @@ msgstr ""
 msgid "Litteris"
 msgstr "Litteris"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
-msgid "_(\"Penpal Correspondence Organized\")"
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8 src/Window.vala:343
+#: src/Widgets/Welcome.vala:29
+#, fuzzy
+msgid "Penpal Correspondence Organized"
 msgstr "_(\"Penpal Correspondence Organized\")"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
-msgid "_(\"description\")"
+#, fuzzy
+msgid "description"
 msgstr "_(\"description\")"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:25
@@ -34,5 +37,242 @@ msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:33
-msgid "_(\"Initial Release\")"
+#, fuzzy
+msgid "Initial Release"
 msgstr "_(\"Initial Release\")"
+
+#: src/Header.vala:36 src/Widgets/Welcome.vala:34
+msgid "New Penpal"
+msgstr ""
+
+#: src/Header.vala:40
+msgid "Edit Penpal"
+msgstr ""
+
+#: src/Header.vala:44
+msgid "Remove Penpal"
+msgstr ""
+
+#: src/Header.vala:51
+msgid "Options"
+msgstr ""
+
+#: src/Window.vala:199
+msgid "Penpal added with success!"
+msgstr ""
+
+#: src/Window.vala:207
+msgid "You should provide Name & Country for your new penpal."
+msgstr ""
+
+#: src/Window.vala:210
+msgid "Incomplete data"
+msgstr ""
+
+#: src/Window.vala:244
+#, c-format
+msgid "Remove %s ?"
+msgstr ""
+
+#: src/Window.vala:245
+msgid "This action will permanently remove all data related to this penpal."
+msgstr ""
+
+#: src/Window.vala:249
+#, c-format
+msgid "Remove %s"
+msgstr ""
+
+#: src/Window.vala:258
+#, c-format
+msgid "%s removed with success!"
+msgstr ""
+
+#: src/Window.vala:267
+msgid "Restore backup?"
+msgstr ""
+
+#: src/Window.vala:268
+msgid "This will permanently override the current database."
+msgstr ""
+
+#: src/Window.vala:271 src/Window.vala:282
+msgid "Restore"
+msgstr ""
+
+#: src/Window.vala:279
+msgid "Restore backup file"
+msgstr ""
+
+#: src/Window.vala:282 src/Window.vala:310
+msgid "Cancel"
+msgstr ""
+
+#: src/Window.vala:307
+msgid "Create backup file"
+msgstr ""
+
+#: src/Window.vala:310
+msgid "Export"
+msgstr ""
+
+#: src/Window.vala:329
+msgid "Backup created with success!"
+msgstr ""
+
+#: src/Services/CountryCodes.vala:101
+msgid "Country not found"
+msgstr ""
+
+#: src/Services/Utils.vala:23
+msgid "Something went wrong..."
+msgstr ""
+
+#: src/Widgets/AppMenu.vala:37
+msgid "Light Mode"
+msgstr ""
+
+#: src/Widgets/AppMenu.vala:38
+msgid "Dark Mode"
+msgstr ""
+
+#: src/Widgets/AppMenu.vala:64
+msgid "Create a backup"
+msgstr ""
+
+#: src/Widgets/AppMenu.vala:70
+msgid "Restore backup"
+msgstr ""
+
+#: src/Widgets/AppMenu.vala:76
+msgid "About"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:67
+msgid "* Name :"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:70
+msgid "Nickname :"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:80
+msgid "Notes :"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:94
+msgid "Address :"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:111
+msgid "* Country :"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:114
+msgid "Discard Changes"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:134
+msgid "Add Penpal"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:111
+msgid "Save Changes"
+msgstr ""
+
+#: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
+msgid "Search"
+msgstr ""
+
+#: src/Widgets/PenpalList.vala:73
+msgid "Starred"
+msgstr ""
+
+#: src/Widgets/PenpalList.vala:80
+msgid "Penpals"
+msgstr ""
+
+#: src/Widgets/PenpalList.vala:133
+msgid "No matches ..."
+msgstr ""
+
+#: src/Widgets/PenpalView.vala:113
+msgid "<b>Notes : </b>"
+msgstr ""
+
+#: src/Widgets/PenpalView.vala:127
+msgid "<b>Address : </b>"
+msgstr ""
+
+#: src/Widgets/PenpalView.vala:142
+msgid "<b>Sent :</b>"
+msgstr ""
+
+#: src/Widgets/PenpalView.vala:146
+msgid "<b>Received :</b>"
+msgstr ""
+
+#: src/Widgets/PenpalView.vala:336
+msgid "Penpal updated with success!"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:60
+msgid "Register Mail"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:107
+msgid "Received"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:108
+msgid "Sent"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:111
+msgid "Add Mail"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:117 src/Widgets/PenpalStatusBar.vala:186
+msgid "Remove Mail"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:140
+msgid "Please select Letter/Postcard and Received/Sent"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:164
+msgid "Mail Registered"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:164
+msgid "Changes Saved"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:176
+msgid "letter"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:176
+msgid "postcard"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:178
+#, c-format
+msgid "Remove %s from %s?"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:182
+msgid "This will delete this date from the database permanently!"
+msgstr ""
+
+#: src/Widgets/PenpalStatusBar.vala:198
+msgid "Mail Removed"
+msgstr ""
+
+#: src/Widgets/Welcome.vala:34
+msgid "Add a new friend to start tracking your mail exchange."
+msgstr ""
+
+#: src/Widgets/Welcome.vala:35
+msgid "Too many penpals? Look up their name!"
+msgstr ""
