@@ -26,7 +26,10 @@
   <h3>Penpal Correspondence Organized</h3>
 </p>
 
-// Description!
+> With Litteris you can organize your penpal contacts in a simple manner and keep track of your letters and postcards exchange.
+> You can star your most frequent friends and search for that one you haven't talked much lately.
+
+![](data/com.github.raibtoffoletto.litteris.screenshot.png)
 
 ## Install, build and run
 ### Dependencies:
