@@ -116,13 +116,13 @@ public class Litteris.DataBase {
               `penpal` INTEGER NOT NULL
             );
 
-            CREATE TABLE `countries_code` (
+            CREATE TABLE `country_codes` (
               `alpha-3` TEXT NOT NULL,
               `country` TEXT NOT NULL,
               `alpha-2` TEXT NOT NULL
             );
 
-            INSERT INTO `countries_code` (`alpha-3`, `country`, `alpha-2`) VALUES
+            INSERT INTO `country_codes` (`alpha-3`, `country`, `alpha-2`) VALUES
                 ('AFG','Afghanistan','AF'),
                 ('ALA','Aland','AX'),
                 ('ALB','Albania','AL'),

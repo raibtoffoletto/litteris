@@ -83,6 +83,16 @@ public class Litteris.PenpalList : Gtk.Box {
 
             source_list.root.add (penpals);
             get_penpals (penpals);
+
+            if (source_list.get_n_visible_children (penpals) == 0 &&
+                source_list.get_n_visible_children (starred) == 0) {
+                var no_penpals_parent = new Granite.Widgets.SourceList.ExpandableItem (" ");
+                    no_penpals_parent.selectable = false;
+                    no_penpals_parent.collapsible = false;
+                var no_penpals = new Granite.Widgets.SourceList.Item (_("No friends yet 😔️"));
+                no_penpals_parent.add (no_penpals);
+                source_list.root.add (no_penpals_parent);
+            }
         }
 
         pack_end (source_list);

@@ -70,7 +70,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             application: app,
             app: app,
             height_request: 640,
-            width_request: 860,
+            width_request: 880,
             border_width: 0,
             window_position: Gtk.WindowPosition.CENTER
         );
