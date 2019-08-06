@@ -27,5 +27,5 @@ executable(
     meson.project_name(),
     src_files,
     dependencies: dependencies,
-    install: false
+    install: true
 )

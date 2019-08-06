@@ -5,9 +5,9 @@
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>Litteris</name>
-  <summary>_("Penpal Correspondence Organized")</summary>
+  <summary>Penpal Correspondence Organized</summary>
   <description>
-    <p>_("description")</p>
+    <p>description</p>
   </description>
 
   <custom>
@@ -28,9 +28,9 @@
   <url type="help">https://github.com/raibtoffoletto/litteris/issues</url>
 
   <releases>
-    <release version="0.1.0" date="2019-">
+    <release version="0.1.0" date="2019-08-07">
 ​      <description>
-        <p>_("Initial Release")</p>
+        <p>Initial Release</p>
 ​      </description>
 ​    </release>
 ​  </releases>

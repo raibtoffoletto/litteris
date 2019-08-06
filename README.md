@@ -17,6 +17,7 @@
 * Boston, MA 02110-1301 USA
 *
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
+* falta icones, screenshot, descrição et files infos
 -->
 
 <p align="center">
@@ -32,15 +33,16 @@
  - libgtk-3-0
  - libgranite-dev
  - libsqlite3-dev
+ - libgee-0.8-dev
  - meson
  - valac
 
-`$ sudo apt-get install elementary-sdk libsqlite3-dev`
+`$ sudo apt-get install elementary-sdk libsqlite3-dev libgee-0.8-dev -y`
 
 ### Clone and Compile
 ```bash
 $ git clone https://github.com/raibtoffoletto/litteris.git
-$ cd adstruo
+$ cd litteris
 $ meson build --prefix=/usr
 
 $ cd build

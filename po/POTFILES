@@ -1,1 +1,16 @@
 data/com.github.raibtoffoletto.litteris.appdata.xml.in
+src/Application.vala
+src/Header.vala
+src/Window.vala
+src/Models/Penpal.vala
+src/Models/MailDate.vala
+src/Services/CountryCodes.vala
+src/Services/DataBase.vala
+src/Services/Utils.vala
+src/Widgets/AppMenu.vala
+src/Widgets/PenpalDialog.vala
+src/Widgets/PenpalList.vala
+src/Widgets/PenpalView.vala
+src/Widgets/PenpalStatusBar.vala
+src/Widgets/Welcome.vala
+

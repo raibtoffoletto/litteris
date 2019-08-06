@@ -3,6 +3,11 @@ install_data(
     install_dir: join_paths(get_option ('datadir'), 'glib-2.0', 'schemas')
 )
 
+install_data(
+    join_paths(meson.project_name() + '.desktop'),
+    install_dir: join_paths(get_option ('datadir'), 'applications')
+)
+
 i18n.merge_file(
     input: join_paths(meson.project_name() + '.appdata.xml.in'),
     output: meson.project_name() + '.appdata.xml',
