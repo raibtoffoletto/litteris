@@ -128,7 +128,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
         set_titlebar (window_header);
         add (panels);
-	 	show_all ();
+        show_all ();
 
         list_panel.notify["active-penpal"].connect (() => {
             load_penpal_view ();
@@ -180,8 +180,10 @@ public class Litteris.Window : Gtk.ApplicationWindow {
                 if (id == Gtk.ResponseType.ACCEPT) {
                     if (window_dialog.entry_name.text != null && window_dialog.entry_name.text != "" &&
                         window_dialog.combo_country.active_id != null && window_dialog.combo_country.active_id != "") {
+
                         var new_name = window_dialog.entry_name.text[0].toupper ().to_string () +
                                     window_dialog.entry_name.text.slice (1, window_dialog.entry_name.text.length);
+
                         string query = """ INSERT INTO penpals
                                             (`name`, `nickname`, `notes`, `address`, `country`) VALUES
                                             ('""" + new_name + """',
@@ -194,18 +196,18 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
                         if (exec_query) {
                             reload_penpal_list ();
-                            show_mainwindow_notification ("Penpal added with success!");
+                            show_mainwindow_notification (_("Penpal added with success!"));
                             window_dialog.destroy ();
                         } else {
-                            show_mainwindow_notification ("Something went wrong...");
+                            show_mainwindow_notification (Utils.GENERIC_ERROR);
                         }
 
                     } else {
                         var dialog_incomplete_message = Markup.escape_text
-                            ("You should provide Name & Country for your new penpal.");
+                            (_("You should provide Name & Country for your new penpal."));
 
                         var dialog_incomplete = new Granite.MessageDialog.with_image_from_icon_name (
-                                                    "Incomplete data",
+                                                    _("Incomplete data"),
                                                     dialog_incomplete_message,
                                                     "dialog-error",
                                                     Gtk.ButtonsType.CLOSE);
@@ -239,12 +241,12 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
             var penpal_to_remove = list_panel.active_penpal;
             var dialog_remove_penpal = new Granite.MessageDialog.with_image_from_icon_name (
-                                        "Remove " + penpal_to_remove + " ?",
-                                        "This action will permanently remove all data related to this penpal.",
+                                        _("Remove %s ?").printf (penpal_to_remove),
+                                        _("This action will permanently remove all data related to this penpal."),
                                         "user-trash-full",
                                         Gtk.ButtonsType.CANCEL);
 
-            var remove_confirm = new Gtk.Button.with_label ("Remove " + penpal_to_remove);
+            var remove_confirm = new Gtk.Button.with_label (_("Remove %s").printf (penpal_to_remove));
                 remove_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
             dialog_remove_penpal.add_action_widget (remove_confirm, Gtk.ResponseType.ACCEPT);
@@ -253,7 +255,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
             if (dialog_remove_penpal.run () == Gtk.ResponseType.ACCEPT) {
                 penpal_view.remove_active_penpal ();
-                show_mainwindow_notification ("%s removed with success!".printf (penpal_to_remove));
+                show_mainwindow_notification (_("%s removed with success!").printf (penpal_to_remove));
             }
 
             dialog_remove_penpal.destroy ();
@@ -262,11 +264,11 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
     public void import_db () {
         var confirm_import = new Granite.MessageDialog.with_image_from_icon_name (
-                                    "Restore backup?",
-                                    "This will permanently override the current database.",
+                                    _("Restore backup?"),
+                                    _("This will permanently override the current database."),
                                     "dialog-error",
                                     Gtk.ButtonsType.CANCEL);
-        var button_import = new Gtk.Button.with_label ("Restore");
+        var button_import = new Gtk.Button.with_label (_("Restore"));
             button_import.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         confirm_import.add_action_widget (button_import, Gtk.ResponseType.ACCEPT);
@@ -274,13 +276,13 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         confirm_import.show_all ();
 
         if (confirm_import.run () == Gtk.ResponseType.ACCEPT) {
-            var file_dialog = new Gtk.FileChooserNative ("Restore backup file",
+            var file_dialog = new Gtk.FileChooserNative (_("Restore backup file"),
                                                             this as Gtk.Window,
                                                             Gtk.FileChooserAction.OPEN,
-                                                            "Restore","Cancel");
+                                                            _("Restore"), _("Cancel"));
             var file_filter = new Gtk.FileFilter ();
                 file_filter.add_pattern ("*.db");
-                file_filter.set_filter_name ("Sqlite");
+                file_filter.set_filter_name ("Sqlite DB");
 
             file_dialog.show_hidden = false;
             file_dialog.select_multiple = false;
@@ -291,7 +293,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
                 if (Application.database.import_database (file_name)) {
                     app.reload_application ();
                 } else {
-                    show_mainwindow_notification ("Something went wrong...");
+                    show_mainwindow_notification (Utils.GENERIC_ERROR);
                 }
             }
 
@@ -302,13 +304,13 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     }
 
     public void export_db () {
-        var file_dialog = new Gtk.FileChooserNative ("Create backup file",
+        var file_dialog = new Gtk.FileChooserNative (_("Create backup file"),
                                                         this as Gtk.Window,
                                                         Gtk.FileChooserAction.SAVE,
-                                                        "Export","Cancel");
+                                                        _("Export"), _("Cancel"));
         var file_filter = new Gtk.FileFilter ();
             file_filter.add_pattern ("*.db");
-            file_filter.set_filter_name ("Sqlite");
+            file_filter.set_filter_name ("Sqlite Database");
 
         var date_now = new DateTime.now_local ();
 
@@ -324,9 +326,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             }
 
             if (Application.database.export_database (file_name)) {
-                show_mainwindow_notification ("Backup created with success!");
+                show_mainwindow_notification (_("Backup created with success!"));
             } else {
-                show_mainwindow_notification ("Something went wrong...");
+                show_mainwindow_notification (Utils.GENERIC_ERROR);
             }
         }
 
@@ -346,10 +348,10 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             about_dialog.website = "https://github.com/raibtoffoletto/litteris";
             about_dialog.website_label = "github.com/raibtoffoletto/litteris";
             about_dialog.response.connect ((response_id) => {
-		        if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT) {
-			        about_dialog.hide_on_delete ();
-		        }
-	        });
+                if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT) {
+                    about_dialog.hide_on_delete ();
+                }
+            });
 
         about_dialog.present ();
     }

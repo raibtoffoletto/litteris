@@ -110,7 +110,7 @@ public class Litteris.PenpalView : Gtk.Grid {
             header_box.pack_end (grid_icons, false, false);
 
         /* penpal info */
-        var label_notes = new Gtk.Label ("<b>Notes : </b>");
+        var label_notes = new Gtk.Label (_("<b>Notes : </b>"));
             label_notes.use_markup = true;
             label_notes.halign = Gtk.Align.START;
 
@@ -124,7 +124,7 @@ public class Litteris.PenpalView : Gtk.Grid {
         label_notes_content.selectable = true;
         label_notes_content.can_focus = false;
 
-        var label_address = new Gtk.Label ("<b>Address : </b>");
+        var label_address = new Gtk.Label (_("<b>Address : </b>"));
             label_address.use_markup = true;
             label_address.halign = Gtk.Align.START;
 
@@ -139,11 +139,11 @@ public class Litteris.PenpalView : Gtk.Grid {
         label_address_content.can_focus = false;
         label_address_content.use_markup = true;
 
-        var label_sent = new Gtk.Label ("<b>Sent :</b>");
+        var label_sent = new Gtk.Label (_("<b>Sent :</b>"));
             label_sent.use_markup = true;
             label_sent.halign = Gtk.Align.START;
 
-        var label_received = new Gtk.Label ("<b>Received :</b>");
+        var label_received = new Gtk.Label (_("<b>Received :</b>"));
             label_received.use_markup = true;
             label_received.halign = Gtk.Align.START;
 
@@ -313,7 +313,7 @@ public class Litteris.PenpalView : Gtk.Grid {
             get_starred ();
             main_window.reload_penpal_list ();
         } else {
-            main_window.show_mainwindow_notification ("Something went wrong...");
+            main_window.show_mainwindow_notification (Utils.GENERIC_ERROR);
         }
     }
 
@@ -333,9 +333,9 @@ public class Litteris.PenpalView : Gtk.Grid {
         if (exec_query) {
             main_window.list_panel.set_property ("active-penpal", name);
             main_window.reload_penpal_list ();
-            main_window.show_mainwindow_notification ("Penpal updated with success!");
+            main_window.show_mainwindow_notification (_("Penpal updated with success!"));
         } else {
-            main_window.show_mainwindow_notification ("Something went wrong...");
+            main_window.show_mainwindow_notification (Utils.GENERIC_ERROR);
         }
     }
 
@@ -350,7 +350,7 @@ public class Litteris.PenpalView : Gtk.Grid {
             main_window.list_panel.set_property ("active-penpal", "");
             main_window.reload_penpal_list ();
         } else {
-            main_window.show_mainwindow_notification ("Something went wrong...");
+            main_window.show_mainwindow_notification (Utils.GENERIC_ERROR);
         }
     }
 }

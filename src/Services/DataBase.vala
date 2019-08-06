@@ -58,8 +58,8 @@ public class Litteris.DataBase {
             if (! path.query_exists () ) {
                 path.make_directory_with_parents ();
             }
-            assert (path.query_exists ());
 
+            assert (path.query_exists ());
             var database = get_database ();
             if (! database.query_exists () ) {
                 database.create (FileCreateFlags.PRIVATE);

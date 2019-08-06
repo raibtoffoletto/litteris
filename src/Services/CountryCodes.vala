@@ -44,7 +44,7 @@ public class Litteris.CountryCodes {
         var exec_query = db.exec (query, (n, v, c) => {
                 Gtk.TreeIter iter;
                 liststore.append (out iter);
-                liststore.set (iter, 0, v[0], 1, v[1], -1);
+                liststore.set (iter, Format.ALPHA3, v[Format.ALPHA3], Format.COUNTRY, v[Format.COUNTRY], -1);
                 return 0;
             }, out errmsg);
 
@@ -98,7 +98,7 @@ public class Litteris.CountryCodes {
 
         if (exec_query != 0) {
             stdout.printf ("Querry error: %s\n", errmsg);
-            return "not found";
+            return _("Country not found");
         }
 
         return country_name;
@@ -114,7 +114,7 @@ public class Litteris.CountryCodes {
                     WHERE country LIKE '""" + country_name + """';""";
 
         var exec_query = db.exec (query, (n, v, c) => {
-                country_code = v[0];
+                country_code = v[Format.ALPHA3];
                 return 0;
             }, out errmsg);
 

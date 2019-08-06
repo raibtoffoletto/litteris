@@ -57,17 +57,17 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         var dialog = get_content_area ();
         var css_provider = new Gtk.CssProvider ();
 
-        try {
-            css_provider.load_from_data (gtk_theme_adjusted);
-        } catch (Error e) {
-            stdout.printf ("Error: %s\n", e.message);
-        }
+            try {
+                css_provider.load_from_data (gtk_theme_adjusted);
+            } catch (Error e) {
+                stdout.printf ("Error: %s\n", e.message);
+            }
 
         entry_name = new Gtk.Entry ();
-        entry_name.placeholder_text = "* Name :";
+        entry_name.placeholder_text = _("* Name :");
 
         entry_nickname = new Gtk.Entry ();
-        entry_nickname.placeholder_text = "Nickname :";
+        entry_nickname.placeholder_text = _("Nickname :");
 
         entry_notes = new Gtk.TextView ();
         entry_notes.get_style_context ().add_provider (css_provider, 900);
@@ -77,7 +77,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
             scroll_notes.margin_end = 6;
             scroll_notes.margin_bottom = 6;
             scroll_notes.add (entry_notes);
-        var frame_notes = new Gtk.Frame ("Notes :");
+        var frame_notes = new Gtk.Frame (_("Notes :"));
             frame_notes.add (scroll_notes);
             frame_notes.height_request = 120;
             frame_notes.label_widget.margin = 3;
@@ -91,7 +91,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
             scroll_address.margin_end = 6;
             scroll_address.margin_bottom = 6;
             scroll_address.add (entry_address);
-        var frame_address = new Gtk.Frame ("Address :");
+        var frame_address = new Gtk.Frame (_("Address :"));
             frame_address.add (scroll_address);
             frame_address.height_request = 120;
             frame_address.label_widget.margin = 3;
@@ -108,7 +108,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         combo_country.id_column = CountryCodes.Format.ALPHA3;
         combo_country.entry_text_column = CountryCodes.Format.COUNTRY;
         entry_country = (Gtk.Entry)combo_country.get_child ();
-        entry_country.placeholder_text = "* Country :";
+        entry_country.placeholder_text = _("* Country :");
         entry_country.completion = entry_country_completion;
         entry_country.key_press_event.connect (on_entry_key_pressed);
         entry_country.changed.connect (on_country_changed);
@@ -127,15 +127,15 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         dialog.pack_start (frame_address);
         dialog.pack_start (combo_country);
 
-        var button_cancel = new Gtk.Button.with_label ("Discard Changes");
+        var button_cancel = new Gtk.Button.with_label (_("Discard Changes"));
             button_cancel.clicked.connect (confirm_discard);
 
         var button_confirm = new Gtk.Button ();
-            button_confirm.label = "Add Penpal";
+            button_confirm.label = _("Add Penpal");
             button_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
         notify["edit-penpal"].connect (() => {
-            button_confirm.label = "Save Changes";
+            button_confirm.label = _("Save Changes");
         });
 
         add_action_widget (button_cancel, Gtk.ResponseType.CANCEL);
@@ -192,6 +192,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
         if (entry_name.text != "" || entry_nickname.text != "" ||
             entry_notes.buffer.text != "" || entry_address.buffer.text != "" ||
             entry_country.text != "") {
+
             var dialog_discard = new Granite.MessageDialog.with_image_from_icon_name (
                                         "Discard Changes?",
                                         "You will loose all changes made so far.",
@@ -217,9 +218,9 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
 
     public void get_penpal_to_edit (string penpal) {
         set_property ("edit-penpal", true);
+
         if (penpal != "") {
             var penpal_to_edit = new Litteris.Penpal (penpal);
-
             entry_name.text = penpal_to_edit.name;
             entry_nickname.text = penpal_to_edit.nickname;
             entry_notes.buffer.text = penpal_to_edit.notes;

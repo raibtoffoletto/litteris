@@ -34,8 +34,8 @@ public class Litteris.AppMenu : Gtk.Popover {
 
         dark_mode = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic",
                                                             "weather-clear-night-symbolic");
-        dark_mode.primary_icon_tooltip_text = ("Light Mode");
-        dark_mode.secondary_icon_tooltip_text = ("Dark Mode");
+        dark_mode.primary_icon_tooltip_text = (_("Light Mode"));
+        dark_mode.secondary_icon_tooltip_text = (_("Dark Mode"));
         dark_mode.valign = Gtk.Align.CENTER;
         dark_mode.halign = Gtk.Align.CENTER;
         dark_mode.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
@@ -59,21 +59,21 @@ public class Litteris.AppMenu : Gtk.Popover {
         var menu_separator2 = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
             menu_separator2.margin = 6;
 
-        var menu_import = new Gtk.ModelButton ();
-            menu_import.centered = true;
-            menu_import.text = "Restore backup";
-            menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_IMPORT_DB;
-            menu_import.tooltip_markup = Granite.markup_accel_tooltip ({"<Control><Shift>I"});
-
         var menu_export = new Gtk.ModelButton ();
             menu_export.centered = true;
-            menu_export.text = "Create a backup";
+            menu_export.text = _("Create a backup");
             menu_export.action_name =  Window.ACTION_PREFIX + Window.ACTION_EXPORT_DB;
             menu_export.tooltip_markup = Granite.markup_accel_tooltip ({"<Control><Shift>E"});
 
+        var menu_import = new Gtk.ModelButton ();
+            menu_import.centered = true;
+            menu_import.text = _("Restore backup");
+            menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_IMPORT_DB;
+            menu_import.tooltip_markup = Granite.markup_accel_tooltip ({"<Control><Shift>I"});
+
         var menu_about = new Gtk.ModelButton ();
             menu_about.centered = true;
-            menu_about.text = "About";
+            menu_about.text = _("About");
             menu_about.action_name = Window.ACTION_PREFIX + Window.ACTION_ABOUT_DIALOG;
             menu_about.tooltip_markup = Granite.markup_accel_tooltip ({"F1"});
 

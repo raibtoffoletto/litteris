@@ -20,6 +20,7 @@
 */
 
 public class Litteris.PenpalStatusBar : Gtk.Box {
+    public bool edit_mode { get; set; }
     public Litteris.PenpalView penpal_view { get; set; }
     public signal void statusbar_notification (string message);
     private Granite.Widgets.DatePicker new_mail_date;
@@ -29,7 +30,6 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     private Gtk.Button button_destroy;
     private Gtk.Button button_cancel;
     private Litteris.Utils utils;
-    public bool edit_mode { get; set; }
 
     public PenpalStatusBar (Litteris.PenpalView penpal_view) {
         Object (
@@ -48,7 +48,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         load_status_bar ();
 
         notify["edit-mode"].connect (() => {
-            if (edit_mode == false) {
+            if (!edit_mode) {
                 load_status_bar ();
             }
         });
@@ -57,7 +57,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     public void load_status_bar () {
         utils.remove_box_children (this);
 
-        var button_new_date = new Gtk.Button.with_label ("Register Mail");
+        var button_new_date = new Gtk.Button.with_label (_("Register Mail"));
             button_new_date.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             button_new_date.clicked.connect (register_mail);
 
@@ -104,17 +104,17 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         new_mail_mailtype.append_icon ("image-x-generic", Gtk.IconSize.BUTTON);
 
         new_mail_direction = new Granite.Widgets.ModeButton ();
-        new_mail_direction.append_text ("Received");
-        new_mail_direction.append_text ("Sent");
+        new_mail_direction.append_text (_("Received"));
+        new_mail_direction.append_text (_("Sent"));
 
         button_confirm = new Gtk.Button ();
-        button_confirm.label = new_mail ? "Add Mail" : "Save Changes";
+        button_confirm.label = new_mail ? _("Add Mail") : _("Save Changes");
         button_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        button_cancel = new Gtk.Button.with_label ("Discard Changes");
+        button_cancel = new Gtk.Button.with_label (_("Discard Changes"));
         button_cancel.clicked.connect (load_status_bar);
 
-        button_destroy = new Gtk.Button.with_label ("Remove Mail");
+        button_destroy = new Gtk.Button.with_label (_("Remove Mail"));
         button_destroy.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         var spacer = new Gtk.Grid ();
@@ -137,7 +137,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
     private void on_confirm_clicked (bool new_mail = true, string rowid = "") {
         if (new_mail_mailtype.selected == -1 || new_mail_direction.selected == -1) {
-            statusbar_notification ("Please select Letter/Postcard and Received/Sent");
+            statusbar_notification (_("Please select Letter/Postcard and Received/Sent"));
         } else {
             string query = "";
             var insert_date = new_mail_date.date.to_unix ().to_string ();
@@ -161,10 +161,10 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
             if (exec_query) {
                 penpal_view.get_penpal ();
-                statusbar_notification (new_mail ? "Mail Registered" : "Changes Saved");
+                statusbar_notification (new_mail ? _("Mail Registered") : _("Changes Saved"));
                 load_status_bar ();
             } else {
-                statusbar_notification ("Something went wrong...");
+                statusbar_notification (Utils.GENERIC_ERROR);
             }
         }
     }
@@ -172,17 +172,18 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     private void on_destroy_clicked (Litteris.MailDate edit_date) {
         var query = "DELETE FROM dates WHERE rowid = " + edit_date.rowid + ";";
 
-        var delete_mail_mailtype = (edit_date.mail_type == Litteris.MailDate.MailType.LETTER) ? "Letter" : "Postcard";
+        var delete_mail_mailtype = (edit_date.mail_type == Litteris.MailDate.MailType.LETTER) ?
+                                    _("letter") : _("postcard");
         var delete_mail_date = new DateTime.from_unix_utc (edit_date.date).format ("%x");
-        var dialog_title = "Remove " + delete_mail_mailtype + " from " + delete_mail_date + "?";
+        var dialog_title = _("Remove %s from %s?").printf (delete_mail_mailtype, delete_mail_date);
 
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
                                 dialog_title,
-                                "This will delete this date from the database permanently!",
+                                _("This will delete this date from the database permanently!"),
                                 "edit-delete",
                                 Gtk.ButtonsType.CANCEL);
 
-        var delete_confirm = new Gtk.Button.with_label ("Remove Mail");
+        var delete_confirm = new Gtk.Button.with_label (_("Remove Mail"));
             delete_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         dialog.add_action_widget (delete_confirm, Gtk.ResponseType.ACCEPT);
@@ -194,10 +195,10 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
             if (exec_query) {
                 penpal_view.get_penpal ();
-                statusbar_notification ("Mail Removed");
+                statusbar_notification (_("Mail Removed"));
                 load_status_bar ();
             } else {
-                statusbar_notification ("Something went wrong...");
+                statusbar_notification (Utils.GENERIC_ERROR);
             }
         }
 

@@ -20,16 +20,16 @@
 */
 
 public class Litteris.Penpal : Object {
-    public bool starred {get; set;}
-    public string rowid {get; construct;}
-    public string name {get; construct;}
-    public string nickname {get; construct;}
-    public string notes {get; construct;}
-    public string address {get; construct;}
-    public string country {get; construct;}
-    public string country_name {get; construct;}
-    public string country_emoji {get; construct;}
-    public string active_penpal {get; construct;}
+    public bool starred { get; set; }
+    public string rowid { get; construct; }
+    public string name { get; construct; }
+    public string nickname { get; construct; }
+    public string notes { get; construct; }
+    public string address { get; construct; }
+    public string country { get; construct; }
+    public string country_name { get; construct; }
+    public string country_emoji { get; construct; }
+    public string active_penpal { get; construct; }
     public Gee.ArrayList<Litteris.MailDate> mail_sent;
     public Gee.ArrayList<int> mail_sent_years;
     public Gee.ArrayList<Litteris.MailDate> mail_received;
@@ -89,10 +89,10 @@ public class Litteris.Penpal : Object {
                     var mail = new Litteris.MailDate ();
                         mail.rowid = v[0];
                         mail.date = int64.parse (v[1]);
-                        mail.mail_type = (int.parse (v[2]) == 0) ? Litteris.MailDate.MailType.LETTER
-                                                                : Litteris.MailDate.MailType.POSTCARD;
-                        mail.direction = (int.parse (v[3]) == 0) ? Litteris.MailDate.Direction.RECEIVED
-                                                                : Litteris.MailDate.Direction.SENT;
+                        mail.mail_type = (int.parse (v[2]) == MailDate.MailType.LETTER) ?
+                                            MailDate.MailType.LETTER : MailDate.MailType.POSTCARD;
+                        mail.direction = (int.parse (v[3]) == MailDate.Direction.RECEIVED) ?
+                                            MailDate.Direction.RECEIVED : MailDate.Direction.SENT;
                     add_mail (mail);
                     return 0;
                 }, out errmsg);
@@ -109,15 +109,17 @@ public class Litteris.Penpal : Object {
     private void add_mail (Litteris.MailDate mail) {
         var date = new DateTime.from_unix_utc (mail.date);
 
-        if (mail.direction == Litteris.MailDate.Direction.SENT) {
+        if (mail.direction == MailDate.Direction.SENT) {
             if (! mail_sent_years.contains (date.get_year ())) {
                 mail_sent_years.add (date.get_year ());
             }
+
             mail_sent.add (mail);
         } else {
             if (! mail_received_years.contains (date.get_year ())) {
                 mail_received_years.add (date.get_year ());
             }
+
             mail_received.add (mail);
         }
     }

@@ -20,6 +20,8 @@
 */
 
 public class Litteris.Utils {
+    public const string GENERIC_ERROR = _("Something went wrong...");
+
     public void remove_box_children (Gtk.Box box) {
         foreach (var x in box.get_children ()) {
             box.remove (x);
