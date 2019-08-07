@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2019 Raí B. Toffoletto <rai@toffoletto.me> -->
-<component type="addon">
+<component type="desktop-application">
   <id>com.github.raibtoffoletto.litteris</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
@@ -12,8 +12,8 @@
   </description>
 
   <custom>
-    <value key="x-appcenter-color-primary">#800080</value>
-    <value key="x-appcenter-color-primary-text">#223355</value>
+    <value key="x-appcenter-color-primary">#ffa154</value>
+    <value key="x-appcenter-color-primary-text">#0e141f</value>
     <value key="x-appcenter-suggested-price">0</value>
   </custom>
 
@@ -29,7 +29,7 @@
   <url type="help">https://github.com/raibtoffoletto/litteris/issues</url>
 
   <releases>
-    <release version="0.1.0" date="2019-08-07">
+    <release version="0.1.2" date="2019-08-07">
 ​      <description>
         <p>Initial Release</p>
 ​      </description>

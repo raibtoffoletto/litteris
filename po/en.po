@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-06 15:30+0200\n"
+"POT-Creation-Date: 2019-08-07 12:00+0200\n"
 "PO-Revision-Date: 2019-05-28 21:36+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -28,15 +28,22 @@ msgid "Penpal Correspondence Organized"
 msgstr "_(\"Penpal Correspondence Organized\")"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
-#, fuzzy
-msgid "description"
-msgstr "_(\"description\")"
+msgid ""
+"With Litteris you can organize your penpal contacts in a simple manner and "
+"keep track of your letters and postcards exchange."
+msgstr ""
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:25
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
+msgid ""
+"You can star your most frequent friends and search for that one you haven't "
+"talked much lately."
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
 msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:33
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:34
 #, fuzzy
 msgid "Initial Release"
 msgstr "_(\"Initial Release\")"
@@ -192,7 +199,11 @@ msgstr ""
 msgid "Penpals"
 msgstr ""
 
-#: src/Widgets/PenpalList.vala:133
+#: src/Widgets/PenpalList.vala:92
+msgid "No friends yet 😔️"
+msgstr ""
+
+#: src/Widgets/PenpalList.vala:143
 msgid "No matches ..."
 msgstr ""
 
@@ -276,3 +287,7 @@ msgstr ""
 #: src/Widgets/Welcome.vala:35
 msgid "Too many penpals? Look up their name!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "description"
+#~ msgstr "_(\"description\")"
