@@ -21,8 +21,10 @@
 
 <p align="center">
   <img align="left" width="64" height="64" src="data/icons/com.github.raibtoffoletto.litteris.svg" />
-  <h1 class="rich-diff-level-zero">Litteris 
-  [![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)](https://travis-ci.org/raibtoffoletto/litteris)</h1>
+  <h1 class="rich-diff-level-zero">
+    Litteris 
+    <img alt="Build Status" src="https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master" align="right">
+  </h1>
   <h3>Penpal Correspondence Organized</h3>
 </p>
 
