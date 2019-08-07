@@ -17,7 +17,6 @@
 * Boston, MA 02110-1301 USA
 *
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
-* falta icones, screenshot, descrição et files infos
 -->
 
 <p align="center">
@@ -26,7 +25,8 @@
   <h3>Penpal Correspondence Organized</h3>
 </p>
 
-> With Litteris you can organize your penpal contacts in a simple manner and keep track of your letters and postcards exchange.
+> With Litteris you can organize your penpal contacts in a simple manner
+> and keep track of your letters and postcards exchange. <br />
 > You can star your most frequent friends and search for that one you haven't talked much lately.
 
 ![](data/com.github.raibtoffoletto.litteris.screenshot.png)
