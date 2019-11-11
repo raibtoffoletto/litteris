@@ -110,7 +110,7 @@ public class Litteris.PenpalView : Gtk.Grid {
             header_box.pack_end (grid_icons, false, false);
 
         /* penpal info */
-        var label_notes = new Gtk.Label (_("<b>Notes : </b>"));
+        var label_notes = new Gtk.Label ("<b>" + _("Notes :") + " </b>");
             label_notes.use_markup = true;
             label_notes.halign = Gtk.Align.START;
 
@@ -124,7 +124,7 @@ public class Litteris.PenpalView : Gtk.Grid {
         label_notes_content.selectable = true;
         label_notes_content.can_focus = false;
 
-        var label_address = new Gtk.Label (_("<b>Address : </b>"));
+        var label_address = new Gtk.Label ("<b>" + _("Address :") + " </b>");
             label_address.use_markup = true;
             label_address.halign = Gtk.Align.START;
 
@@ -139,11 +139,11 @@ public class Litteris.PenpalView : Gtk.Grid {
         label_address_content.can_focus = false;
         label_address_content.use_markup = true;
 
-        var label_sent = new Gtk.Label (_("<b>Sent :</b>"));
+        var label_sent = new Gtk.Label ("<b>" + _("Sent :") + " </b>");
             label_sent.use_markup = true;
             label_sent.halign = Gtk.Align.START;
 
-        var label_received = new Gtk.Label (_("<b>Received :</b>"));
+        var label_received = new Gtk.Label ("<b>" + _("Received :") + " </b>");
             label_received.use_markup = true;
             label_received.halign = Gtk.Align.START;
 

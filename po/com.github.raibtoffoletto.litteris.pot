@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-07 12:00+0200\n"
+"POT-Creation-Date: 2019-11-11 09:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:7
-msgid "Litteris"
-msgstr ""
-
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8 src/Window.vala:343
-#: src/Widgets/Welcome.vala:29
-msgid "Penpal Correspondence Organized"
-msgstr ""
-
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
-msgid ""
-"With Litteris you can organize your penpal contacts in a simple manner and "
-"keep track of your letters and postcards exchange."
-msgstr ""
-
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
-msgid ""
-"You can star your most frequent friends and search for that one you haven't "
-"talked much lately."
-msgstr ""
-
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
-msgid "Raí B. Toffoletto"
-msgstr ""
-
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:34
-msgid "Initial Release"
+#: src/Application.vala:62
+msgid "Backup restored with success!"
 msgstr ""
 
 #: src/Header.vala:36 src/Widgets/Welcome.vala:34
@@ -125,12 +100,12 @@ msgstr ""
 msgid "Backup created with success!"
 msgstr ""
 
-#: src/Services/CountryCodes.vala:101
-msgid "Country not found"
+#: src/Window.vala:343 src/Widgets/Welcome.vala:29
+msgid "Penpal Correspondence Organized"
 msgstr ""
 
-#: src/Services/Utils.vala:23
-msgid "Something went wrong..."
+#: src/Services/CountryCodes.vala:101
+msgid "Country not found"
 msgstr ""
 
 #: src/Widgets/AppMenu.vala:37
@@ -161,11 +136,12 @@ msgstr ""
 msgid "Nickname :"
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:80
+#. penpal info
+#: src/Widgets/PenpalDialog.vala:80 src/Widgets/PenpalView.vala:113
 msgid "Notes :"
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:94
+#: src/Widgets/PenpalDialog.vala:94 src/Widgets/PenpalView.vala:127
 msgid "Address :"
 msgstr ""
 
@@ -183,6 +159,18 @@ msgstr ""
 
 #: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:111
 msgid "Save Changes"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:197
+msgid "Discard Changes?"
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:198
+msgid "You will loose all changes made so far."
+msgstr ""
+
+#: src/Widgets/PenpalDialog.vala:202
+msgid "Discard"
 msgstr ""
 
 #: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
@@ -205,20 +193,12 @@ msgstr ""
 msgid "No matches ..."
 msgstr ""
 
-#: src/Widgets/PenpalView.vala:113
-msgid "<b>Notes : </b>"
-msgstr ""
-
-#: src/Widgets/PenpalView.vala:127
-msgid "<b>Address : </b>"
-msgstr ""
-
 #: src/Widgets/PenpalView.vala:142
-msgid "<b>Sent :</b>"
+msgid "Sent :"
 msgstr ""
 
 #: src/Widgets/PenpalView.vala:146
-msgid "<b>Received :</b>"
+msgid "Received :"
 msgstr ""
 
 #: src/Widgets/PenpalView.vala:336
