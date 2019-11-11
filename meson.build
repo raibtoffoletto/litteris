@@ -1,9 +1,12 @@
-project('com.github.raibtoffoletto.litteris', 'vala', 'c')
+project('com.github.raibtoffoletto.litteris', 'vala', 'c', version: '0.1.2')
 
-i18n = import('i18n')
 gnome = import('gnome')
-gettext_name = meson.project_name()
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format(gettext_name), language:'c')
+i18n = import('i18n')
+
+add_project_arguments(
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    language: 'c'
+)
 
 subdir ('src')
 subdir ('data')
