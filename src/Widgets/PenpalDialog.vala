@@ -194,12 +194,12 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
             entry_country.text != "") {
 
             var dialog_discard = new Granite.MessageDialog.with_image_from_icon_name (
-                                        "Discard Changes?",
-                                        "You will loose all changes made so far.",
+                                        _("Discard Changes?"),
+                                        _("You will loose all changes made so far."),
                                         "edit-delete",
                                         Gtk.ButtonsType.CANCEL);
 
-            var delete_confirm = new Gtk.Button.with_label ("Discard");
+            var delete_confirm = new Gtk.Button.with_label (_("Discard"));
                 delete_confirm.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
             dialog_discard.add_action_widget (delete_confirm, Gtk.ResponseType.ACCEPT);

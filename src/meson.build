@@ -6,7 +6,7 @@ dependencies = [
     dependency('gee-0.8')
 ]
 
-src_files = [
+sources = files(
     'Application.vala',
     'Header.vala',
     'Window.vala',
@@ -21,11 +21,11 @@ src_files = [
     'Widgets/PenpalView.vala',
     'Widgets/PenpalStatusBar.vala',
     'Widgets/Welcome.vala'
-]
+)
 
 executable(
     meson.project_name(),
-    src_files,
+    sources,
     dependencies: dependencies,
     install: true
 )

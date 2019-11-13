@@ -59,7 +59,7 @@ public class Litteris.Application : Gtk.Application {
         main_window = new Litteris.Window (this);
         add_window (main_window);
         main_window.present ();
-        main_window.show_mainwindow_notification ("Backup restored with success!");
+        main_window.show_mainwindow_notification (_("Backup restored with success!"));
     }
 
     public static int main (string[] args) {
