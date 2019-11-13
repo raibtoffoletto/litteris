@@ -1,0 +1,64 @@
+# Dutch translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Heimen Stoffels <vistausss@outlook.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-13 16:37+0100\n"
+"PO-Revision-Date: 2019-11-13 16:34+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: none\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:3
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:7
+msgid "Litteris"
+msgstr "Litteris"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:4
+msgid "Mail Manager"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:5
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
+msgid "Penpal Correspondence Organized"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:8
+msgid "com.github.raibtoffoletto.litteris"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:11
+msgid "Mail;Letter;Postcard;Contacts;"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
+msgid ""
+"With Litteris you can organize your penpal contacts in a simple manner and "
+"keep track of your letters and postcards exchange."
+msgstr ""
+"Met Litteris kun je eenvoudig je penvrienden beheren en de uitgewisselde "
+"brieven en briefkaarten bijhouden."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
+msgid ""
+"You can star your most frequent friends and search for that one you haven't "
+"talked much lately."
+msgstr ""
+"Voeg de vrienden waarmee je het vaakst communiceert toe aan je favorieten en "
+"vind de vriend(in) die je al lang niet meer gesproken hebt."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
+msgid "Raí B. Toffoletto"
+msgstr "Raí B. Toffoletto"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:34
+msgid "Initial Release"
+msgstr "Initiële uitgave"
