@@ -1,0 +1,65 @@
+# French translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Nathan Bonnemains (@NathanBnm), 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-13 19:10+0100\n"
+"PO-Revision-Date: 2019-11-13 18:42+0100\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:3
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:7
+msgid "Litteris"
+msgstr "Litteris"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:4
+msgid "Mail Manager"
+msgstr "Gestionnaire d'e-mails"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:5
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
+msgid "Penpal Correspondence Organized"
+msgstr "Correspondance organisée"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:8
+msgid "com.github.raibtoffoletto.litteris"
+msgstr "com.github.raibtoffoletto.litteris"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:11
+msgid "Mail;Letter;Postcard;Contacts;"
+msgstr "E-mail;Lettre;Carte postale;Contacts;"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
+msgid ""
+"With Litteris you can organize your penpal contacts in a simple manner and "
+"keep track of your letters and postcards exchange."
+msgstr ""
+"Avec Litteris vous pouvez organiser vos contacts de correspondants de façon "
+"très simple et suivre vos échanges de lettres et de cartes postales."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
+msgid ""
+"You can star your most frequent friends and search for that one you haven't "
+"talked much lately."
+msgstr ""
+"Vous pouvez mettre en favoris les correspondants avec qui vous échangez le "
+"plus souvent et rechercher ceux avec qui vous n'avez pas échangé "
+"dernièrement."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
+msgid "Raí B. Toffoletto"
+msgstr "Raí B. Toffoletto"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:34
+msgid "Initial Release"
+msgstr "Version initiale"
