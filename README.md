@@ -59,6 +59,8 @@ $ sudo ninja install
 ## Generating i18n files
 ```bash
 # in ./build directory
-$ sudo ninja com.github.raibtoffoletto.litteris-pot
-$ sudo ninja com.github.raibtoffoletto.litteris-update-po
+$ ninja com.github.raibtoffoletto.litteris-pot
+$ ninja com.github.raibtoffoletto.litteris-update-po
+$ ninja extra-pot
+$ ninja extra-update-po
 ```
