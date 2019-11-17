@@ -21,12 +21,12 @@
 
 <p>
   <img align="left" width="64" height="64" src="data/icons/com.github.raibtoffoletto.litteris.svg" />
-  <h1 class="rich-diff-level-zero">
-    Litteris
-  </h1>
   <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
     <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" align="right" />
   </a>
+  <h1 class="rich-diff-level-zero">
+    Litteris
+  </h1>
 </p>
 
 ![](https://img.shields.io/github/license/raibtoffoletto/litteris.svg)
