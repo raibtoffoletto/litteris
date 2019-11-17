@@ -23,15 +23,15 @@
   <img align="left" width="64" height="64" src="data/icons/com.github.raibtoffoletto.litteris.svg" />
   <h1 class="rich-diff-level-zero">
     Litteris
-    <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris" style="float:right;">
-      <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter">
-    </a>
   </h1>
+  <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris" align="right">
+    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" />
+  </a>
 </p>
 
-![(https://img.shields.io/github/license/raibtoffoletto/litteris.svg)
-![(https://img.shields.io/github/v/release/raibtoffoletto/litteris.svg)
-![(https://img.shields.io/badge/Vala-GTK+3-yellowgreen)
+![](https://img.shields.io/github/license/raibtoffoletto/litteris.svg)
+![](https://img.shields.io/github/v/release/raibtoffoletto/litteris.svg)
+![](https://img.shields.io/badge/Vala-GTK+3-yellowgreen)
 ![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)
  
 ### Penpal Correspondence Organized
