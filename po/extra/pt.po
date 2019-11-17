@@ -2,71 +2,77 @@
 # Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
 # Automatically generated, 2019.
+# Raí B. Toffoletto <rai@toffoletto.me>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-15 13:40+0100\n"
-"PO-Revision-Date: 2019-11-15 13:40+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2019-11-17 14:54+0100\n"
+"PO-Revision-Date: 2019-11-15 14:08+0100\n"
+"Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
+"Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:3
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:7
 msgid "Litteris"
-msgstr ""
+msgstr "Litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:4
 msgid "Mail Manager"
-msgstr ""
+msgstr "Gerenciador de correio"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:5
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
 msgid "Penpal Correspondence Organized"
-msgstr ""
+msgstr "Organise a Correspondência com seus Penpals"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:8
 msgid "com.github.raibtoffoletto.litteris"
-msgstr ""
+msgstr "com.github.raibtoffoletto.litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:11
 msgid "Mail;Letter;Postcard;Contacts;"
-msgstr ""
+msgstr "Correio;Cartas;Postais;Contactos;"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
 msgid ""
 "With Litteris you can organize your penpal contacts in a simple manner and "
 "keep track of your letters and postcards exchange."
 msgstr ""
+"Com Litteris você pode organisar os seus penpals e registrar sua "
+"correspondência com cada um deles."
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
 msgid ""
 "You can star your most frequent friends or search for that one you haven't "
 "talked much lately."
 msgstr ""
+"Favorite seus amigos mais freqüentes ou busque por aquele para quem você não "
+"escreve há tempos."
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
 msgid "Raí B. Toffoletto"
-msgstr ""
+msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "Pequenos bugs resolvidos"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
 msgid "Better icon support"
-msgstr ""
+msgstr "Melhor ícone suporte"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:37
 msgid "Portuguese translation added"
-msgstr ""
+msgstr "Tradução ao Português adicionada"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:38
-msgid "Heimen Stoffels"
-msgstr ""
+msgid "Dutch translation by Heimen Stoffels"
+msgstr "Tradução ao Holandês por Heimen Stoffels"

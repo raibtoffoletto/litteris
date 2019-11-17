@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.raibtoffoletto.litteris package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Raí B. Toffoletto <rai@toffoletto.me>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-15 13:38+0100\n"
-"PO-Revision-Date: 2019-11-04 13:54+0100\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2019-11-17 14:54+0100\n"
+"PO-Revision-Date: 2019-11-17 15:05+0100\n"
+"Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
+"Language-Team: Portuguese <>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/Application.vala:62
-#, fuzzy
 msgid "Backup restored with success!"
 msgstr "De back-up is gemaakt!"
 
@@ -164,18 +164,16 @@ msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
 #: src/Widgets/PenpalDialog.vala:197
-#, fuzzy
 msgid "Discard Changes?"
 msgstr "Wijzigingen verwerpen"
 
 #: src/Widgets/PenpalDialog.vala:198
-msgid "You will loose all changes made so far."
-msgstr ""
+msgid "You will lose all changes made so far."
+msgstr "Je zult verliezen alle wijzigingen."
 
 #: src/Widgets/PenpalDialog.vala:202
-#, fuzzy
 msgid "Discard"
-msgstr "briefkaart"
+msgstr "Briefkaart"
 
 #: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
 msgid "Search"
@@ -198,14 +196,12 @@ msgid "No matches ..."
 msgstr "Geen overeenkomsten..."
 
 #: src/Widgets/PenpalView.vala:142
-#, fuzzy
 msgid "Sent :"
-msgstr "Verstuurd"
+msgstr "Verstuurd :"
 
 #: src/Widgets/PenpalView.vala:146
-#, fuzzy
 msgid "Received :"
-msgstr "Ontvangen"
+msgstr "Ontvangen :"
 
 #: src/Widgets/PenpalView.vala:336
 msgid "Penpal updated with success!"
