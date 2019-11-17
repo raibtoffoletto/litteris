@@ -19,16 +19,19 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 -->
 
-<p align="center">
+<p>
   <img align="left" width="64" height="64" src="data/icons/com.github.raibtoffoletto.litteris.svg" />
   <h1 class="rich-diff-level-zero">
-    Litteris 
-    <img alt="Build Status" src="https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master" align="right">
+    Litteris
+  <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris" style="float:right;">
+    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter">
+  </a> 
   </h1>
-  <h3>Penpal Correspondence Organized</h3>
 </p>
-
-> With Litteris you can organize your penpal contacts in a simple manner
+![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)
+ 
+### Penpal Correspondence Organized
+> With Litteris you can organize your penpal contacts
 > and keep track of your letters and postcards exchange. <br />
 > You can star your most frequent friends and search for that one you haven't talked much lately.
 
