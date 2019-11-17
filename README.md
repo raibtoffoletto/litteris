@@ -24,17 +24,15 @@
   <h1 class="rich-diff-level-zero">
     Litteris
   </h1>
-</p>
-
-<p>
-  <img src="https://img.shields.io/github/license/raibtoffoletto/litteris.svg" alt="License" />
-  <img src="https://img.shields.io/github/v/release/raibtoffoletto/litteris.svg" alt="Release" />
-  <img src="https://img.shields.io/badge/Vala-GTK+3-yellowgreen" alt="Language" />
-  <img src="https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master" alt="Build passing" />
-  <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris" align="right">
-    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" />
+  <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
+    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" align="right" />
   </a>
 </p>
+
+![](https://img.shields.io/github/license/raibtoffoletto/litteris.svg)
+![](https://img.shields.io/github/v/release/raibtoffoletto/litteris.svg)
+![](https://img.shields.io/badge/Vala-GTK+3-yellowgreen)
+![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)
  
 ### Penpal Correspondence Organized
 > With Litteris you can organize your penpal contacts
