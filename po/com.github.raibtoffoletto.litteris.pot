@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-11 09:04+0100\n"
+"POT-Creation-Date: 2019-11-17 14:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgid "Discard Changes?"
 msgstr ""
 
 #: src/Widgets/PenpalDialog.vala:198
-msgid "You will loose all changes made so far."
+msgid "You will lose all changes made so far."
 msgstr ""
 
 #: src/Widgets/PenpalDialog.vala:202

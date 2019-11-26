@@ -195,7 +195,7 @@ public class Litteris.PenpalDialog : Gtk.Dialog {
 
             var dialog_discard = new Granite.MessageDialog.with_image_from_icon_name (
                                         _("Discard Changes?"),
-                                        _("You will loose all changes made so far."),
+                                        _("You will lose all changes made so far."),
                                         "edit-delete",
                                         Gtk.ButtonsType.CANCEL);
 

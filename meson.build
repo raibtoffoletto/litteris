@@ -1,4 +1,4 @@
-project('com.github.raibtoffoletto.litteris', 'vala', 'c', version: '0.1.2')
+project('com.github.raibtoffoletto.litteris', 'vala', 'c', version: '0.1.3')
 
 gnome = import('gnome')
 i18n = import('i18n')
@@ -8,8 +8,8 @@ add_project_arguments(
     language: 'c'
 )
 
-subdir ('src')
-subdir ('data')
-subdir ('po')
+subdir('src')
+subdir('data')
+subdir('po')
 
 meson.add_install_script('meson/post_install.py')
