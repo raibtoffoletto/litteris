@@ -19,16 +19,23 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 -->
 
-<p align="center">
+<p>
   <img align="left" width="64" height="64" src="data/icons/com.github.raibtoffoletto.litteris.svg" />
+  <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
+    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" align="right" />
+  </a>
   <h1 class="rich-diff-level-zero">
-    Litteris 
-    <img alt="Build Status" src="https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master" align="right">
+    Litteris
   </h1>
-  <h3>Penpal Correspondence Organized</h3>
 </p>
 
-> With Litteris you can organize your penpal contacts in a simple manner
+![](https://img.shields.io/github/license/raibtoffoletto/litteris.svg)
+![](https://img.shields.io/github/v/release/raibtoffoletto/litteris.svg)
+![](https://img.shields.io/badge/Vala-GTK+3-yellowgreen)
+![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)
+ 
+### Penpal Correspondence Organized
+> With Litteris you can organize your penpal contacts
 > and keep track of your letters and postcards exchange. <br />
 > You can star your most frequent friends and search for that one you haven't talked much lately.
 
@@ -59,6 +66,8 @@ $ sudo ninja install
 ## Generating i18n files
 ```bash
 # in ./build directory
-$ sudo ninja com.github.raibtoffoletto.litteris-pot
-$ sudo ninja com.github.raibtoffoletto.litteris-update-po
+$ ninja com.github.raibtoffoletto.litteris-pot
+$ ninja com.github.raibtoffoletto.litteris-update-po
+$ ninja extra-pot
+$ ninja extra-update-po
 ```

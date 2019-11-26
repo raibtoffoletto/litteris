@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-11 09:04+0100\n"
+"POT-Creation-Date: 2019-11-17 14:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
 msgid ""
-"You can star your most frequent friends and search for that one you haven't "
+"You can star your most frequent friends or search for that one you haven't "
 "talked much lately."
 msgstr ""
 
@@ -55,6 +55,18 @@ msgstr ""
 msgid "Raí B. Toffoletto"
 msgstr ""
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:34
-msgid "Initial Release"
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
+msgid "Minor bug fixes"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+msgid "Better icon support"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:37
+msgid "Portuguese translation added"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:38
+msgid "Dutch translation by Heimen Stoffels"
 msgstr ""

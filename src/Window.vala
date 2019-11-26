@@ -344,9 +344,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             about_dialog.copyright = "Copyright © 2019 Raí B. Toffoletto";
             about_dialog.license_type = Gtk.License.GPL_3_0;
             about_dialog.logo_icon_name = "dialog-information";
-            about_dialog.version = "0.1";
-            about_dialog.website = "https://github.com/raibtoffoletto/litteris";
-            about_dialog.website_label = "github.com/raibtoffoletto/litteris";
+            about_dialog.version = "0.1.3";
+            about_dialog.website = "https://toffoletto.me";
+            about_dialog.website_label = "toffoletto.me";
             about_dialog.response.connect ((response_id) => {
                 if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT) {
                     about_dialog.hide_on_delete ();
