@@ -1,22 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Dutch translations for com.github.raibtoffoletto.litteris package.
+# Copyright (C) 2019 THE com.github.raibtoffoletto.litteris'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.raibtoffoletto.litteris package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Raí B. Toffoletto <rai@toffoletto.me>, 2019.
+# Heimen Stoffels <vistausss@outlook.com>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 14:54+0100\n"
-"PO-Revision-Date: 2019-11-17 15:05+0100\n"
-"Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
-"Language-Team: Portuguese <>\n"
+"POT-Creation-Date: 2019-11-13 16:36+0100\n"
+"PO-Revision-Date: 2019-11-13 16:35+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: none\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/Application.vala:62
@@ -267,41 +265,3 @@ msgstr "Voeg een vriend(in) toe om jullie correspondentie bij te houden."
 #: src/Widgets/Welcome.vala:35
 msgid "Too many penpals? Look up their name!"
 msgstr "Te veel vrienden? Zoek op naam!"
-
-#~ msgid "Litteris"
-#~ msgstr "Litteris"
-
-#~ msgid ""
-#~ "With Litteris you can organize your penpal contacts in a simple manner "
-#~ "and keep track of your letters and postcards exchange."
-#~ msgstr ""
-#~ "Met Litteris kun je eenvoudig je penvrienden beheren en de uitgewisselde "
-#~ "brieven en briefkaarten bijhouden."
-
-#~ msgid ""
-#~ "You can star your most frequent friends and search for that one you "
-#~ "haven't talked much lately."
-#~ msgstr ""
-#~ "Voeg de vrienden waarmee je het vaakst communiceert toe aan je favorieten "
-#~ "en vind de vriend(in) die je al lang niet meer gesproken hebt."
-
-#~ msgid "Raí B. Toffoletto"
-#~ msgstr "Raí B. Toffoletto"
-
-#~ msgid "Initial Release"
-#~ msgstr "Initiële uitgave"
-
-#~ msgid "Something went wrong..."
-#~ msgstr "Er is iets misgegaan..."
-
-#~ msgid "<b>Notes : </b>"
-#~ msgstr "<b>Aantekeningen:</b>"
-
-#~ msgid "<b>Address : </b>"
-#~ msgstr "<b>Adres:</b>"
-
-#~ msgid "<b>Sent :</b>"
-#~ msgstr "<b>Verstuurd:</b>"
-
-#~ msgid "<b>Received :</b>"
-#~ msgstr "<b>Ontvangen:</b>"
