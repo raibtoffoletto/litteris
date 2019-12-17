@@ -1,0 +1,75 @@
+# Polish translations for Litteris.
+# This file is distributed under the same license as the com.github.raibtoffoletto.litteris.
+# Translated by Michał Nowakowski <nowakowski@offshore.rocks> & Rudka Zydel (she created a Polish translation for the word "penpal" – "piórodruh") 2019. 
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.raibtoffoletto.litteris\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-17 14:54+0100\n"
+"PO-Revision-Date: 2019-12-12 17:08+0100\n"
+"Last-Translator: Michał Nowakowski <nowakowski@offshore.rocks>\n"
+"Language-Team:\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:3
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:7
+msgid "Litteris"
+msgstr "Litteris"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:4
+msgid "Mail Manager"
+msgstr "Zarządzanie korespondencją"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:5
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
+msgid "Penpal Correspondence Organized"
+msgstr "Uporządkuj korespondencję z piórodruhami"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:8
+msgid "com.github.raibtoffoletto.litteris"
+msgstr "com.github.raibtoffoletto.litteris"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:11
+msgid "Mail;Letter;Postcard;Contacts;"
+msgstr "Przesyłka;List;Pocztówka;Kontakty;"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
+msgid ""
+"With Litteris you can organize your penpal contacts in a simple manner and "
+"keep track of your letters and postcards exchange."
+msgstr ""
+"Z Litteris możesz łatwo uporządkować druhów od pióra i śledzić "
+"waszą wymianę listów i pocztówek."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
+msgid ""
+"You can star your most frequent friends or search for that one you haven't "
+"talked much lately."
+msgstr ""
+"Dodaj gwiazdkę przy druhach, z którymi piszesz często albo szukaj tych, "
+"z którymi urwał ci się ostatnio kontakt."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
+msgid "Raí B. Toffoletto"
+msgstr "Raí B. Toffoletto"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
+msgid "Minor bug fixes"
+msgstr "Drobne poprawki błędów"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+msgid "Better icon support"
+msgstr "Lepsze wsparcie dla ikon"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:37
+msgid "Portuguese translation added"
+msgstr "Dodano portugalskie tłumaczenie"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:38
+msgid "Dutch translation by Heimen Stoffels"
+msgstr "Dodano niderlandzki tłumaczenie autorstwa Heimena Stoffelsa"
