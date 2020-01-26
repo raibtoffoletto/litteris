@@ -378,7 +378,7 @@ public class Litteris.DataBase {
         var exec_query = db.exec (query);
 
         if (exec_query != Sqlite.OK) {
-            print ("Couldn't initialize database...\n");
+            print ("Couldn't initialize database…\n");
             return;
         }
     }

@@ -192,7 +192,7 @@ msgid "No friends yet 😔️"
 msgstr "Você ainda não tem nenhum contato 😔️"
 
 #: src/Widgets/PenpalList.vala:143
-msgid "No matches ..."
+msgid "No matches…"
 msgstr "Nenhum resultado"
 
 #: src/Widgets/PenpalView.vala:142

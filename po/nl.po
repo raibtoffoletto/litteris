@@ -190,8 +190,8 @@ msgid "No friends yet 😔️"
 msgstr "Je hebt nog geen vrienden 😔️"
 
 #: src/Widgets/PenpalList.vala:143
-msgid "No matches ..."
-msgstr "Geen overeenkomsten..."
+msgid "No matches…"
+msgstr "Geen overeenkomsten…"
 
 #: src/Widgets/PenpalView.vala:142
 msgid "Sent :"
