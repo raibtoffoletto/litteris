@@ -140,7 +140,7 @@ public class Litteris.PenpalList : Gtk.Box {
             }, out errmsg);
 
         if (count == 0) {
-            var no_matches = new Granite.Widgets.SourceList.Item (_("No matches ..."));
+            var no_matches = new Granite.Widgets.SourceList.Item (_("No matches…"));
                 no_matches.selectable = false;
             group.add (no_matches);
         }
