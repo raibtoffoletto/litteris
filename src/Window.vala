@@ -38,6 +38,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     public const string ACTION_APP_EXIT = "app-exit";
     public const string ACTION_IMPORT_DB = "import-db";
     public const string ACTION_EXPORT_DB = "export-db";
+    public const string ACTION_SYNC = "sync";
     private const ActionEntry[] action_entries = {
         { ACTION_NEW_PENPAL, new_penpal },
         { ACTION_EDIT_PENPAL, edit_penpal },
@@ -47,6 +48,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         { ACTION_INVERT_THEME, invert_color_mode },
         { ACTION_IMPORT_DB, import_db },
         { ACTION_EXPORT_DB, export_db },
+        { ACTION_SYNC, sync },
         { ACTION_ABOUT_DIALOG, about_dialog },
         { ACTION_APP_EXIT, app_exit }
     };
@@ -86,6 +88,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         action_accelerators.set (ACTION_ABOUT_DIALOG, "F1");
         action_accelerators.set (ACTION_IMPORT_DB, "<Control><Shift>I");
         action_accelerators.set (ACTION_EXPORT_DB, "<Control><Shift>E");
+        action_accelerators.set (ACTION_SYNC, "<Control><Shift>S");
         action_accelerators.set (ACTION_APP_EXIT, "<Control>Q");
     }
 
@@ -333,6 +336,11 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         }
 
         file_dialog.destroy ();
+    }
+
+    public void sync () {
+        var sync_dialog = new Litteris.SyncDialog (this);
+            sync_dialog.present ();
     }
 
     public void about_dialog () {

@@ -137,7 +137,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
     private void on_confirm_clicked (bool new_mail = true, string rowid = "") {
         if (new_mail_mailtype.selected == -1 || new_mail_direction.selected == -1) {
-            statusbar_notification (_("Please select Letter/Postcard and Received/Sent"));
+            statusbar_notification (_("Please select Letter/Postcard and Received/Sent properly"));
         } else {
             string query = "";
             var insert_date = new_mail_date.date.to_unix ().to_string ();

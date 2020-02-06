@@ -33,7 +33,7 @@
 ![](https://img.shields.io/github/v/release/raibtoffoletto/litteris.svg)
 ![](https://img.shields.io/badge/Vala-GTK+3-yellowgreen)
 ![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)
- 
+
 ### Penpal Correspondence Organized
 > With Litteris you can organize your penpal contacts
 > and keep track of your letters and postcards exchange. <br />
@@ -63,7 +63,7 @@ $ ninja
 $ sudo ninja install
 ```
 
-## Generating i18n files
+### Generating i18n files
 ```bash
 # in ./build directory
 $ ninja com.github.raibtoffoletto.litteris-pot
@@ -71,3 +71,7 @@ $ ninja com.github.raibtoffoletto.litteris-update-po
 $ ninja extra-pot
 $ ninja extra-update-po
 ```
+
+## How to contribute:
+All contributions, code improvements, translation, bug solving, etc. are mostly welcome. The pull requests should be made to the branch **unstable**.
+

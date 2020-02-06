@@ -71,6 +71,12 @@ public class Litteris.AppMenu : Gtk.Popover {
             menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_IMPORT_DB;
             menu_import.tooltip_markup = Granite.markup_accel_tooltip ({"<Control><Shift>I"});
 
+        var menu_sync = new Gtk.ModelButton ();
+            menu_sync.centered = true;
+            menu_sync.text = _("Sync options");
+            menu_sync.action_name =  Window.ACTION_PREFIX + Window.ACTION_SYNC;
+            menu_sync.tooltip_markup = Granite.markup_accel_tooltip ({"<Control><Shift>S"});
+
         var menu_about = new Gtk.ModelButton ();
             menu_about.centered = true;
             menu_about.text = _("About");
@@ -83,6 +89,7 @@ public class Litteris.AppMenu : Gtk.Popover {
             menu_grid.pack_start (menu_separator);
             menu_grid.pack_start (menu_export);
             menu_grid.pack_start (menu_import);
+            menu_grid.pack_start (menu_sync);
             menu_grid.pack_start (menu_separator2);
             menu_grid.pack_start (menu_about);
             menu_grid.show_all ();

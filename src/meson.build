@@ -20,6 +20,7 @@ sources = files(
     'Widgets/PenpalList.vala',
     'Widgets/PenpalView.vala',
     'Widgets/PenpalStatusBar.vala',
+    'Widgets/SyncDialog.vala',
     'Widgets/Welcome.vala'
 )
 

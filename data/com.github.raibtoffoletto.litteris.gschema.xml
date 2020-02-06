@@ -27,4 +27,16 @@
             <description>Position of the paned divider</description>
         </key>
     </schema>
+    <schema path="/com/github/raibtoffoletto/litteris/sync/" id="com.github.raibtoffoletto.litteris.sync">
+        <key name="sync" type="b">
+            <default>false</default>
+            <summary>Sync Database</summary>
+            <description>Uses a folder synced with the cloud to keep database up-to-date</description>
+        </key>
+        <key name="path" type="s">
+            <default>""</default>
+            <summary>Sync Path</summary>
+            <description>Path to folder synced with the cloud</description>
+        </key>
+    </schema>
 </schemalist>

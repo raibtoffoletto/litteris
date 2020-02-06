@@ -23,6 +23,7 @@ public class Litteris.Application : Gtk.Application {
     public Litteris.Window main_window;
     public static Litteris.DataBase database;
     public static GLib.Settings settings;
+    public static GLib.Settings sync_settings;
 
     public Application () {
         Object (
@@ -33,6 +34,7 @@ public class Litteris.Application : Gtk.Application {
 
     static construct {
         settings = new GLib.Settings ("com.github.raibtoffoletto.litteris");
+        sync_settings = new GLib.Settings ("com.github.raibtoffoletto.litteris.sync");
         database = new Litteris.DataBase ();
     }
 

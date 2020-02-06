@@ -28,6 +28,10 @@ public class Litteris.DataBase {
         return Path.build_filename (Environment.get_user_data_dir (), "litteris", "litteris.db");
     }
 
+    public string get_sync_path () {
+        return Path.build_filename (Environment.get_user_data_dir (), ".litteris", "litteris.db");
+    }
+
     public bool export_database (string target_file) {
         var target = File.new_for_path (target_file);
         try {
