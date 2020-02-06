@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 14:54+0100\n"
+"POT-Creation-Date: 2020-02-06 17:27+0100\n"
 "PO-Revision-Date: 2019-11-15 14:08+0100\n"
 "Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
 "Language-Team: Portuguese <>\n"
@@ -62,17 +62,19 @@ msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
-msgid "Minor bug fixes"
+#, fuzzy
+msgid "Minor fixes"
 msgstr "Pequenos bugs resolvidos"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
-msgid "Better icon support"
-msgstr "Melhor ícone suporte"
+msgid "Polish translation by Michal Nowakowski"
+msgstr ""
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:37
-msgid "Portuguese translation added"
-msgstr "Tradução ao Português adicionada"
+#~ msgid "Better icon support"
+#~ msgstr "Melhor ícone suporte"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:38
-msgid "Dutch translation by Heimen Stoffels"
-msgstr "Tradução ao Holandês por Heimen Stoffels"
+#~ msgid "Portuguese translation added"
+#~ msgstr "Tradução ao Português adicionada"
+
+#~ msgid "Dutch translation by Heimen Stoffels"
+#~ msgstr "Tradução ao Holandês por Heimen Stoffels"

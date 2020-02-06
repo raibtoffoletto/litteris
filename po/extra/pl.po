@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 14:54+0100\n"
+"POT-Creation-Date: 2020-02-06 17:27+0100\n"
 "PO-Revision-Date: 2019-12-12 17:08+0100\n"
 "Last-Translator: Michał Nowakowski <nowakowski@offshore.rocks>\n"
 "Language-Team:\n"
@@ -43,33 +43,35 @@ msgid ""
 "With Litteris you can organize your penpal contacts in a simple manner and "
 "keep track of your letters and postcards exchange."
 msgstr ""
-"Z Litteris możesz łatwo uporządkować druhów od pióra i śledzić "
-"waszą wymianę listów i pocztówek."
+"Z Litteris możesz łatwo uporządkować druhów od pióra i śledzić waszą wymianę "
+"listów i pocztówek."
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
 msgid ""
 "You can star your most frequent friends or search for that one you haven't "
 "talked much lately."
 msgstr ""
-"Dodaj gwiazdkę przy druhach, z którymi piszesz często albo szukaj tych, "
-"z którymi urwał ci się ostatnio kontakt."
+"Dodaj gwiazdkę przy druhach, z którymi piszesz często albo szukaj tych, z "
+"którymi urwał ci się ostatnio kontakt."
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
 msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
-msgid "Minor bug fixes"
+#, fuzzy
+msgid "Minor fixes"
 msgstr "Drobne poprawki błędów"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
-msgid "Better icon support"
-msgstr "Lepsze wsparcie dla ikon"
+msgid "Polish translation by Michal Nowakowski"
+msgstr ""
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:37
-msgid "Portuguese translation added"
-msgstr "Dodano portugalskie tłumaczenie"
+#~ msgid "Better icon support"
+#~ msgstr "Lepsze wsparcie dla ikon"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:38
-msgid "Dutch translation by Heimen Stoffels"
-msgstr "Dodano niderlandzki tłumaczenie autorstwa Heimena Stoffelsa"
+#~ msgid "Portuguese translation added"
+#~ msgstr "Dodano portugalskie tłumaczenie"
+
+#~ msgid "Dutch translation by Heimen Stoffels"
+#~ msgstr "Dodano niderlandzki tłumaczenie autorstwa Heimena Stoffelsa"

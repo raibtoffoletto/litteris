@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-13 19:10+0100\n"
+"POT-Creation-Date: 2020-02-06 17:27+0100\n"
 "PO-Revision-Date: 2019-11-13 18:42+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -48,8 +48,9 @@ msgstr ""
 "très simple et suivre vos échanges de lettres et de cartes postales."
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
+#, fuzzy
 msgid ""
-"You can star your most frequent friends and search for that one you haven't "
+"You can star your most frequent friends or search for that one you haven't "
 "talked much lately."
 msgstr ""
 "Vous pouvez mettre en favoris les correspondants avec qui vous échangez le "
@@ -60,6 +61,13 @@ msgstr ""
 msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:34
-msgid "Initial Release"
-msgstr "Version initiale"
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
+msgid "Minor fixes"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+msgid "Polish translation by Michal Nowakowski"
+msgstr ""
+
+#~ msgid "Initial Release"
+#~ msgstr "Version initiale"
