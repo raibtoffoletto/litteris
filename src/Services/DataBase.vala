@@ -87,7 +87,7 @@ public class Litteris.DataBase {
     public void sync_databases () {
         try {
             if ((Application.sync_settings.get_boolean ("sync")) && (Application.sync_settings.get_string ("path") !=
-                    Application.sync_settings.get_default_value ("path"))) {
+                    Application.sync_settings.get_default_value ("path").get_string ())) {
 
                 var synced_database_directory = get_synced_database ().get_parent ();
 
