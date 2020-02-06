@@ -20,16 +20,31 @@
 */
 
 public class Litteris.DataBase {
-    public File get_database () {
-        return File.new_for_path (get_database_path ());
-    }
+    public signal void reload_app ();
 
-    public string get_database_path () {
+    private string get_database_path () {
         return Path.build_filename (Environment.get_user_data_dir (), "litteris", "litteris.db");
     }
 
-    public string get_sync_path () {
-        return Path.build_filename (Environment.get_user_data_dir (), ".litteris", "litteris.db");
+    private string get_synced_database_path () {
+        return Path.build_filename (Application.sync_settings.get_string ("path").replace ("file://", ""),
+                                    ".litteris", "litteris.db");
+    }
+
+    private File get_database () {
+        return File.new_for_path (get_database_path ());
+    }
+
+    private File get_synced_database () {
+        return File.new_for_path (get_synced_database_path ());
+    }
+
+    public void open_database (out Sqlite.Database database) {
+        var connexion = Sqlite.Database.open (get_database_path (), out database);
+
+        if (connexion != Sqlite.OK) {
+            stderr.printf ("Can't open database: %d: %s\n", database.errcode (), database.errmsg ());
+        }
     }
 
     public bool export_database (string target_file) {
@@ -56,33 +71,6 @@ public class Litteris.DataBase {
         return false;
     }
 
-    public void verify_database () {
-        try {
-            var path = File.new_build_filename (Environment.get_user_data_dir (), "litteris");
-            if (! path.query_exists () ) {
-                path.make_directory_with_parents ();
-            }
-
-            assert (path.query_exists ());
-            var database = get_database ();
-            if (! database.query_exists () ) {
-                database.create (FileCreateFlags.PRIVATE);
-                assert (database.query_exists ());
-                initialize_database ();
-            }
-        } catch (Error e) {
-             stderr.printf ("Error: %s\n", e.message);
-        }
-    }
-
-    public void open_database (out Sqlite.Database database) {
-        var connexion = Sqlite.Database.open (get_database_path (), out database);
-
-        if (connexion != Sqlite.OK) {
-            stderr.printf ("Can't open database: %d: %s\n", database.errcode (), database.errmsg ());
-        }
-    }
-
     public bool exec_query (string query) {
         Sqlite.Database db;
         open_database (out db);
@@ -96,19 +84,135 @@ public class Litteris.DataBase {
         return true;
     }
 
-    public void initialize_database () {
+    public void sync_databases () {
+        try {
+            if ((Application.sync_settings.get_boolean ("sync")) && (Application.sync_settings.get_string ("path") !=
+                    Application.sync_settings.get_default_value ("path"))) {
+
+                var synced_database_directory = get_synced_database ().get_parent ();
+
+                if (!synced_database_directory.query_exists ()) {
+                    synced_database_directory.make_directory_with_parents ();
+                }
+
+                assert (synced_database_directory.query_exists ());
+
+                var synced_database = get_synced_database ();
+
+                if (!synced_database.query_exists ()) {
+                    verify_database ();
+                    export_database (get_synced_database_path ());
+
+                    assert (synced_database.query_exists ());
+                } else {
+                    var database = get_database ();
+
+                    if (!database.query_exists ()) {
+                        var database_directory = get_database ().get_parent ();
+
+                        if (!database_directory.query_exists ()) {
+                            database_directory.make_directory_with_parents ();
+                        }
+
+                        assert (database_directory.query_exists ());
+                        assert (synced_database.query_exists ());
+                        import_database (get_synced_database_path ());
+
+                        assert (database.query_exists ());
+                    } else {
+                        string database_time = database.query_info ("time::*", GLib.FileQueryInfoFlags.NONE)
+                                                .get_attribute_as_string (FileAttribute.TIME_MODIFIED);
+                        string synced_database_time = synced_database.query_info ("time::*", GLib.FileQueryInfoFlags.NONE)
+                                                        .get_attribute_as_string (FileAttribute.TIME_MODIFIED);
+
+                        var compare_datetime = new DateTime.from_unix_local (int64.parse (database_time)).compare
+                                                (new DateTime.from_unix_local (int64.parse (synced_database_time)));
+
+                        if (compare_datetime == -1) {
+                            import_database (get_synced_database_path ());
+                        } else if (compare_datetime == 1) {
+                            export_database (get_synced_database_path ());
+                        }
+                    }
+                }
+            } else {
+                verify_database ();
+            }
+        } catch (Error e) {
+             stderr.printf ("Error: %s\n", e.message);
+        }
+    }
+
+    public void verify_database () {
+        try {
+            var database_directory = get_database ().get_parent ();
+
+            if (!database_directory.query_exists ()) {
+                database_directory.make_directory_with_parents ();
+            }
+
+            assert (database_directory.query_exists ());
+
+            var database = get_database ();
+
+            if (!database.query_exists ()) {
+                database.create (FileCreateFlags.PRIVATE);
+                initialize_database ();
+            }
+
+            assert (database.query_exists ());
+        } catch (Error e) {
+             stderr.printf ("Error: %s\n", e.message);
+        }
+    }
+
+    public void update_sync_path (string new_sync_path, Gtk.Window sync_dialog) {
+        Application.sync_settings.set_string ("path", new_sync_path);
+
+        var new_synced_database_path = Path.build_filename (new_sync_path.replace ("file://", ""),
+                                        ".litteris", "litteris.db");
+
+        if (File.new_for_path (new_synced_database_path).query_exists ()) {
+            var button_ignore = new Gtk.Button.with_label (_("Ignore"));
+            var button_import = new Gtk.Button.with_label (_("Override"));
+                button_import.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+            var override_database = new Granite.MessageDialog.with_image_from_icon_name (
+                                        _("Import database from the cloud?"),
+                                        _("The location you have selected already has a Litteris database in it. " +
+                                          "Would you like to import it, overriding the present one, or would you " +
+                                          "like to ignore it?"),
+                                        "dialog-error",
+                                        Gtk.ButtonsType.NONE);
+                override_database.add_action_widget (button_ignore, Gtk.ResponseType.CANCEL);
+                override_database.add_action_widget (button_import, Gtk.ResponseType.ACCEPT);
+                override_database.transient_for = sync_dialog;
+                override_database.show_all ();
+
+            if (override_database.run () == Gtk.ResponseType.ACCEPT) {
+                import_database (new_synced_database_path);
+                override_database.destroy ();
+                this.reload_app ();
+            } else {
+                override_database.destroy ();
+            }
+
+        }
+    }
+
+    private void initialize_database () {
         Sqlite.Database db;
         open_database (out db);
 
         string query = """
-            CREATE TABLE `dates` (
+            CREATE TABLE IF NOT EXISTS `dates` (
               `date` TEXT NOT NULL,
               `penpal` INTEGER NOT NULL,
               `type` INT NOT NULL,
               `direction` INT NOT NULL
             );
 
-            CREATE TABLE `penpals` (
+            CREATE TABLE IF NOT EXISTS `penpals` (
               `name` TEXT NOT NULL,
               `nickname` TEXT NULL,
               `notes` TEXT NULL,
@@ -116,11 +220,11 @@ public class Litteris.DataBase {
               `country` TEXT NOT NULL
             );
 
-            CREATE TABLE `starred` (
+            CREATE TABLE IF NOT EXISTS `starred` (
               `penpal` INTEGER NOT NULL
             );
 
-            CREATE TABLE `country_codes` (
+            CREATE TABLE IF NOT EXISTS `country_codes` (
               `alpha-3` TEXT NOT NULL,
               `country` TEXT NOT NULL,
               `alpha-2` TEXT NOT NULL

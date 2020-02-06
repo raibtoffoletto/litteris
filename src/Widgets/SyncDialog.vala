@@ -61,14 +61,16 @@ public class Litteris.SyncDialog : Gtk.Dialog {
         var path_selected = new Gtk.FileChooserButton (_("Select the synced folder"),
                                                         Gtk.FileChooserAction.SELECT_FOLDER);
 
-        if (Application.sync_settings.get_string ("path") !=  Application.sync_settings.get_default_value ("path")) {
-            path_selected.set_uri (Application.sync_settings.get_string ("path"));
-        } else {
+        if (Application.sync_settings.get_string ("path") ==
+            Application.sync_settings.get_default_value ("path").get_string ()) {
+
             path_selected.set_uri ("file://" + Environment.get_home_dir ());
+        } else {
+            path_selected.set_uri (Application.sync_settings.get_string ("path"));
         }
 
         path_selected.file_set.connect (() => {
-            Application.sync_settings.set_string ("path", path_selected.get_uri ());
+            Application.database.update_sync_path (path_selected.get_uri (), this as Gtk.Window);
         });
 
         main_grid.row_spacing = 8;

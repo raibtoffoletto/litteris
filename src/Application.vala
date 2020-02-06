@@ -39,7 +39,8 @@ public class Litteris.Application : Gtk.Application {
     }
 
     protected override void activate () {
-        database.verify_database ();
+        database.sync_databases ();
+        database.reload_app.connect (reload_application);
 
         if (get_windows ().length () > 0) {
             main_window.present ();
@@ -56,7 +57,7 @@ public class Litteris.Application : Gtk.Application {
         main_window.destroy ();
 
         database = new Litteris.DataBase ();
-        database.verify_database ();
+        database.sync_databases ();
 
         main_window = new Litteris.Window (this);
         add_window (main_window);
@@ -65,8 +66,16 @@ public class Litteris.Application : Gtk.Application {
     }
 
     public static int main (string[] args) {
-        var app = new Litteris.Application ();
-        return app.run (args);
+        if (SettingsSchemaSource.get_default ().lookup ("com.github.raibtoffoletto.litteris", false) != null &&
+            SettingsSchemaSource.get_default ().lookup ("com.github.raibtoffoletto.litteris.sync", false) != null) {
+            var app = new Litteris.Application ();
+
+            return app.run (args);
+        } else {
+            stdout.printf ("Error loading GSettings Schemas.\nVerify your instalation.");
+
+            return 1;
+        }
     }
 
 }

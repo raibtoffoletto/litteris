@@ -444,6 +444,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         Application.settings.set_boolean ("window-maximized", this.is_maximized);
         Application.settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
         Application.settings.set_int ("panel-position", panels.get_position ());
+        Application.database.sync_databases ();
 
         return false;
     }
