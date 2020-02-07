@@ -48,6 +48,17 @@ public class Litteris.PenpalView : Gtk.Grid {
     construct {
         utils = new Litteris.Utils ();
 
+        string status_bar_css = "* {font-size: 1.15em;}";
+        var css_provider = new Gtk.CssProvider ();
+
+        try {
+            css_provider.load_from_data (status_bar_css);
+        } catch (Error e) {
+            stdout.printf ("Error: %s\n", e.message);
+        }
+
+        this.get_style_context ().add_provider (css_provider, 900);
+
         /* header */
         label_name = new Gtk.Label ("");
         label_name.halign = Gtk.Align.START;

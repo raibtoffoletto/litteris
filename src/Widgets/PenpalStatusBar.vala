@@ -34,15 +34,26 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     public PenpalStatusBar (Litteris.PenpalView penpal_view) {
         Object (
             orientation: Gtk.Orientation.HORIZONTAL,
-            spacing: 8,
+            spacing: 16,
             homogeneous: false,
-            margin: 8,
+            margin: 24,
             penpal_view: penpal_view
         );
     }
 
     construct {
         utils = new Litteris.Utils ();
+
+        string status_bar_css = "* {font-size: 1.3em;}";
+        var css_provider = new Gtk.CssProvider ();
+
+        try {
+            css_provider.load_from_data (status_bar_css);
+        } catch (Error e) {
+            stdout.printf ("Error: %s\n", e.message);
+        }
+
+        this.get_style_context ().add_provider (css_provider, 900);
 
         set_property ("edit-mode", false);
         load_status_bar ();

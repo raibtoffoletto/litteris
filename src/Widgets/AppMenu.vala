@@ -68,7 +68,7 @@ public class Litteris.AppMenu : Gtk.Popover {
         var menu_import = new Gtk.ModelButton ();
             menu_import.centered = true;
             menu_import.text = _("Restore backup");
-            menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_IMPORT_DB;
+            menu_import.action_name =  Window.ACTION_PREFIX + Window.ACTION_RESTORE_DB;
             menu_import.tooltip_markup = Granite.markup_accel_tooltip ({"<Control><Shift>I"});
 
         var menu_sync = new Gtk.ModelButton ();

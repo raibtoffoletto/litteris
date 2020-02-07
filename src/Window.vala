@@ -36,7 +36,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     public const string ACTION_INVERT_THEME = "invert-theme";
     public const string ACTION_ABOUT_DIALOG = "about-dialog";
     public const string ACTION_APP_EXIT = "app-exit";
-    public const string ACTION_IMPORT_DB = "import-db";
+    public const string ACTION_RESTORE_DB = "import-db";
     public const string ACTION_EXPORT_DB = "export-db";
     public const string ACTION_SYNC = "sync";
     private const ActionEntry[] action_entries = {
@@ -46,7 +46,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         { ACTION_SEARCH, toggle_search_bar },
         { ACTION_OPEN_MENU, open_menu_popover },
         { ACTION_INVERT_THEME, invert_color_mode },
-        { ACTION_IMPORT_DB, import_db },
+        { ACTION_RESTORE_DB, import_db },
         { ACTION_EXPORT_DB, export_db },
         { ACTION_SYNC, sync },
         { ACTION_ABOUT_DIALOG, about_dialog },
@@ -86,7 +86,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         action_accelerators.set (ACTION_OPEN_MENU, "<Control>O");
         action_accelerators.set (ACTION_INVERT_THEME, "<Control>M");
         action_accelerators.set (ACTION_ABOUT_DIALOG, "F1");
-        action_accelerators.set (ACTION_IMPORT_DB, "<Control><Shift>I");
+        action_accelerators.set (ACTION_RESTORE_DB, "<Control><Shift>R");
         action_accelerators.set (ACTION_EXPORT_DB, "<Control><Shift>E");
         action_accelerators.set (ACTION_SYNC, "<Control><Shift>S");
         action_accelerators.set (ACTION_APP_EXIT, "<Control>Q");
