@@ -77,8 +77,6 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         Object (
             application: app,
             app: app,
-            height_request: 640,
-            width_request: 880,
             border_width: 0,
             window_position: Gtk.WindowPosition.CENTER
         );
@@ -132,6 +130,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         notifications = new Granite.Widgets.Toast ("");
         overlay.add_overlay (welcome);
         overlay.add_overlay (notifications);
+        overlay.width_request = 860;
 
         panels = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         panels.position = Application.settings.get_int ("panel-position");

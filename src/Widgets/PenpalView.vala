@@ -39,7 +39,6 @@ public class Litteris.PenpalView : Gtk.Grid {
 
     public PenpalView (Litteris.Window window, string active_penpal) {
         Object (
-            width_request: 580,
             main_window: window,
             active_penpal: active_penpal
         );
@@ -48,7 +47,7 @@ public class Litteris.PenpalView : Gtk.Grid {
     construct {
         utils = new Litteris.Utils ();
 
-        string status_bar_css = "* {font-size: 1.15em;}";
+        string status_bar_css = "* {font-size: 1.1em;}";
         var css_provider = new Gtk.CssProvider ();
 
         try {
@@ -245,7 +244,7 @@ public class Litteris.PenpalView : Gtk.Grid {
 
             label_year.add (flowbox_year);
             foreach (var mail_date in dates_list) {
-                var date = new DateTime.from_unix_utc (mail_date.date);
+                var date = new DateTime.from_unix_local (mail_date.date);
 
                 if (date.get_year () == year) {
                     var button_date = new Gtk.Button ();

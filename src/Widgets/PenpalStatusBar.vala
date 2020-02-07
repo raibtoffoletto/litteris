@@ -34,9 +34,13 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     public PenpalStatusBar (Litteris.PenpalView penpal_view) {
         Object (
             orientation: Gtk.Orientation.HORIZONTAL,
-            spacing: 16,
+            spacing: 6,
             homogeneous: false,
-            margin: 24,
+            margin: 6,
+            margin_start: 6,
+            margin_end: 6,
+            margin_top: 18,
+            margin_bottom: 18,
             penpal_view: penpal_view
         );
     }
@@ -44,7 +48,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
     construct {
         utils = new Litteris.Utils ();
 
-        string status_bar_css = "* {font-size: 1.3em;}";
+        string status_bar_css = "* {font-size: 1.2em;}";
         var css_provider = new Gtk.CssProvider ();
 
         try {
@@ -94,7 +98,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         utils.remove_box_children (this);
         load_edit_mode (false);
 
-        new_mail_date.date = new DateTime.from_unix_utc (edit_date.date);
+        new_mail_date.date = new DateTime.from_unix_local (edit_date.date);
         new_mail_mailtype.selected = edit_date.mail_type;
         new_mail_direction.selected = edit_date.direction;
 
@@ -186,7 +190,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
 
         var delete_mail_mailtype = (edit_date.mail_type == Litteris.MailDate.MailType.LETTER) ?
                                     _("letter") : _("postcard");
-        var delete_mail_date = new DateTime.from_unix_utc (edit_date.date).format ("%x");
+        var delete_mail_date = new DateTime.from_unix_local (edit_date.date).format ("%x");
         var dialog_title = _("Remove %s from %s?").printf (delete_mail_mailtype, delete_mail_date);
 
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (

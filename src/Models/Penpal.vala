@@ -107,7 +107,7 @@ public class Litteris.Penpal : Object {
     }
 
     private void add_mail (Litteris.MailDate mail) {
-        var date = new DateTime.from_unix_utc (mail.date);
+        var date = new DateTime.from_unix_local (mail.date);
 
         if (mail.direction == MailDate.Direction.SENT) {
             if (! mail_sent_years.contains (date.get_year ())) {
