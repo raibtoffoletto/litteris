@@ -38,6 +38,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     public const string ACTION_APP_EXIT = "app-exit";
     public const string ACTION_RESTORE_DB = "import-db";
     public const string ACTION_EXPORT_DB = "export-db";
+    public const string ACTION_REGISTER_MAIL = "register-mail";
+    public const string ACTION_PREVIOUS_PENPAL = "previous-penpal";
+    public const string ACTION_NEXT_PENPAL = "next-penpal";
     public const string ACTION_SYNC = "sync";
     private const ActionEntry[] action_entries = {
         { ACTION_NEW_PENPAL, new_penpal },
@@ -50,6 +53,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         { ACTION_EXPORT_DB, export_db },
         { ACTION_SYNC, sync },
         { ACTION_ABOUT_DIALOG, about_dialog },
+        { ACTION_REGISTER_MAIL, register_mail },
+        { ACTION_PREVIOUS_PENPAL, previous_penpal},
+        { ACTION_NEXT_PENPAL, next_penpal},
         { ACTION_APP_EXIT, app_exit }
     };
 
@@ -89,6 +95,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         action_accelerators.set (ACTION_RESTORE_DB, "<Control><Shift>R");
         action_accelerators.set (ACTION_EXPORT_DB, "<Control><Shift>E");
         action_accelerators.set (ACTION_SYNC, "<Control><Shift>S");
+        action_accelerators.set (ACTION_REGISTER_MAIL, "<Control>R");
+        action_accelerators.set (ACTION_PREVIOUS_PENPAL, "<Control><Alt>Up");
+        action_accelerators.set (ACTION_NEXT_PENPAL, "<Control><Alt>Down");
         action_accelerators.set (ACTION_APP_EXIT, "<Control>Q");
     }
 
@@ -426,6 +435,24 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
         window_header.app_menu.dark_mode.active = new_mode;
         gtk_settings.gtk_application_prefer_dark_theme = new_mode;
+    }
+
+    public void register_mail () {
+        if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
+            penpal_view.status_bar.register_mail ();
+        }
+    }
+
+    public void previous_penpal () {
+        if (list_panel.previous_penpal != null) {
+            list_panel.set_property ("new-active-penpal", list_panel.previous_penpal);
+        }
+    }
+
+    public void next_penpal () {
+        if (list_panel.next_penpal != null) {
+            list_panel.set_property ("new-active-penpal", list_panel.next_penpal);
+        }
     }
 
     public void app_exit () {

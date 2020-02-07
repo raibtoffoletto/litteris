@@ -71,6 +71,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         var button_new_date = new Gtk.Button.with_label (_("Register Mail"));
             button_new_date.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             button_new_date.clicked.connect (register_mail);
+            button_new_date.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>R"});
 
         pack_end (button_new_date, false, false);
         show_all ();
@@ -80,7 +81,7 @@ public class Litteris.PenpalStatusBar : Gtk.Box {
         }
     }
 
-    private void register_mail () {
+    public void register_mail () {
         utils.remove_box_children (this);
         load_edit_mode ();
 

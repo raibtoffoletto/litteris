@@ -15,12 +15,18 @@
 * License along with this program; if not, write to the
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301 USA
+
+get_previous_item (Item reference)
+get_next_item (Item reference)
 *
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
 public class Litteris.PenpalList : Gtk.Box {
     public string active_penpal { get; set; }
+    public Granite.Widgets.SourceList.Item previous_penpal { get; set; }
+    public Granite.Widgets.SourceList.Item next_penpal { get; set; }
+    public Granite.Widgets.SourceList.Item new_active_penpal { get; set; }
     public Granite.Widgets.SourceList source_list;
     public Gtk.SearchBar search_bar;
     public Gtk.SearchEntry search_entry;
@@ -60,6 +66,8 @@ public class Litteris.PenpalList : Gtk.Box {
         source_list = new Granite.Widgets.SourceList ();
         source_list.item_selected.connect ((penpal) => {
             set_property ("active-penpal", penpal.name);
+            set_property ("previous-penpal", source_list.get_previous_item (penpal));
+            set_property ("next-penpal", source_list.get_next_item (penpal));
         });
 
         if (search_content != "") {
@@ -94,6 +102,13 @@ public class Litteris.PenpalList : Gtk.Box {
                 source_list.root.add (no_penpals_parent);
             }
         }
+
+        notify["new-active-penpal"].connect (() => {
+            if (source_list.selected != new_active_penpal) {
+                source_list.selected = new_active_penpal;
+                source_list.item_selected (new_active_penpal);
+            }
+        });
 
         pack_end (source_list);
         show_all ();
