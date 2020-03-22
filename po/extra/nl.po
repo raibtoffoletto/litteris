@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-06 17:27+0100\n"
+"POT-Creation-Date: 2020-03-22 10:59+0100\n"
 "PO-Revision-Date: 2019-11-13 16:34+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
@@ -61,11 +61,11 @@ msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
 #, fuzzy
-msgid "Minor fixes"
+msgid "Minor Bug Fixes"
 msgstr "Kleine bugfixes"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
-msgid "Polish translation by Michal Nowakowski"
+msgid "Escape Characters in penpal details"
 msgstr ""
 
 #~ msgid "Better icon support"

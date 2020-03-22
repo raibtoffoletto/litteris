@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-06 17:27+0100\n"
+"POT-Creation-Date: 2020-03-22 10:49+0100\n"
 "PO-Revision-Date: 2019-12-12 17:08+0100\n"
 "Last-Translator: Michał Nowakowski <nowakowski@offshore.rocks>\n"
 "Language-Team:\n"
@@ -36,70 +36,70 @@ msgstr "Usuń piórodruha"
 msgid "Options"
 msgstr "Opcje"
 
-#: src/Window.vala:202
+#: src/Window.vala:210
 msgid "Penpal added with success!"
 msgstr "Dodano piórodruha!"
 
-#: src/Window.vala:210
+#: src/Window.vala:218
 msgid "You should provide Name & Country for your new penpal."
 msgstr "Podaj imię i kraj swojego nowego piórodruha."
 
-#: src/Window.vala:213
+#: src/Window.vala:221
 msgid "Incomplete data"
 msgstr "Brakuje informacji"
 
-#: src/Window.vala:247
+#: src/Window.vala:255
 #, c-format
 msgid "Remove %s ?"
 msgstr "Usunąć %s?"
 
-#: src/Window.vala:248
+#: src/Window.vala:256
 msgid "This action will permanently remove all data related to this penpal."
 msgstr "Bezpowrotnie usunie to wszystkie dane związane z tym piórodruhem."
 
-#: src/Window.vala:252
+#: src/Window.vala:260
 #, c-format
 msgid "Remove %s"
 msgstr "Usuń %s"
 
-#: src/Window.vala:261
+#: src/Window.vala:269
 #, c-format
 msgid "%s removed with success!"
 msgstr "Usunięto %s!"
 
-#: src/Window.vala:270
+#: src/Window.vala:278
 msgid "Restore backup?"
 msgstr "Przywrócić kopię zapasową?"
 
-#: src/Window.vala:271
+#: src/Window.vala:279
 msgid "This will permanently override the current database."
 msgstr "Obecna baza zostanie nieodwracalnie nadpisana."
 
-#: src/Window.vala:274 src/Window.vala:285
+#: src/Window.vala:282 src/Window.vala:293
 msgid "Restore"
 msgstr "Przywróć"
 
-#: src/Window.vala:282
+#: src/Window.vala:290
 msgid "Restore backup file"
 msgstr "Przywróć kopię zapasową"
 
-#: src/Window.vala:285 src/Window.vala:313
+#: src/Window.vala:293 src/Window.vala:321
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/Window.vala:310
+#: src/Window.vala:318
 msgid "Create backup file"
 msgstr "Stwórz kopię zapasową"
 
-#: src/Window.vala:313
+#: src/Window.vala:321
 msgid "Export"
 msgstr "Eksportuj"
 
-#: src/Window.vala:332
+#: src/Window.vala:340
 msgid "Backup created with success!"
 msgstr "Utworzono kopię zapasową!"
 
-#: src/Window.vala:351 src/Widgets/Welcome.vala:29
+#: src/Window.vala:359 src/Widgets/Welcome.vala:29
 msgid "Penpal Correspondence Organized"
 msgstr "Uporządkuj korespondencję z piórodruhami"
 
@@ -160,11 +160,11 @@ msgid "Nickname :"
 msgstr "Pseudonim:"
 
 #. penpal info
-#: src/Widgets/PenpalDialog.vala:80 src/Widgets/PenpalView.vala:113
+#: src/Widgets/PenpalDialog.vala:80 src/Widgets/PenpalView.vala:123
 msgid "Notes :"
 msgstr "Notatki:"
 
-#: src/Widgets/PenpalDialog.vala:94 src/Widgets/PenpalView.vala:127
+#: src/Widgets/PenpalDialog.vala:94 src/Widgets/PenpalView.vala:137
 msgid "Address :"
 msgstr "Adres:"
 
@@ -172,7 +172,7 @@ msgstr "Adres:"
 msgid "* Country :"
 msgstr "Kraj:"
 
-#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:114
+#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:130
 msgid "Discard Changes"
 msgstr "Odrzuć zmiany"
 
@@ -180,7 +180,7 @@ msgstr "Odrzuć zmiany"
 msgid "Add Penpal"
 msgstr "Dodaj piórodruha"
 
-#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:111
+#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:127
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
@@ -196,90 +196,90 @@ msgstr "Stracisz wszystkie dotychczasowe zmiany."
 msgid "Discard"
 msgstr "Odrzuć"
 
-#: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
+#: src/Widgets/PenpalList.vala:69 src/Widgets/Welcome.vala:35
 msgid "Search"
 msgstr "Szukaj"
 
-#: src/Widgets/PenpalList.vala:73
+#: src/Widgets/PenpalList.vala:76
 msgid "Starred"
 msgstr "Ulubieni"
 
-#: src/Widgets/PenpalList.vala:80
+#: src/Widgets/PenpalList.vala:83
 msgid "Penpals"
 msgstr "Piórodruhy"
 
-#: src/Widgets/PenpalList.vala:92
+#: src/Widgets/PenpalList.vala:95
 msgid "No friends yet 😔️"
 msgstr "Na razie samotnie 😔️"
 
-#: src/Widgets/PenpalList.vala:143
+#: src/Widgets/PenpalList.vala:164
 #, fuzzy
 msgid "No matches…"
 msgstr "Nic nie znaleziono…"
 
-#: src/Widgets/PenpalView.vala:142
+#: src/Widgets/PenpalView.vala:152
 msgid "Sent :"
 msgstr "Wysłane:"
 
-#: src/Widgets/PenpalView.vala:146
+#: src/Widgets/PenpalView.vala:156
 msgid "Received :"
 msgstr "Otrzymane:"
 
-#: src/Widgets/PenpalView.vala:336
+#: src/Widgets/PenpalView.vala:346
 msgid "Penpal updated with success!"
 msgstr "Zaktualizowano piórodruha!"
 
-#: src/Widgets/PenpalStatusBar.vala:60
+#: src/Widgets/PenpalStatusBar.vala:75
 msgid "Register Mail"
 msgstr "Dodaj przesyłkę"
 
-#: src/Widgets/PenpalStatusBar.vala:107
+#: src/Widgets/PenpalStatusBar.vala:123
 msgid "Received"
 msgstr "Otrzymane"
 
-#: src/Widgets/PenpalStatusBar.vala:108
+#: src/Widgets/PenpalStatusBar.vala:124
 msgid "Sent"
 msgstr "Wysłane"
 
-#: src/Widgets/PenpalStatusBar.vala:111
+#: src/Widgets/PenpalStatusBar.vala:127
 msgid "Add Mail"
 msgstr "Dodaj przesyłkę"
 
-#: src/Widgets/PenpalStatusBar.vala:117 src/Widgets/PenpalStatusBar.vala:186
+#: src/Widgets/PenpalStatusBar.vala:133 src/Widgets/PenpalStatusBar.vala:202
 msgid "Remove Mail"
 msgstr "Usuń przesyłkę"
 
-#: src/Widgets/PenpalStatusBar.vala:140
+#: src/Widgets/PenpalStatusBar.vala:156
 #, fuzzy
 msgid "Please select Letter/Postcard and Received/Sent properly"
 msgstr "Sprecyzuj: List/Pocztówka i Otrzymane/Wysłane"
 
-#: src/Widgets/PenpalStatusBar.vala:164
+#: src/Widgets/PenpalStatusBar.vala:180
 msgid "Mail Registered"
 msgstr "Przesyłka dodana"
 
-#: src/Widgets/PenpalStatusBar.vala:164
+#: src/Widgets/PenpalStatusBar.vala:180
 msgid "Changes Saved"
 msgstr "Zmiany zapisane"
 
-#: src/Widgets/PenpalStatusBar.vala:176
+#: src/Widgets/PenpalStatusBar.vala:192
 msgid "letter"
 msgstr "list"
 
-#: src/Widgets/PenpalStatusBar.vala:176
+#: src/Widgets/PenpalStatusBar.vala:192
 msgid "postcard"
 msgstr "pocztówkę"
 
-#: src/Widgets/PenpalStatusBar.vala:178
+#: src/Widgets/PenpalStatusBar.vala:194
 #, c-format
 msgid "Remove %s from %s?"
 msgstr "Usunąć %s z %s?"
 
-#: src/Widgets/PenpalStatusBar.vala:182
+#: src/Widgets/PenpalStatusBar.vala:198
 msgid "This will delete this date from the database permanently!"
 msgstr "Usunie to przesyłkę z bazy bezpowrotnie!"
 
-#: src/Widgets/PenpalStatusBar.vala:198
+#: src/Widgets/PenpalStatusBar.vala:214
 msgid "Mail Removed"
 msgstr "Przesyłka usunięta"
 

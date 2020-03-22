@@ -29,11 +29,11 @@
   <url type="help">https://github.com/raibtoffoletto/litteris/issues</url>
 
   <releases>
-    <release version="0.1.4" date="2020-02-15">
+    <release version="0.1.5" date="2020-03-22">
 ​      <description>
         <ul>
-          <li>Minor fixes</li>
-          <li>Polish translation by Michal Nowakowski</li>
+          <li>Minor Bug Fixes</li>
+          <li>Escape Characters in penpal details</li>
         </ul>
 ​      </description>
 ​    </release>

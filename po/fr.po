@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-06 17:27+0100\n"
+"POT-Creation-Date: 2020-03-22 10:49+0100\n"
 "PO-Revision-Date: 2019-11-13 18:42+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -37,72 +37,72 @@ msgstr "Supprimer le correspondant"
 msgid "Options"
 msgstr "Options"
 
-#: src/Window.vala:202
+#: src/Window.vala:210
 msgid "Penpal added with success!"
 msgstr "Correspondant ajouté avec succès !"
 
-#: src/Window.vala:210
+#: src/Window.vala:218
 msgid "You should provide Name & Country for your new penpal."
 msgstr "Vous devez fournir un nom et un pays pour votre nouveau correspondant."
 
-#: src/Window.vala:213
+#: src/Window.vala:221
 msgid "Incomplete data"
 msgstr "Données incomplètes"
 
-#: src/Window.vala:247
+#: src/Window.vala:255
 #, c-format
 msgid "Remove %s ?"
 msgstr "Supprimer %s ?"
 
-#: src/Window.vala:248
+#: src/Window.vala:256
 msgid "This action will permanently remove all data related to this penpal."
 msgstr ""
 "Cette action va définitivement supprimer toutes les données de ce "
 "correspondant."
 
-#: src/Window.vala:252
+#: src/Window.vala:260
 #, c-format
 msgid "Remove %s"
 msgstr "Supprimer %s"
 
-#: src/Window.vala:261
+#: src/Window.vala:269
 #, c-format
 msgid "%s removed with success!"
 msgstr "%s supprimé avec succès !"
 
-#: src/Window.vala:270
+#: src/Window.vala:278
 msgid "Restore backup?"
 msgstr "Restaurer une sauvegarde ?"
 
-#: src/Window.vala:271
+#: src/Window.vala:279
 msgid "This will permanently override the current database."
 msgstr "Ceci écrasera définitivement la base de données actuelle."
 
-#: src/Window.vala:274 src/Window.vala:285
+#: src/Window.vala:282 src/Window.vala:293
 msgid "Restore"
 msgstr "Restaurer"
 
-#: src/Window.vala:282
+#: src/Window.vala:290
 msgid "Restore backup file"
 msgstr "Restaurer un fichier de sauvegarde"
 
-#: src/Window.vala:285 src/Window.vala:313
+#: src/Window.vala:293 src/Window.vala:321
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/Window.vala:310
+#: src/Window.vala:318
 msgid "Create backup file"
 msgstr "Créer un fichier de sauvegarde"
 
-#: src/Window.vala:313
+#: src/Window.vala:321
 msgid "Export"
 msgstr "Exporter"
 
-#: src/Window.vala:332
+#: src/Window.vala:340
 msgid "Backup created with success!"
 msgstr "Sauvegarde créée avec succès !"
 
-#: src/Window.vala:351 src/Widgets/Welcome.vala:29
+#: src/Window.vala:359 src/Widgets/Welcome.vala:29
 msgid "Penpal Correspondence Organized"
 msgstr "Correspondance organisée"
 
@@ -163,11 +163,11 @@ msgid "Nickname :"
 msgstr "Surnom :"
 
 #. penpal info
-#: src/Widgets/PenpalDialog.vala:80 src/Widgets/PenpalView.vala:113
+#: src/Widgets/PenpalDialog.vala:80 src/Widgets/PenpalView.vala:123
 msgid "Notes :"
 msgstr "Notes :"
 
-#: src/Widgets/PenpalDialog.vala:94 src/Widgets/PenpalView.vala:127
+#: src/Widgets/PenpalDialog.vala:94 src/Widgets/PenpalView.vala:137
 msgid "Address :"
 msgstr "Adresse :"
 
@@ -175,7 +175,7 @@ msgstr "Adresse :"
 msgid "* Country :"
 msgstr "* Pays :"
 
-#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:114
+#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:130
 msgid "Discard Changes"
 msgstr "Annuler les modifications"
 
@@ -183,7 +183,7 @@ msgstr "Annuler les modifications"
 msgid "Add Penpal"
 msgstr "Ajouter le correspondant"
 
-#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:111
+#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:127
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
@@ -200,89 +200,89 @@ msgstr "Vous perdrez toutes les modifications que vous avez effectué."
 msgid "Discard"
 msgstr "Annuler"
 
-#: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
+#: src/Widgets/PenpalList.vala:69 src/Widgets/Welcome.vala:35
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/Widgets/PenpalList.vala:73
+#: src/Widgets/PenpalList.vala:76
 msgid "Starred"
 msgstr "Favoris"
 
-#: src/Widgets/PenpalList.vala:80
+#: src/Widgets/PenpalList.vala:83
 msgid "Penpals"
 msgstr "Correspondants"
 
-#: src/Widgets/PenpalList.vala:92
+#: src/Widgets/PenpalList.vala:95
 msgid "No friends yet 😔️"
 msgstr "Pas d'amis pour l'instant 😔️"
 
-#: src/Widgets/PenpalList.vala:143
+#: src/Widgets/PenpalList.vala:164
 msgid "No matches…"
 msgstr "Aucune correspondance…"
 
-#: src/Widgets/PenpalView.vala:142
+#: src/Widgets/PenpalView.vala:152
 msgid "Sent :"
 msgstr "Envoyé :"
 
-#: src/Widgets/PenpalView.vala:146
+#: src/Widgets/PenpalView.vala:156
 msgid "Received :"
 msgstr "Reçu :"
 
-#: src/Widgets/PenpalView.vala:336
+#: src/Widgets/PenpalView.vala:346
 msgid "Penpal updated with success!"
 msgstr "Correspondant mis à jour avec succès !"
 
-#: src/Widgets/PenpalStatusBar.vala:60
+#: src/Widgets/PenpalStatusBar.vala:75
 msgid "Register Mail"
 msgstr "Enregistrer un e-mail"
 
-#: src/Widgets/PenpalStatusBar.vala:107
+#: src/Widgets/PenpalStatusBar.vala:123
 msgid "Received"
 msgstr "Reçu"
 
-#: src/Widgets/PenpalStatusBar.vala:108
+#: src/Widgets/PenpalStatusBar.vala:124
 msgid "Sent"
 msgstr "Envoyé"
 
-#: src/Widgets/PenpalStatusBar.vala:111
+#: src/Widgets/PenpalStatusBar.vala:127
 msgid "Add Mail"
 msgstr "Ajouter l'e-mail"
 
-#: src/Widgets/PenpalStatusBar.vala:117 src/Widgets/PenpalStatusBar.vala:186
+#: src/Widgets/PenpalStatusBar.vala:133 src/Widgets/PenpalStatusBar.vala:202
 msgid "Remove Mail"
 msgstr "Supprimer l'e-mail"
 
-#: src/Widgets/PenpalStatusBar.vala:140
+#: src/Widgets/PenpalStatusBar.vala:156
 #, fuzzy
 msgid "Please select Letter/Postcard and Received/Sent properly"
 msgstr "Veuillez sélectionner Lettre/Carte postale et Reçu/Envoyé"
 
-#: src/Widgets/PenpalStatusBar.vala:164
+#: src/Widgets/PenpalStatusBar.vala:180
 msgid "Mail Registered"
 msgstr "E-mail enregistré"
 
-#: src/Widgets/PenpalStatusBar.vala:164
+#: src/Widgets/PenpalStatusBar.vala:180
 msgid "Changes Saved"
 msgstr "Modifications sauvegardées"
 
-#: src/Widgets/PenpalStatusBar.vala:176
+#: src/Widgets/PenpalStatusBar.vala:192
 msgid "letter"
 msgstr "lettre"
 
-#: src/Widgets/PenpalStatusBar.vala:176
+#: src/Widgets/PenpalStatusBar.vala:192
 msgid "postcard"
 msgstr "carte postale"
 
-#: src/Widgets/PenpalStatusBar.vala:178
+#: src/Widgets/PenpalStatusBar.vala:194
 #, c-format
 msgid "Remove %s from %s?"
 msgstr "Supprimer %s de %s ?"
 
-#: src/Widgets/PenpalStatusBar.vala:182
+#: src/Widgets/PenpalStatusBar.vala:198
 msgid "This will delete this date from the database permanently!"
 msgstr "Ceci va supprimer définitivement cette date de la base de données !"
 
-#: src/Widgets/PenpalStatusBar.vala:198
+#: src/Widgets/PenpalStatusBar.vala:214
 msgid "Mail Removed"
 msgstr "E-mail supprimé"
 
