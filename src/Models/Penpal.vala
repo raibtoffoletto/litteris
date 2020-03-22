@@ -56,7 +56,7 @@ public class Litteris.Penpal : Object {
     public void load_penpal () {
         string query = """SELECT rowid, *
                             FROM penpals
-                            WHERE name LIKE '""" + active_penpal + """';""";
+                            WHERE rowid = """ + active_penpal + """;""";
 
         var exec_query = db.exec (query, (n, v, c) => {
                 for (int i = 0; i < n; i++) {
@@ -127,7 +127,7 @@ public class Litteris.Penpal : Object {
     public void load_starred () {
         set_property ("starred", false);
 
-        var query = "SELECT * FROM starred WHERE penpal = " + rowid + "; ";
+        var query = "SELECT * FROM starred WHERE penpal = " + rowid + ";";
         var exec_query = db.exec (query, (n, v, c) => {
                 set_property ("starred", true);
                 return 0;

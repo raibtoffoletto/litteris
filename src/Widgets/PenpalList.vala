@@ -117,7 +117,7 @@ public class Litteris.PenpalList : Gtk.Box {
 
     private void get_penpals (Granite.Widgets.SourceList.ExpandableItem group, bool starred = false) {
         var starred_querry = starred ? "" : " NOT";
-        string query = """SELECT name
+        string query = """SELECT rowid, name
                             FROM penpals
                             WHERE""" + starred_querry + """
                             EXISTS (SELECT * FROM starred WHERE penpals.rowid = starred.penpal)
@@ -125,6 +125,7 @@ public class Litteris.PenpalList : Gtk.Box {
 
         var exec_query = db.exec (query, (n, v, c) => {
                 var pal = new Granite.Widgets.SourceList.Item (v[0]);
+                    pal.markup = Markup.escape_text (v[1]);
                 group.add (pal);
 
                 if (pal.name == active_penpal) {
@@ -141,9 +142,12 @@ public class Litteris.PenpalList : Gtk.Box {
 
     private void get_search (Granite.Widgets.SourceList.ExpandableItem group, string search_content) {
         int count = 0;
-        string query = "SELECT name FROM penpals WHERE name LIKE '%"+search_content+"%' ORDER BY name ASC;";
+        string query = """SELECT rowid, name FROM penpals WHERE name LIKE "%"""
+                        + search_content.replace ("\"", "\'") +
+                        """%" ORDER BY name ASC;""";
         var exec_query = db.exec (query, (n, v, c) => {
                 var pal = new Granite.Widgets.SourceList.Item (v[0]);
+                    pal.markup = Markup.escape_text (v[1]);
                 group.add (pal);
                 count++;
 

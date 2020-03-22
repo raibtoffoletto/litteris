@@ -207,14 +207,14 @@ public class Litteris.PenpalView : Gtk.Grid {
         var new_loaded_penpal = new Litteris.Penpal (active_penpal);
         set_property ("loaded-penpal", new_loaded_penpal);
 
-        label_name.label = "<b>" + Markup.escape_text (loaded_penpal.name) + "</b>";
-        label_nickname.label = loaded_penpal.nickname;
+        label_name.set_markup ("<b>" + Markup.escape_text (loaded_penpal.name) + "</b>");
+        label_nickname.set_markup (Markup.escape_text (loaded_penpal.nickname));
         emoji_flag.label = loaded_penpal.country_emoji;
         icon_sent_label.label = loaded_penpal.mail_sent.size.to_string ();
         icon_received_label.label = loaded_penpal.mail_received.size.to_string ();
-        label_notes_content.label = loaded_penpal.notes;
-        label_address_content.label = "%s\n<b>%s</b>\n".printf (Markup.escape_text (loaded_penpal.address),
-                                                                loaded_penpal.country_name);
+        label_notes_content.set_markup (Markup.escape_text (loaded_penpal.notes));
+        label_address_content.set_markup ("%s\n<b>%s</b>\n".printf (Markup.escape_text (loaded_penpal.address),
+                                                                loaded_penpal.country_name));
 
         get_starred ();
         get_all_dates ();
@@ -331,17 +331,17 @@ public class Litteris.PenpalView : Gtk.Grid {
                                     string notes, string address, string country) {
 
         string query = """UPDATE penpals
-                            SET `name` = '""" + name + """',
-                                `nickname` = '""" + nickname + """',
-                                `notes` = '""" + notes + """',
-                                `address` = '""" + address + """',
-                                `country` = '""" + country + """'
+                            SET `name` = """" + name.replace ("\"", "\'") + """",
+                                `nickname` = """" + nickname.replace ("\"", "\'") + """",
+                                `notes` = """" + notes.replace ("\"", "\'") + """",
+                                `address` = """" + address.replace ("\"", "\'") + """",
+                                `country` = """" + country.replace ("\"", "\'") + """"
                             WHERE rowid = """ + loaded_penpal.rowid + """;""";
 
         var exec_query = Application.database.exec_query (query);
 
         if (exec_query) {
-            main_window.list_panel.set_property ("active-penpal", name);
+            main_window.list_panel.set_property ("active-penpal", loaded_penpal.rowid);
             main_window.reload_penpal_list ();
             main_window.show_mainwindow_notification (_("Penpal updated with success!"));
         } else {

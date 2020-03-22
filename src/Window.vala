@@ -145,7 +145,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             load_penpal_view ();
 
             if (active_penpal_view) {
-                window_header.title = "Litteris ~ " + list_panel.active_penpal;
+                window_header.title = "Litteris ~ " + penpal_view.loaded_penpal.name;
             } else {
                 window_header.title = "Litteris";
             }
@@ -196,12 +196,12 @@ public class Litteris.Window : Gtk.ApplicationWindow {
                                     window_dialog.entry_name.text.slice (1, window_dialog.entry_name.text.length);
 
                         string query = """ INSERT INTO penpals
-                                            (`name`, `nickname`, `notes`, `address`, `country`) VALUES
-                                            ('""" + new_name + """',
-                                             '""" + window_dialog.entry_nickname.text + """',
-                                             '""" + window_dialog.entry_notes.buffer.text + """',
-                                             '""" + window_dialog.entry_address.buffer.text + """',
-                                             '""" + window_dialog.combo_country.active_id + """');""";
+                                        (`name`, `nickname`, `notes`, `address`, `country`) VALUES
+                                        ("""" + new_name.replace ("\"", "\'") + """",
+                                         """" + window_dialog.entry_nickname.text.replace ("\"", "\'") + """",
+                                         """" + window_dialog.entry_notes.buffer.text.replace ("\"", "\'") + """",
+                                         """" + window_dialog.entry_address.buffer.text.replace ("\"", "\'") + """",
+                                         """" + window_dialog.combo_country.active_id.replace ("\"", "\'") + """");""";
 
                         var exec_query = Application.database.exec_query (query);
 
@@ -250,7 +250,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
 
     public void delete_penpal () {
         if (list_panel.active_penpal != null && list_panel.active_penpal != "") {
-            var penpal_to_remove = list_panel.active_penpal;
+            var penpal_to_remove = penpal_view.loaded_penpal.name;
             var dialog_remove_penpal = new Granite.MessageDialog.with_image_from_icon_name (
                                         _("Remove %s ?").printf (penpal_to_remove),
                                         _("This action will permanently remove all data related to this penpal."),
