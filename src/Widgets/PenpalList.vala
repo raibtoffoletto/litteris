@@ -64,11 +64,6 @@ public class Litteris.PenpalList : Gtk.Box {
         }
 
         source_list = new Granite.Widgets.SourceList ();
-        source_list.item_selected.connect ((penpal) => {
-            set_property ("active-penpal", penpal.name);
-            set_property ("previous-penpal", source_list.get_previous_item (penpal));
-            set_property ("next-penpal", source_list.get_next_item (penpal));
-        });
 
         if (search_content != "") {
             var search = new Granite.Widgets.SourceList.ExpandableItem (_("Search"));
@@ -104,6 +99,11 @@ public class Litteris.PenpalList : Gtk.Box {
             }
         }
 
+        source_list.item_selected.connect ((penpal) => {
+            set_property ("active-penpal", penpal.name);
+            set_prev_next (source_list);
+        });
+
         notify["new-active-penpal"].connect (() => {
             if (source_list.selected != new_active_penpal) {
                 source_list.selected = new_active_penpal;
@@ -111,6 +111,7 @@ public class Litteris.PenpalList : Gtk.Box {
             }
         });
 
+        set_prev_next (source_list);
         pack_end (source_list);
         show_all ();
     }
@@ -168,6 +169,11 @@ public class Litteris.PenpalList : Gtk.Box {
         if (exec_query != Sqlite.OK) {
             stderr.printf ("Error: %s\n", errmsg);
         }
+    }
+
+    private void set_prev_next (Granite.Widgets.SourceList list) {
+        set_property ("previous-penpal", source_list.get_previous_item (list.selected));
+        set_property ("next-penpal", source_list.get_next_item (list.selected));
     }
 
 }
