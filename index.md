@@ -1,16 +1,17 @@
 <p>
-  <img align="left" width="64" height="64" src="data/icons/com.github.raibtoffoletto.litteris.svg" />
+  <img align="left" width="64" height="64"
+    src="https://raw.githubusercontent.com/raibtoffoletto/litteris/master/data/icons/com.github.raibtoffoletto.litteris.svg" />
   <blockquote>
     With Litteris you can organize your penpal contacts and keep track of your letters and postcards exchange. <br />
     You can star your most frequent friends and search for that one you haven't talked much lately.
   </blockquote>
 </p>
 
-![](data/com.github.raibtoffoletto.litteris.screenshot.png)
+![](https://raw.githubusercontent.com/raibtoffoletto/litteris/master/data/com.github.raibtoffoletto.litteris.screenshot.png)
 
 <p align="center">
   <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
-    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" width="150%" />
+    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" />
   </a>
 </p>
 
