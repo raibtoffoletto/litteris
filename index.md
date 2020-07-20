@@ -1,7 +1,9 @@
+
 ![](https://img.shields.io/github/license/raibtoffoletto/litteris.svg)
 ![](https://img.shields.io/github/v/release/raibtoffoletto/litteris.svg)
 ![](https://img.shields.io/badge/Vala-GTK+3-yellowgreen)
 ![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)
+
 ---
 
 With Litteris you can organize your penpal contacts and keep track of your letters and postcards exchange. <br/>
