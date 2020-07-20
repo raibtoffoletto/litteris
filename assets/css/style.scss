@@ -6,8 +6,14 @@
 .inner {
   a {
     h1 {
-      &:before {
-        content: url(https://raw.githubusercontent.com/raibtoffoletto/litteris/master/data/icons/com.github.raibtoffoletto.litteris.svg);
+      &:after {
+        content: "";
+        background-image: url('https://raw.githubusercontent.com/raibtoffoletto/litteris/master/data/icons/com.github.raibtoffoletto.litteris.svg');
+        background-size: 1.5em 1.5em;
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        background-repeat: no-repeat;
       }
     }
   }
