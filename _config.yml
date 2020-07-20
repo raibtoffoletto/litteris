@@ -5,6 +5,7 @@ google_analytics: false
 show_downloads: true
 github: 
   is_project_page: true
+  is_user_page: true
   owner_name: Raí B. Toffoletto
   owner_url: https://toffoletto.me
   repository_name: Litteris
