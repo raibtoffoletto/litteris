@@ -6,11 +6,11 @@
 
 ---
 
-    With Litteris you can organize your penpal contacts and keep track of your letters and postcards exchange. You can star your most frequent friends and search for that one you haven't talked much lately.
+With Litteris you can organize your penpal contacts and keep track of your letters and postcards exchange. You can star your most frequent friends and search for that one you haven't talked much lately.
 
 ![](https://raw.githubusercontent.com/raibtoffoletto/litteris/master/data/com.github.raibtoffoletto.litteris.screenshot.png)
 
-    Back in 2015, I created a MySQL database with a web interface to keep track of one of my hobbies: exchanging letters and postcards with some fellow penpals. When I decided to brush of my OOP skills, I opted for developing a native application for the [Elementary OS](https://elementary.io/), so, instead of my web app, I wrote **Litteris**. It uses modern technologies like [GTK+](https://www.gtk.org/), [Vala](https://wiki.gnome.org/Projects/Vala) *(a modern high level "[language](https://blogs.gnome.org/despinosa/2017/02/14/vala-is-not-a-programming-language/)" similar to C# and Java)* and a [SQLite](https://www.sqlite.org/) database.
+Back in 2015, I created a MySQL database with a web interface to keep track of one of my hobbies: exchanging letters and postcards with some fellow penpals. When I decided to brush of my OOP skills, I opted for developing a native application for the [Elementary OS](https://elementary.io/), so, instead of my web app, I wrote **Litteris**. It uses modern technologies like [GTK+](https://www.gtk.org/), [Vala](https://wiki.gnome.org/Projects/Vala) *(a modern high level "[language](https://blogs.gnome.org/despinosa/2017/02/14/vala-is-not-a-programming-language/)" similar to C# and Java)* and a [SQLite](https://www.sqlite.org/) database.
 
 <p class="appcenter">
   <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
