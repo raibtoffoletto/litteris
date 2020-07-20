@@ -1,7 +1,8 @@
 theme: jekyll-theme-architect
 title: "Litteris"
 show_downloads: true
-github:
-	repository_name: "Litteris"
-	owner_url: "https://toffoletto.me"
-	owner_name: "Raí B. Toffoletto"
+#github:
+#	zip_url: "https://toffoletto.me"
+#	repository_name: "Litteris"
+#	owner_url: "https://toffoletto.me"
+#	owner_name: "Raí B. Toffoletto"
