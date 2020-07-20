@@ -2,3 +2,24 @@
 ---
 
 @import "{{ site.theme }}";
+
+.inner {
+  a {
+    h1 {
+      &:before {
+        content: "♥";
+      }
+    }
+  }
+}
+
+.appcenter {
+  a {
+    display: block;
+    text-align: center;
+
+    img {
+      width: 50%;
+    }
+  }
+}
