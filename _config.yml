@@ -1,5 +1,8 @@
 --- 
 github: 
+  owner_name: "Raí B. Toffoletto"
+  owner_url: "https://toffoletto.me"
+  repository_name: Litteris
   zip_url: "https://github.com/raibtoffoletto/litteris/zipball/master"
 show_downloads: true
 theme: jekyll-theme-architect
