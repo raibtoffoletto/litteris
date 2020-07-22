@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 10:59+0100\n"
+"POT-Creation-Date: 2020-07-22 20:41+0100\n"
 "PO-Revision-Date: 2019-11-15 14:08+0100\n"
 "Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
 "Language-Team: Portuguese <>\n"
@@ -25,7 +25,8 @@ msgid "Litteris"
 msgstr "Litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:4
-msgid "Mail Manager"
+#, fuzzy
+msgid "Letter Manager"
 msgstr "Gerenciador de correio"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:5
@@ -38,7 +39,8 @@ msgid "com.github.raibtoffoletto.litteris"
 msgstr "com.github.raibtoffoletto.litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:11
-msgid "Mail;Letter;Postcard;Contacts;"
+#, fuzzy
+msgid "Letter;Postcard;Contacts;"
 msgstr "Correio;Cartas;Postais;Contactos;"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
@@ -62,12 +64,18 @@ msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
-msgid "Minor Bug Fixes"
-msgstr "Pequenos bugs resolvidos"
+msgid "Version number fix"
+msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
-msgid "Escape Characters in penpal details"
-msgstr "Melhor suporte à acentos em campos de texto"
+msgid "Add support for flatpak"
+msgstr ""
+
+#~ msgid "Minor Bug Fixes"
+#~ msgstr "Pequenos bugs resolvidos"
+
+#~ msgid "Escape Characters in penpal details"
+#~ msgstr "Melhor suporte à acentos em campos de texto"
 
 #~ msgid "Better icon support"
 #~ msgstr "Melhor ícone suporte"

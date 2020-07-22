@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 10:49+0100\n"
+"POT-Creation-Date: 2020-07-22 20:41+0100\n"
 "PO-Revision-Date: 2019-11-13 18:42+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -37,72 +37,72 @@ msgstr "Supprimer le correspondant"
 msgid "Options"
 msgstr "Options"
 
-#: src/Window.vala:210
+#: src/Window.vala:206
 msgid "Penpal added with success!"
 msgstr "Correspondant ajouté avec succès !"
 
-#: src/Window.vala:218
+#: src/Window.vala:214
 msgid "You should provide Name & Country for your new penpal."
 msgstr "Vous devez fournir un nom et un pays pour votre nouveau correspondant."
 
-#: src/Window.vala:221
+#: src/Window.vala:217
 msgid "Incomplete data"
 msgstr "Données incomplètes"
 
-#: src/Window.vala:255
+#: src/Window.vala:251
 #, c-format
 msgid "Remove %s ?"
 msgstr "Supprimer %s ?"
 
-#: src/Window.vala:256
+#: src/Window.vala:252
 msgid "This action will permanently remove all data related to this penpal."
 msgstr ""
 "Cette action va définitivement supprimer toutes les données de ce "
 "correspondant."
 
-#: src/Window.vala:260
+#: src/Window.vala:256
 #, c-format
 msgid "Remove %s"
 msgstr "Supprimer %s"
 
-#: src/Window.vala:269
+#: src/Window.vala:265
 #, c-format
 msgid "%s removed with success!"
 msgstr "%s supprimé avec succès !"
 
-#: src/Window.vala:278
+#: src/Window.vala:274
 msgid "Restore backup?"
 msgstr "Restaurer une sauvegarde ?"
 
-#: src/Window.vala:279
+#: src/Window.vala:275
 msgid "This will permanently override the current database."
 msgstr "Ceci écrasera définitivement la base de données actuelle."
 
-#: src/Window.vala:282 src/Window.vala:293
+#: src/Window.vala:278 src/Window.vala:289
 msgid "Restore"
 msgstr "Restaurer"
 
-#: src/Window.vala:290
+#: src/Window.vala:286
 msgid "Restore backup file"
 msgstr "Restaurer un fichier de sauvegarde"
 
-#: src/Window.vala:293 src/Window.vala:321
+#: src/Window.vala:289 src/Window.vala:317
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/Window.vala:318
+#: src/Window.vala:314
 msgid "Create backup file"
 msgstr "Créer un fichier de sauvegarde"
 
-#: src/Window.vala:321
+#: src/Window.vala:317
 msgid "Export"
 msgstr "Exporter"
 
-#: src/Window.vala:340
+#: src/Window.vala:336
 msgid "Backup created with success!"
 msgstr "Sauvegarde créée avec succès !"
 
-#: src/Window.vala:359 src/Widgets/Welcome.vala:29
+#: src/Window.vala:355 src/Widgets/Welcome.vala:29
 msgid "Penpal Correspondence Organized"
 msgstr "Correspondance organisée"
 

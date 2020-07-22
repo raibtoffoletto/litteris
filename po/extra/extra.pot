@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 10:59+0100\n"
+"POT-Creation-Date: 2020-07-22 20:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "Litteris"
 msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:4
-msgid "Mail Manager"
+msgid "Letter Manager"
 msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:5
@@ -36,7 +36,7 @@ msgid "com.github.raibtoffoletto.litteris"
 msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:11
-msgid "Mail;Letter;Postcard;Contacts;"
+msgid "Letter;Postcard;Contacts;"
 msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
@@ -56,9 +56,9 @@ msgid "Raí B. Toffoletto"
 msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
-msgid "Minor Bug Fixes"
+msgid "Version number fix"
 msgstr ""
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
-msgid "Escape Characters in penpal details"
+msgid "Add support for flatpak"
 msgstr ""
