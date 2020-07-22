@@ -49,5 +49,9 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://github.com/raibtoffoletto/litteris/archive/0.1.5.tar.gz
-        sha256: b9eb9c130bac3aae32dde1d5d5cd4df9604844559db03529fa754c7c9d202d79
+        url: https://github.com/raibtoffoletto/litteris/archive/master.zip
+        sha256: 63b9869049376b6a55d134c8861d18ff895e47e12043ba977d851ff5fb0e8454
+      - type: patch
+        path: appdata.patch
+      - type: patch
+        path: elementary-theme.patch
