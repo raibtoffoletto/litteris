@@ -19,10 +19,6 @@
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
 
-/* TO-DOs:
-add database sync support (via nextcloud, dropbox folder)
-*/
-
 public class Litteris.Window : Gtk.ApplicationWindow {
     public weak Litteris.Application app { get; construct; }
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
@@ -359,10 +355,10 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             about_dialog.comments = _("Penpal Correspondence Organized");
             about_dialog.copyright = "Copyright © 2019 Raí B. Toffoletto";
             about_dialog.license_type = Gtk.License.GPL_3_0;
-            about_dialog.logo_icon_name = "dialog-information";
-            about_dialog.version = "0.1.3";
-            about_dialog.website = "https://toffoletto.me";
-            about_dialog.website_label = "toffoletto.me";
+            about_dialog.logo_icon_name = "com.github.raibtoffoletto.litteris";
+            about_dialog.version = "0.1.6";
+            about_dialog.website = "https://raibtoffoletto.github.io/litteris";
+            about_dialog.website_label = "Github.io/Litteris";
             about_dialog.response.connect ((response_id) => {
                 if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT) {
                     about_dialog.hide_on_delete ();

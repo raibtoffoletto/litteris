@@ -26,17 +26,17 @@
   <developer_name>Raí B. Toffoletto</developer_name>
   <url type="homepage">https://toffoletto.me</url>
   <url type="bugtracker">https://github.com/raibtoffoletto/litteris/issues</url>
-  <url type="help">https://github.com/raibtoffoletto/litteris/issues</url>
+  <url type="help">https://raibtoffoletto.github.io/litteris</url>
 
   <releases>
-    <release version="0.1.5" date="2020-03-22">
-​      <description>
+    <release version="0.1.6" date="2020-07-22">
+      <description>
         <ul>
-          <li>Minor Bug Fixes</li>
-          <li>Escape Characters in penpal details</li>
+          <li>Version number fix</li>
+          <li>Add support for flatpak</li>
         </ul>
-​      </description>
-​    </release>
-​  </releases>
+      </description>
+    </release>
+  </releases>
 
 </component>

@@ -1,4 +1,4 @@
-project('com.github.raibtoffoletto.litteris', 'vala', 'c', version: '0.1.3')
+project('com.github.raibtoffoletto.litteris', 'vala', 'c', version: '0.1.6')
 
 gnome = import('gnome')
 i18n = import('i18n')

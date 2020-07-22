@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=Litteris
-GenericName=Mail Manager
+GenericName=Letter Manager
 Comment=Penpal Correspondence Organized
 Categories=Utility;Office;
 Exec=com.github.raibtoffoletto.litteris
 Icon=com.github.raibtoffoletto.litteris
 Terminal=false
 Type=Application
-Keywords=Mail;Letter;Postcard;Contacts;
+Keywords=Letter;Postcard;Contacts;

@@ -1,6 +1,6 @@
-com.github.raibtoffoletto.litteris (0.1.5ubuntu2) UNRELEASED; urgency=low
+com.github.raibtoffoletto.litteris (0.1.6ubuntu2) UNRELEASED; urgency=low
 
-  * Minor fixes
-  * Escape characters in text fields
+  * Version number fix
+  * Add support for flatpak
 
- -- Raí Biason Toffoletto <rai@toffoletto.me>  Sun, 22 Mar 2020 11:01:50 +0200
+ -- Raí Biason Toffoletto <rai@toffoletto.me>  Sun, 22 Jul 2020 20:20:50 +0100
