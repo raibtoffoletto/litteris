@@ -55,9 +55,10 @@ modules:
   - name: litteris
     buildsystem: meson
     sources:
-      - type: archive
-        url: https://github.com/raibtoffoletto/litteris/archive/master.zip
-        sha256: 63b9869049376b6a55d134c8861d18ff895e47e12043ba977d851ff5fb0e8454
+      - type: git
+        url: https://github.com/raibtoffoletto/litteris.git
+        tag: 0.1.6
+        commit: 480a34546b2f4c8fba7c5ba44a7b9c0498415062
       - type: patch
         path: appdata.patch
       - type: patch
