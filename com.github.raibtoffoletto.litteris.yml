@@ -1,4 +1,4 @@
-app-id: com.github.raibtoffoletto.Litteris
+app-id: com.github.raibtoffoletto.litteris
 runtime: org.gnome.Platform
 runtime-version: '3.36'
 sdk: org.gnome.Sdk
@@ -38,9 +38,9 @@ modules:
   - name: sqlite3
     buildsystem: simple
     build-commands:
-      - sh configure
+      - sh configure --prefix=/app
       - make
-      - make prefix=/app install
+      - make install
     sources: 
       - type: archive
         url: http://ftp.de.debian.org/debian/pool/main/s/sqlite3/sqlite3_3.27.2.orig.tar.xz
