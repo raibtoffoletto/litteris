@@ -24,6 +24,9 @@
   <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
     <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" align="right" />
   </a>
+  <a href="https://flathub.org/apps/details/com.github.raibtoffoletto.litteris" target="_blank">
+    <img src="https://flathub.org/assets/badges/flathub-badge-i-en.svg" width="160px" alt="Get it from Flathub!">
+  </a>
   <h1 class="rich-diff-level-zero">
     Litteris
   </h1>
