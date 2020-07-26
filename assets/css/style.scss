@@ -21,12 +21,12 @@
 }
 
 .appcenter {
+  text-align: center;
   a {
-    display: block;
-    text-align: center;
-
+    display: inline-block;
     img {
-      width: 50%;
+      width: 16em;
+      margin: 0 2em;
     }
   }
 }

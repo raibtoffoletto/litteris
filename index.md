@@ -16,4 +16,7 @@ Back in 2015, I created a MySQL database with a web interface to keep track of o
   <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
     <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" />
   </a>
+  <a href="https://flathub.org/apps/details/com.github.raibtoffoletto.litteris" target="_blank">
+    <img src="https://flathub.org/assets/badges/flathub-badge-i-en.svg" alt="Get it from Flathub!" />
+  </a>
 </p>
