@@ -13,10 +13,10 @@ With Litteris you can organize your penpal contacts and keep track of your lette
 Back in 2015, I created a MySQL database with a web interface to keep track of one of my hobbies: exchanging letters and postcards with some fellow penpals. When I decided to brush of my OOP skills, I opted for developing a native application for the [Elementary OS](https://elementary.io/), so, instead of my web app, I wrote **Litteris**. It uses modern technologies like [GTK+](https://www.gtk.org/), [Vala](https://wiki.gnome.org/Projects/Vala) *(a modern high level "[language](https://blogs.gnome.org/despinosa/2017/02/14/vala-is-not-a-programming-language/)" similar to C# and Java)* and a [SQLite](https://www.sqlite.org/) database.
 
 <p class="appcenter">
-  <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris">
+  <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris" target="_blank" rel="noopener noreferrer">
     <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" />
   </a>
-  <a href="https://flathub.org/apps/details/com.github.raibtoffoletto.litteris" target="_blank">
+  <a href="https://flathub.org/apps/details/com.github.raibtoffoletto.litteris" target="_blank" rel="noopener noreferrer">
     <img src="https://flathub.org/assets/badges/flathub-badge-i-en.svg" alt="Get it from Flathub!" />
   </a>
 </p>
