@@ -21,11 +21,14 @@
 
 <p>
   <img align="left" width="64" height="64" src="data/icons/com.github.raibtoffoletto.litteris.svg" />
+  <a href="https://flathub.org/apps/details/com.github.raibtoffoletto.litteris" target="_blank" rel="noopener noreferrer">
+    <img src="https://flathub.org/assets/badges/flathub-badge-i-en.svg" width="160px" alt="Get it from Flathub!"  align="right" />
+  </a>
   <a href="https://appcenter.elementary.io/com.github.raibtoffoletto.litteris" target="_blank" rel="noopener noreferrer">
     <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" align="right" />
   </a>
-  <a href="https://flathub.org/apps/details/com.github.raibtoffoletto.litteris" target="_blank" rel="noopener noreferrer">
-    <img src="https://flathub.org/assets/badges/flathub-badge-i-en.svg" width="160px" alt="Get it from Flathub!"  align="right" />
+  <a href="https://snapcraft.io/litteris" target="_blank" rel="noopener noreferrer">
+    <img src="https://snapcraft.io/static/images/badges/en/snap-store-white.svg" alt="Get it from the Snap Store" align="right" />
   </a>
   <h1 class="rich-diff-level-zero">
     Litteris
