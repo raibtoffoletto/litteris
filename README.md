@@ -41,6 +41,7 @@
 ![Build Status](https://travis-ci.org/raibtoffoletto/litteris.svg?branch=master)
 
 ### Penpal Correspondence Organized
+
 > With Litteris you can organize your penpal contacts
 > and keep track of your letters and postcards exchange. <br />
 > You can star your most frequent friends and search for that one you haven't talked much lately.
@@ -48,17 +49,20 @@
 ![](data/com.github.raibtoffoletto.litteris.screenshot.png)
 
 ## Install, build and run
+
 ### Dependencies:
- - libgtk-3-0
- - libgranite-dev
- - libsqlite3-dev
- - libgee-0.8-dev
- - meson
- - valac
+
+- libgtk-3-0
+- libgranite-dev
+- libsqlite3-dev
+- libgee-0.8-dev
+- meson
+- valac
 
 `$ sudo apt-get install elementary-sdk libsqlite3-dev libgee-0.8-dev -y`
 
 ### Clone and Compile
+
 ```bash
 $ git clone https://github.com/raibtoffoletto/litteris.git
 $ cd litteris
@@ -70,6 +74,7 @@ $ sudo ninja install
 ```
 
 ### Generating i18n files
+
 ```bash
 # in ./build directory
 $ ninja com.github.raibtoffoletto.litteris-pot
@@ -79,5 +84,5 @@ $ ninja extra-update-po
 ```
 
 ## How to contribute:
-All contributions, code improvements, translation, bug solving, etc. are mostly welcome. The pull requests should be made to the branch **unstable**.
 
+All contributions, code improvements, translation, bug solving, etc. are defenitly welcome. The pull requests should be made to the branch **unstable**.
