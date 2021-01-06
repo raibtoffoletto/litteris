@@ -1,0 +1,87 @@
+# Portuguese translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Automatically generated, 2019.
+# Raí B. Toffoletto <rai@toffoletto.me>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-22 20:41+0100\n"
+"PO-Revision-Date: 2021-01-06 07:00+0100\n"
+"Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
+"Language-Team: Portuguese <>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:3
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:7
+msgid "Litteris"
+msgstr "Litteris"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:4
+#, fuzzy
+msgid "Letter Manager"
+msgstr "Gerenciador de Correspondência"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:5
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
+msgid "Penpal Correspondence Organized"
+msgstr "Organise a Correspondência com seus Penpals"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:8
+msgid "com.github.raibtoffoletto.litteris"
+msgstr "com.github.raibtoffoletto.litteris"
+
+#: data/com.github.raibtoffoletto.litteris.desktop.in:11
+#, fuzzy
+msgid "Letter;Postcard;Contacts;"
+msgstr "Correio;Cartas;Postais;Contactos;"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
+msgid ""
+"With Litteris you can organize your penpal contacts in a simple manner and "
+"keep track of your letters and postcards exchange."
+msgstr ""
+"Com Litteris você pode organisar os seus penpals e registrar sua "
+"correspondência com cada um deles."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
+msgid ""
+"You can star your most frequent friends or search for that one you haven't "
+"talked much lately."
+msgstr ""
+"Favorite seus amigos mais freqüentes ou busque por aquele para quem você não "
+"escreve há tempos."
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
+msgid "Raí B. Toffoletto"
+msgstr "Raí B. Toffoletto"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
+msgid "Version number fix"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+msgid "Add support for flatpak"
+msgstr ""
+
+#~ msgid "Minor Bug Fixes"
+#~ msgstr "Pequenos bugs resolvidos"
+
+#~ msgid "Escape Characters in penpal details"
+#~ msgstr "Melhor suporte à acentos em campos de texto"
+
+#~ msgid "Better icon support"
+#~ msgstr "Melhor ícone suporte"
+
+#~ msgid "Portuguese translation added"
+#~ msgstr "Tradução ao Português adicionada"
+
+#~ msgid "Dutch translation by Heimen Stoffels"
+#~ msgstr "Tradução ao Holandês por Heimen Stoffels"

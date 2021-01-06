@@ -1,6 +1,5 @@
-com.github.raibtoffoletto.litteris (0.1.6ubuntu2) UNRELEASED; urgency=low
+com.github.raibtoffoletto.litteris (0.1.7ubuntu2) UNRELEASED; urgency=low
 
-  * Version number fix
-  * Add support for flatpak
+  * Update translations
 
- -- Raí Biason Toffoletto <rai@toffoletto.me>  Sun, 22 Jul 2020 20:20:50 +0100
+ -- Raí Biason Toffoletto <rai@toffoletto.me>  Wed, 06 Jan 2021 07:10:00 +0000

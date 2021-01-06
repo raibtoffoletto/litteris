@@ -9,31 +9,31 @@ msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 20:41+0100\n"
-"PO-Revision-Date: 2020-08-27 14:32+0100\n"
-"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
+"PO-Revision-Date: 2021-01-06 07:00+0100\n"
+"Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: src/Application.vala:65
 msgid "Backup restored with success!"
-msgstr "Cópia de segurança restaurada com sucesso!"
+msgstr "Backup restaurado com sucesso!"
 
 #: src/Header.vala:36 src/Widgets/Welcome.vala:34
 msgid "New Penpal"
-msgstr "Novo Amigo por Correspondência"
+msgstr "Novo Penpal"
 
 #: src/Header.vala:40
 msgid "Edit Penpal"
-msgstr "Editar Amigo por Correspondência"
+msgstr "Modificar Penpal"
 
 #: src/Header.vala:44
 msgid "Remove Penpal"
-msgstr "Remover Amigo por Correspondência"
+msgstr "Remover Penpal"
 
 #: src/Header.vala:51
 msgid "Options"
@@ -41,12 +41,11 @@ msgstr "Opções"
 
 #: src/Window.vala:206
 msgid "Penpal added with success!"
-msgstr "Amigo por Correspondência adicionado com sucesso!"
+msgstr "Penpal adicionado com sucesso!"
 
 #: src/Window.vala:214
 msgid "You should provide Name & Country for your new penpal."
-msgstr ""
-"Você deve inserir o Nome e o País do seu novo amigo por correspondência."
+msgstr "Você deve inserir o Nome e o País do seu novo penpal."
 
 #: src/Window.vala:217
 msgid "Incomplete data"
@@ -59,14 +58,12 @@ msgstr "Remover %s ?"
 
 #: src/Window.vala:252
 msgid "This action will permanently remove all data related to this penpal."
-msgstr ""
-"Esta ação irá remover permanentemente todos os dados relacionados com este "
-"amigo por correspondência."
+msgstr "Esta ação removerá permanentemente todos os dados deste penpal."
 
 #: src/Window.vala:256
 #, c-format
 msgid "Remove %s"
-msgstr "Remover %s"
+msgstr "Remover %s ?"
 
 #: src/Window.vala:265
 #, c-format
@@ -75,11 +72,11 @@ msgstr "%s removido com sucesso!"
 
 #: src/Window.vala:274
 msgid "Restore backup?"
-msgstr "Restaurar cópia de segurança?"
+msgstr "Restaurar backup?"
 
 #: src/Window.vala:275
 msgid "This will permanently override the current database."
-msgstr "Isto irá substituir permanentemente o banco de dados atual."
+msgstr "Esta operação irá substituir o banco de dados atual."
 
 #: src/Window.vala:278 src/Window.vala:289
 msgid "Restore"
@@ -87,7 +84,7 @@ msgstr "Restaurar"
 
 #: src/Window.vala:286
 msgid "Restore backup file"
-msgstr "Restaurar cópia de segurança"
+msgstr "Restaurar backup"
 
 #: src/Window.vala:289 src/Window.vala:317
 msgid "Cancel"
@@ -95,7 +92,7 @@ msgstr "Cancelar"
 
 #: src/Window.vala:314
 msgid "Create backup file"
-msgstr "Criar ficheiro da cópia de segurança"
+msgstr "Criar arquivo de backup"
 
 #: src/Window.vala:317
 msgid "Export"
@@ -103,11 +100,11 @@ msgstr "Exportar"
 
 #: src/Window.vala:336
 msgid "Backup created with success!"
-msgstr "Cópia de segurança criada com sucesso!"
+msgstr "Backup criado com sucesso!"
 
 #: src/Window.vala:355 src/Widgets/Welcome.vala:29
 msgid "Penpal Correspondence Organized"
-msgstr "Correspondência de Amigos Organizada"
+msgstr "Sua Correspondência com Penpals Organizada"
 
 #: src/Services/CountryCodes.vala:101
 msgid "Country not found"
@@ -123,7 +120,7 @@ msgstr "Substituir"
 
 #: src/Services/DataBase.vala:181
 msgid "Import database from the cloud?"
-msgstr "Importar base de dados da nuvem?"
+msgstr "Importar banco de dados da nuvem?"
 
 #: src/Services/DataBase.vala:182
 msgid ""
@@ -131,28 +128,28 @@ msgid ""
 "you like to import it, overriding the present one, or would you like to "
 "ignore it?"
 msgstr ""
-"O local que selecionou já possui uma base de dados Litteris. Você gostaria "
-"de importá-la, substituindo a atual ou gostaria de ignorá-la?"
+"O local selecionado já possui um banco de dados.Você gostaria de importá-lo, "
+"substituindo o atual,ou ignorá-lo?"
 
 #: src/Widgets/AppMenu.vala:37
 msgid "Light Mode"
-msgstr "Tema Claro"
+msgstr "Tema claro"
 
 #: src/Widgets/AppMenu.vala:38
 msgid "Dark Mode"
-msgstr "Tema Escuro"
+msgstr "Tema escuro"
 
 #: src/Widgets/AppMenu.vala:64
 msgid "Create a backup"
-msgstr "Criar um cópia de segurança"
+msgstr "Criar um backup"
 
 #: src/Widgets/AppMenu.vala:70
 msgid "Restore backup"
-msgstr "Restaurar uma cópia de segurança"
+msgstr "Restaurar um backup"
 
 #: src/Widgets/AppMenu.vala:76
 msgid "Sync options"
-msgstr "Opções de sincronização"
+msgstr "Opções de Nuvem"
 
 #: src/Widgets/AppMenu.vala:82
 msgid "About"
@@ -164,7 +161,7 @@ msgstr "* Nome :"
 
 #: src/Widgets/PenpalDialog.vala:70
 msgid "Nickname :"
-msgstr "Alcunha:"
+msgstr "Apelido :"
 
 #. penpal info
 #: src/Widgets/PenpalDialog.vala:80 src/Widgets/PenpalView.vala:123
@@ -193,7 +190,7 @@ msgstr "Salvar alterações"
 
 #: src/Widgets/PenpalDialog.vala:197
 msgid "Discard Changes?"
-msgstr "Descartar Alterações?"
+msgstr "Descartar alterações"
 
 #: src/Widgets/PenpalDialog.vala:198
 msgid "You will lose all changes made so far."
@@ -221,7 +218,7 @@ msgstr "Você ainda não tem nenhum contato 😔️"
 
 #: src/Widgets/PenpalList.vala:164
 msgid "No matches…"
-msgstr "Nenhuma combinação…"
+msgstr "Nenhum resultado"
 
 #: src/Widgets/PenpalView.vala:152
 msgid "Sent :"
@@ -290,8 +287,8 @@ msgstr "Correspondência Removida"
 
 #: src/Widgets/Welcome.vala:34
 msgid "Add a new friend to start tracking your mail exchange."
-msgstr "Adicione um novo amigo e começe a seguir a sua correspondência."
+msgstr "Adicione um novo penpal e organise sua correspondência"
 
 #: src/Widgets/Welcome.vala:35
 msgid "Too many penpals? Look up their name!"
-msgstr "Muitos contatos? Faça uma busca!"
+msgstr "Contatos demais? Faça uma busca!"

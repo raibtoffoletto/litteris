@@ -29,11 +29,11 @@
   <url type="help">https://raibtoffoletto.github.io/litteris</url>
 
   <releases>
-    <release version="0.1.6" date="2020-07-22">
+    <release version="0.1.7" date="2021-01-06">
       <description>
         <ul>
-          <li>Version number fix</li>
-          <li>Add support for flatpak</li>
+          <li>Update translations</li>
+          <li>Thanks to: Heimen Stoffels and André Barata</li>
         </ul>
       </description>
     </release>
