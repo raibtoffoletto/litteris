@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 20:41+0100\n"
+"POT-Creation-Date: 2021-01-06 07:32+0000\n"
 "PO-Revision-Date: 2019-12-12 17:08+0100\n"
 "Last-Translator: Michał Nowakowski <nowakowski@offshore.rocks>\n"
 "Language-Team:\n"
@@ -61,12 +61,12 @@ msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
-msgid "Version number fix"
-msgstr ""
+msgid "Translations updated"
+msgstr "Aktualizacja tłumaczeń"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
-msgid "Add support for flatpak"
-msgstr ""
+msgid "Thanks to: Heimen Stoffels and André Barata"
+msgstr "Dzięki: Heimen Stoffels i André Barata"
 
 #, fuzzy
 #~ msgid "Minor Bug Fixes"

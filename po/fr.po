@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 20:41+0100\n"
+"POT-Creation-Date: 2021-01-06 07:32+0000\n"
 "PO-Revision-Date: 2019-11-13 18:42+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -112,15 +112,15 @@ msgstr "Pays non trouvé"
 
 #: src/Services/DataBase.vala:176
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorer"
 
 #: src/Services/DataBase.vala:177
 msgid "Override"
-msgstr ""
+msgstr "Remplacer"
 
 #: src/Services/DataBase.vala:181
 msgid "Import database from the cloud?"
-msgstr ""
+msgstr "Remplacer la base de données avec cela depuis le cloud?"
 
 #: src/Services/DataBase.vala:182
 msgid ""
@@ -128,6 +128,9 @@ msgid ""
 "you like to import it, overriding the present one, or would you like to "
 "ignore it?"
 msgstr ""
+"L'emplacement que vous avez sélectionné contient déjà une base de données "
+"Litteris. Souhaitez-vous l'remplacer(et écraser la base actuel) ou souhaitez-"
+"vous l'ignorer?"
 
 #: src/Widgets/AppMenu.vala:37
 msgid "Light Mode"

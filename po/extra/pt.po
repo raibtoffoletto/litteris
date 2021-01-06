@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 20:41+0100\n"
+"POT-Creation-Date: 2021-01-06 07:32+0000\n"
 "PO-Revision-Date: 2020-08-27 14:39+0100\n"
 "Last-Translator: André Barata <andretiagob@protonmail.com>\n"
 "Language-Team: Portuguese <>\n"
@@ -64,12 +64,18 @@ msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
-msgid "Version number fix"
-msgstr "Correção do número da versão"
+msgid "Translations updated"
+msgstr "Traduções actualizadas"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
-msgid "Add support for flatpak"
-msgstr "Suporte para o flatpack adicionado"
+msgid "Thanks to: Heimen Stoffels and André Barata"
+msgstr "Muito obirgado Heimen Stoffels e André Barata"
+
+#~ msgid "Version number fix"
+#~ msgstr "Correção do número da versão"
+
+#~ msgid "Add support for flatpak"
+#~ msgstr "Suporte para o flatpack adicionado"
 
 #~ msgid "Minor Bug Fixes"
 #~ msgstr "Pequenos bugs resolvidos"
