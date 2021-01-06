@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 20:41+0100\n"
-"PO-Revision-Date: 2019-11-13 16:35+0100\n"
+"PO-Revision-Date: 2020-08-21 19:48+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -16,10 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: src/Application.vala:65
 msgid "Backup restored with success!"
-msgstr "De back-up is gemaakt!"
+msgstr "De back-up is hersteld!"
 
 #: src/Header.vala:36 src/Widgets/Welcome.vala:34
 msgid "New Penpal"
@@ -102,7 +103,7 @@ msgstr "De back-up is gemaakt!"
 
 #: src/Window.vala:355 src/Widgets/Welcome.vala:29
 msgid "Penpal Correspondence Organized"
-msgstr "Organiseer de correspondentie met je penvrienden"
+msgstr "Orden de correspondentie met je penvrienden"
 
 #: src/Services/CountryCodes.vala:101
 msgid "Country not found"
@@ -110,15 +111,15 @@ msgstr "Land niet gevonden"
 
 #: src/Services/DataBase.vala:176
 msgid "Ignore"
-msgstr ""
+msgstr "Negeren"
 
 #: src/Services/DataBase.vala:177
 msgid "Override"
-msgstr ""
+msgstr "Overschrijven"
 
 #: src/Services/DataBase.vala:181
 msgid "Import database from the cloud?"
-msgstr ""
+msgstr "Wil je de databank herstellen uit de cloud?"
 
 #: src/Services/DataBase.vala:182
 msgid ""
@@ -126,6 +127,8 @@ msgid ""
 "you like to import it, overriding the present one, or would you like to "
 "ignore it?"
 msgstr ""
+"De gekozen locatie bevat al een Litteris-databank. Wil je deze importeren "
+"en daarmee de huidige overschrijven of dit negeren?"
 
 #: src/Widgets/AppMenu.vala:37
 msgid "Light Mode"
@@ -144,9 +147,8 @@ msgid "Restore backup"
 msgstr "Back-up herstellen"
 
 #: src/Widgets/AppMenu.vala:76
-#, fuzzy
 msgid "Sync options"
-msgstr "Instellingen"
+msgstr "Synchronisatie-instellingen"
 
 #: src/Widgets/AppMenu.vala:82
 msgid "About"
@@ -187,15 +189,15 @@ msgstr "Wijzigingen opslaan"
 
 #: src/Widgets/PenpalDialog.vala:197
 msgid "Discard Changes?"
-msgstr "Wijzigingen verwerpen"
+msgstr "Wijzigingen verwerpen?"
 
 #: src/Widgets/PenpalDialog.vala:198
 msgid "You will lose all changes made so far."
-msgstr "Je zult verliezen alle wijzigingen."
+msgstr "Alle wijzigingen gaan verloren."
 
 #: src/Widgets/PenpalDialog.vala:202
 msgid "Discard"
-msgstr "Briefkaart"
+msgstr "Verwerpen"
 
 #: src/Widgets/PenpalList.vala:69 src/Widgets/Welcome.vala:35
 msgid "Search"
@@ -219,11 +221,11 @@ msgstr "Geen overeenkomsten…"
 
 #: src/Widgets/PenpalView.vala:152
 msgid "Sent :"
-msgstr "Verstuurd :"
+msgstr "Verstuurd:"
 
 #: src/Widgets/PenpalView.vala:156
 msgid "Received :"
-msgstr "Ontvangen :"
+msgstr "Ontvangen:"
 
 #: src/Widgets/PenpalView.vala:346
 msgid "Penpal updated with success!"
@@ -250,9 +252,8 @@ msgid "Remove Mail"
 msgstr "Correspondentie verwijderen"
 
 #: src/Widgets/PenpalStatusBar.vala:156
-#, fuzzy
 msgid "Please select Letter/Postcard and Received/Sent properly"
-msgstr "Kies een brief(kaart) en of deze ontvangen of verstuurd is"
+msgstr "Kies een brief(kaart) en geef aan of deze ontvangen of verstuurd is"
 
 #: src/Widgets/PenpalStatusBar.vala:180
 msgid "Mail Registered"

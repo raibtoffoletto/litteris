@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 20:41+0100\n"
-"PO-Revision-Date: 2019-11-13 16:34+0100\n"
+"PO-Revision-Date: 2020-08-21 19:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:3
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:7
@@ -23,31 +24,29 @@ msgid "Litteris"
 msgstr "Litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:4
-#, fuzzy
 msgid "Letter Manager"
-msgstr "Correspondentie"
+msgstr "Correspondentiebeheer"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:5
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
 msgid "Penpal Correspondence Organized"
-msgstr "Organiseer de correspondentie met je penvrienden"
+msgstr "Orden de correspondentie met je penvrienden"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:8
 msgid "com.github.raibtoffoletto.litteris"
 msgstr "com.github.raibtoffoletto.litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:11
-#, fuzzy
 msgid "Letter;Postcard;Contacts;"
-msgstr "Mail;Brief;Ansichtkaart;Contacten;"
+msgstr "Brief;Briefkaart;Contactpersonen;"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:10
 msgid ""
 "With Litteris you can organize your penpal contacts in a simple manner and "
 "keep track of your letters and postcards exchange."
 msgstr ""
-"Met Litteris kun je eenvoudig je penvrienden beheren en de uitgewisselde "
-"brieven en briefkaarten bijhouden."
+"Met Litteris kun je eenvoudig je penvrienden beheren en jullie uitgewisselde "
+"brieven en briefkaarten ordenen."
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:11
 msgid ""
@@ -63,11 +62,11 @@ msgstr "Raí B. Toffoletto"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
 msgid "Version number fix"
-msgstr ""
+msgstr "Versienummer gerepareerd"
 
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
 msgid "Add support for flatpak"
-msgstr ""
+msgstr "Flatpak-ondersteuning toegevoegd"
 
 #, fuzzy
 #~ msgid "Minor Bug Fixes"
