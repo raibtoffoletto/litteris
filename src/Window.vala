@@ -356,7 +356,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             about_dialog.copyright = "Copyright © 2019 Raí B. Toffoletto";
             about_dialog.license_type = Gtk.License.GPL_3_0;
             about_dialog.logo_icon_name = "com.github.raibtoffoletto.litteris";
-            about_dialog.version = "0.1.6";
+            about_dialog.version = "0.1.7";
             about_dialog.website = "https://raibtoffoletto.github.io/litteris";
             about_dialog.website_label = "Github.io/Litteris";
             about_dialog.response.connect ((response_id) => {
