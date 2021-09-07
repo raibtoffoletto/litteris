@@ -15,9 +15,6 @@
 * License along with this program; if not, write to the
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301 USA
-
-get_previous_item (Item reference)
-get_next_item (Item reference)
 *
 * Authored by: Raí B. Toffoletto <rai@toffoletto.me>
 */
@@ -172,8 +169,10 @@ public class Litteris.PenpalList : Gtk.Box {
     }
 
     private void set_prev_next (Granite.Widgets.SourceList list) {
-        set_property ("previous-penpal", source_list.get_previous_item (list.selected));
-        set_property ("next-penpal", source_list.get_next_item (list.selected));
+        if (list.selected != null) {
+            set_property ("previous-penpal", source_list.get_previous_item (list.selected));
+            set_property ("next-penpal", source_list.get_next_item (list.selected));
+        }
     }
 
 }
