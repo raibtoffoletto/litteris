@@ -15,6 +15,7 @@
     <value key="x-appcenter-color-primary">#ffa154</value>
     <value key="x-appcenter-color-primary-text">#0e141f</value>
     <value key="x-appcenter-suggested-price">0</value>
+    <value key="x-appcenter-stripe">pk_live_51JYxfgImFZ5lLQM6TlFpdnX6uk83V4Ef0B4XybkhOSR6CzxKFQc0V0kGqBO2cavDRqwBmI2SVM3viT2lL9jyMhNa00mSo3mNIa</value>
   </custom>
 
   <screenshots>
@@ -33,6 +34,7 @@
       <description>
         <ul>
           <li>ElementaryOS' Odin release</li>
+          <li>Support for global theme appearance</li>
         </ul>
       </description>
     </release>
