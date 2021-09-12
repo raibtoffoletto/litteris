@@ -1,24 +1,17 @@
----
+language: generic
 
-language: node_js
-
-node_js:
-  - "10.17.0"
-
-sudo: required
+git:
+  depth: 1
 
 services:
   - docker
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libstdc++-5-dev
+env:
+  - DEPENDENCY_PACKAGES="libglib2.0-dev gobject-introspection libgtk-3-0 libgranite-dev libjson-glib-dev libsqlite3-dev libgee-0.8-dev meson valac"
 
 install:
-  - npm i -g @elementaryos/houston
+  - docker pull elementary/docker:odin-unstable
+  - docker run -v "$PWD":/tmp/build-dir elementary/docker:odin-unstable /bin/sh -c "apt-get update && apt-get -y install $DEPENDENCY_PACKAGES && cd /tmp/build-dir && meson build --prefix=/usr && cd build && ninja"
 
 script:
-  - houston ci
+  - echo BUILDS PASSED
