@@ -20,7 +20,8 @@
 */
 
 public class Litteris.AppMenu : Gtk.Popover {
-    public Granite.ModeSwitch dark_mode { get; set; }
+    public Granite.SwitchModelButton menu_appearance_mode { get; set; }
+    public Granite.SwitchModelButton menu_appearance_system { get; set; }
 
     public AppMenu () {
         Object (
@@ -31,28 +32,44 @@ public class Litteris.AppMenu : Gtk.Popover {
 
     construct {
         var gtk_settings = Gtk.Settings.get_default ();
+        var granite_settings = Granite.Settings.get_default ();
+       
+        var menu_appearance_header = new Granite.HeaderLabel (_("Appearance"));
+            menu_appearance_header.halign = Gtk.Align.CENTER;
+        
+        menu_appearance_system = new Granite.SwitchModelButton (_("System Colors"));
+        menu_appearance_system.active = Application.settings.get_boolean ("system-colors");
 
-        dark_mode = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic",
-                                                            "weather-clear-night-symbolic");
-        dark_mode.primary_icon_tooltip_text = (_("Light Mode"));
-        dark_mode.secondary_icon_tooltip_text = (_("Dark Mode"));
-        dark_mode.valign = Gtk.Align.CENTER;
-        dark_mode.halign = Gtk.Align.CENTER;
-        dark_mode.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
-        dark_mode.margin = 12;
+        menu_appearance_mode = new Granite.SwitchModelButton (_("Dark Mode"));
+        menu_appearance_mode.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>M"});
+        menu_appearance_mode.active = Application.settings.get_boolean ("dark-mode");
 
-        var label_dummy = new Gtk.Label ("");
-        var label_dummy_2 = new Gtk.Label ("");
+        var menu_appearance_switch = new Gtk.Revealer ();
+        menu_appearance_switch.child = menu_appearance_mode;
+        menu_appearance_switch.reveal_child = !menu_appearance_system.active;
+        
+        gtk_settings.gtk_application_prefer_dark_theme = menu_appearance_system.active ? get_system_colors(granite_settings) : menu_appearance_mode.active;
 
-        var box_theme = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            box_theme.tooltip_markup = Granite.markup_accel_tooltip ({"<Control>M"});
-            box_theme.pack_start (label_dummy, true, true);
-            box_theme.pack_start (dark_mode, false, false);
-            box_theme.pack_end (label_dummy_2, true, true);
+        menu_appearance_system.notify["active"].connect (() => {
+            Application.settings.set_boolean ("system-colors", menu_appearance_system.active);
+            menu_appearance_switch.reveal_child = !menu_appearance_system.active;
 
-        if (Application.settings.get_boolean ("dark-mode")) {
-            dark_mode.active = true;
-        }
+            gtk_settings.gtk_application_prefer_dark_theme = menu_appearance_system.active ? get_system_colors(granite_settings) : menu_appearance_mode.active;
+        });
+
+        menu_appearance_mode.notify["active"].connect (() => {
+            Application.settings.set_boolean ("dark-mode", menu_appearance_mode.active);
+
+            if (!menu_appearance_system.active) {
+                gtk_settings.gtk_application_prefer_dark_theme = menu_appearance_mode.active;
+            }
+        });
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            if (menu_appearance_system.active) {
+                gtk_settings.gtk_application_prefer_dark_theme = get_system_colors(granite_settings);
+            }
+        });
 
         var menu_separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
             menu_separator.margin = 6;
@@ -85,7 +102,9 @@ public class Litteris.AppMenu : Gtk.Popover {
 
         var menu_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             menu_grid.margin = 6;
-            menu_grid.pack_start (box_theme);
+            menu_grid.pack_start (menu_appearance_header);
+            menu_grid.pack_start (menu_appearance_system);
+            menu_grid.pack_start (menu_appearance_switch);
             menu_grid.pack_start (menu_separator);
             menu_grid.pack_start (menu_export);
             menu_grid.pack_start (menu_import);
@@ -97,4 +116,7 @@ public class Litteris.AppMenu : Gtk.Popover {
         add (menu_grid);
     }
 
+    private bool get_system_colors (Granite.Settings granite_settings) {
+        return granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+    }
 }

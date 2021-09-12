@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schemalist>
-    <schema path="/com/github/raibtoffoletto/litteris/" id="com.github.raibtoffoletto.litteris">
+    <schema
+    path="/com/github/raibtoffoletto/litteris/"
+    id="com.github.raibtoffoletto.litteris"
+  >
         <key name="window-maximized" type="b">
           <default>false</default>
           <summary>Window maximized </summary>
@@ -21,17 +24,26 @@
             <summary>Dark Theme</summary>
             <description>Use the offical dark theme</description>
         </key>
+        <key name="system-colors" type="b">
+            <default>true</default>
+            <summary>Use System Colors</summary>
+            <description>Use the global set theme</description>
+        </key>
         <key name="panel-position" type="i">
             <default>180</default>
             <summary>Paned Position</summary>
             <description>Position of the paned divider</description>
         </key>
     </schema>
-    <schema path="/com/github/raibtoffoletto/litteris/sync/" id="com.github.raibtoffoletto.litteris.sync">
+    <schema
+    path="/com/github/raibtoffoletto/litteris/sync/"
+    id="com.github.raibtoffoletto.litteris.sync"
+  >
         <key name="sync" type="b">
             <default>false</default>
             <summary>Sync Database</summary>
-            <description>Uses a folder synced with the cloud to keep database up-to-date</description>
+            <description
+      >Uses a folder synced with the cloud to keep database up-to-date</description>
         </key>
         <key name="path" type="s">
             <default>""</default>

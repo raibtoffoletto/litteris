@@ -356,7 +356,7 @@ public class Litteris.Window : Gtk.ApplicationWindow {
             about_dialog.copyright = "Copyright © 2019 Raí B. Toffoletto";
             about_dialog.license_type = Gtk.License.GPL_3_0;
             about_dialog.logo_icon_name = "com.github.raibtoffoletto.litteris";
-            about_dialog.version = "0.1.7";
+            about_dialog.version = "0.1.8";
             about_dialog.website = "https://raibtoffoletto.github.io/litteris";
             about_dialog.website_label = "Github.io/Litteris";
             about_dialog.response.connect ((response_id) => {
@@ -425,11 +425,9 @@ public class Litteris.Window : Gtk.ApplicationWindow {
     }
 
     public void invert_color_mode () {
-        var gtk_settings = Gtk.Settings.get_default ();
-        var new_mode = gtk_settings.gtk_application_prefer_dark_theme ? false : true;
-
-        window_header.app_menu.dark_mode.active = new_mode;
-        gtk_settings.gtk_application_prefer_dark_theme = new_mode;
+        if (!window_header.app_menu.menu_appearance_system.active) {
+            window_header.app_menu.menu_appearance_mode.active = !window_header.app_menu.menu_appearance_mode.active;
+        }
     }
 
     public void register_mail () {
@@ -464,7 +462,8 @@ public class Litteris.Window : Gtk.ApplicationWindow {
         Application.settings.set ("window-position", "(ii)",position_x, position_y);
         Application.settings.set ("window-size", "(ii)", window_width, window_height);
         Application.settings.set_boolean ("window-maximized", this.is_maximized);
-        Application.settings.set_boolean ("dark-mode", Gtk.Settings.get_default ().gtk_application_prefer_dark_theme);
+        Application.settings.set_boolean ("dark-mode", window_header.app_menu.menu_appearance_mode.active);
+        Application.settings.set_boolean ("system-colors", window_header.app_menu.menu_appearance_system.active);
         Application.settings.set_int ("panel-position", panels.get_position ());
         Application.database.sync_databases ();
 
