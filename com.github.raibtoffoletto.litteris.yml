@@ -1,0 +1,32 @@
+app-id: com.github.raibtoffoletto.litteris
+runtime: io.elementary.Platform
+runtime-version: '6'
+sdk: io.elementary.Sdk
+command: com.github.raibtoffoletto.litteris
+finish-args:
+  #X11
+  - --share=ipc
+  - --socket=fallback-x11
+  # Wayland
+  - --socket=wayland
+  #Writing to the FS
+  - --filesystem=home:create
+  #Migrate DConf
+  - --metadata=X-DConf=migrate-path=/com/github/raibtoffoletto/litteris/
+  # Needed to read prefer-color-scheme with Granite.Settings
+  - --system-talk-name=org.freedesktop.Accounts
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /lib/debug
+  - /lib/valadoc
+  - /share/vala
+  - /share/vala-0.40
+  - /share/valadoc
+  - /share/plank
+modules:
+  - name: litteris
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .

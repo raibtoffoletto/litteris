@@ -2,3 +2,5 @@
 build/
 .git
 .gitignore
+.flatpak-builder
+.vscode
