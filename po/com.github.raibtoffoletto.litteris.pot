@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 07:32+0000\n"
+"POT-Creation-Date: 2021-09-12 20:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,26 +128,30 @@ msgid ""
 msgstr ""
 
 #: src/Widgets/AppMenu.vala:37
-msgid "Light Mode"
+msgid "Appearance"
 msgstr ""
 
-#: src/Widgets/AppMenu.vala:38
+#: src/Widgets/AppMenu.vala:40
+msgid "System Colors"
+msgstr ""
+
+#: src/Widgets/AppMenu.vala:43
 msgid "Dark Mode"
 msgstr ""
 
-#: src/Widgets/AppMenu.vala:64
+#: src/Widgets/AppMenu.vala:81
 msgid "Create a backup"
 msgstr ""
 
-#: src/Widgets/AppMenu.vala:70
+#: src/Widgets/AppMenu.vala:87
 msgid "Restore backup"
 msgstr ""
 
-#: src/Widgets/AppMenu.vala:76
+#: src/Widgets/AppMenu.vala:93
 msgid "Sync options"
 msgstr ""
 
-#: src/Widgets/AppMenu.vala:82
+#: src/Widgets/AppMenu.vala:99
 msgid "About"
 msgstr ""
 
@@ -172,47 +176,47 @@ msgstr ""
 msgid "* Country :"
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:130
+#: src/Widgets/PenpalDialog.vala:131 src/Widgets/PenpalStatusBar.vala:130
 msgid "Discard Changes"
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:134
+#: src/Widgets/PenpalDialog.vala:135
 msgid "Add Penpal"
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:127
+#: src/Widgets/PenpalDialog.vala:139 src/Widgets/PenpalStatusBar.vala:127
 msgid "Save Changes"
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:197
+#: src/Widgets/PenpalDialog.vala:198
 msgid "Discard Changes?"
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:198
+#: src/Widgets/PenpalDialog.vala:199
 msgid "You will lose all changes made so far."
 msgstr ""
 
-#: src/Widgets/PenpalDialog.vala:202
+#: src/Widgets/PenpalDialog.vala:203
 msgid "Discard"
 msgstr ""
 
-#: src/Widgets/PenpalList.vala:69 src/Widgets/Welcome.vala:35
+#: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
 msgid "Search"
 msgstr ""
 
-#: src/Widgets/PenpalList.vala:76
+#: src/Widgets/PenpalList.vala:73
 msgid "Starred"
 msgstr ""
 
-#: src/Widgets/PenpalList.vala:83
+#: src/Widgets/PenpalList.vala:80
 msgid "Penpals"
 msgstr ""
 
-#: src/Widgets/PenpalList.vala:95
+#: src/Widgets/PenpalList.vala:92
 msgid "No friends yet 😔️"
 msgstr ""
 
-#: src/Widgets/PenpalList.vala:164
+#: src/Widgets/PenpalList.vala:161
 msgid "No matches…"
 msgstr ""
 

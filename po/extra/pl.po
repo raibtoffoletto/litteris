@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 07:32+0000\n"
+"POT-Creation-Date: 2021-09-12 20:11+0100\n"
 "PO-Revision-Date: 2019-12-12 17:08+0100\n"
 "Last-Translator: Michał Nowakowski <nowakowski@offshore.rocks>\n"
 "Language-Team:\n"
@@ -56,27 +56,72 @@ msgstr ""
 "Dodaj gwiazdkę przy druhach, z którymi piszesz często albo szukaj tych, z "
 "którymi urwał ci się ostatnio kontakt."
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:27
 msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+msgid "ElementaryOS' Odin release"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:37
+msgid "Support for global theme appearance"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:44
 msgid "Translations updated"
 msgstr "Aktualizacja tłumaczeń"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:45
 msgid "Thanks to: Heimen Stoffels and André Barata"
 msgstr "Dzięki: Heimen Stoffels i André Barata"
 
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:52
+msgid "Version number fix"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:53
+msgid "Add support for flatpak"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:60
 #, fuzzy
-#~ msgid "Minor Bug Fixes"
-#~ msgstr "Drobne poprawki błędów"
+msgid "Minor Bug Fixes"
+msgstr "Drobne poprawki błędów"
 
-#~ msgid "Better icon support"
-#~ msgstr "Lepsze wsparcie dla ikon"
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:61
+msgid "Escape Characters in penpal details"
+msgstr ""
 
-#~ msgid "Portuguese translation added"
-#~ msgstr "Dodano portugalskie tłumaczenie"
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:68
+#, fuzzy
+msgid "Minor fixes"
+msgstr "Drobne poprawki błędów"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:69
+msgid "Polish translation by Michal Nowakowski"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:76
+#, fuzzy
+msgid "Minor bug fixes"
+msgstr "Drobne poprawki błędów"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:77
+msgid "Better icon support"
+msgstr "Lepsze wsparcie dla ikon"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:78
+msgid "Portuguese translation added"
+msgstr "Dodano portugalskie tłumaczenie"
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:81
+msgid "Heimen Stoffels"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:88
+msgid "Initial Release"
+msgstr ""
 
 #~ msgid "Dutch translation by Heimen Stoffels"
 #~ msgstr "Dodano niderlandzki tłumaczenie autorstwa Heimena Stoffelsa"

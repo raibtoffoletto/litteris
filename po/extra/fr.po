@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 07:32+0000\n"
+"POT-Creation-Date: 2021-09-12 20:11+0100\n"
 "PO-Revision-Date: 2019-11-13 18:42+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -59,17 +59,66 @@ msgstr ""
 "plus souvent et rechercher ceux avec qui vous n'avez pas échangé "
 "dernièrement."
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:26
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:27
 msgid "Raí B. Toffoletto"
 msgstr "Raí B. Toffoletto"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:35
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+msgid "ElementaryOS' Odin release"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:37
+msgid "Support for global theme appearance"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:44
 msgid "Translations updated"
 msgstr "Traductions mises à jour"
 
-#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:36
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:45
 msgid "Thanks to: Heimen Stoffels and André Barata"
 msgstr "Un grand merci à: Heimen Stoffels et André Barata"
 
-#~ msgid "Initial Release"
-#~ msgstr "Version initiale"
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:52
+msgid "Version number fix"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:53
+msgid "Add support for flatpak"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:60
+msgid "Minor Bug Fixes"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:61
+msgid "Escape Characters in penpal details"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:68
+msgid "Minor fixes"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:69
+msgid "Polish translation by Michal Nowakowski"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:76
+msgid "Minor bug fixes"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:77
+msgid "Better icon support"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:78
+msgid "Portuguese translation added"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:81
+msgid "Heimen Stoffels"
+msgstr ""
+
+#: data/com.github.raibtoffoletto.litteris.appdata.xml.in:88
+msgid "Initial Release"
+msgstr "Version initiale"

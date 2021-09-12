@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 07:32+0000\n"
+"POT-Creation-Date: 2021-09-12 20:11+0100\n"
 "PO-Revision-Date: 2021-01-06 07:00+0100\n"
 "Last-Translator: Raí B. Toffoletto <rai@toffoletto.me>\n"
 "Language-Team: Portuguese <>\n"
@@ -132,26 +132,30 @@ msgstr ""
 "substituindo o atual,ou ignorá-lo?"
 
 #: src/Widgets/AppMenu.vala:37
-msgid "Light Mode"
-msgstr "Tema claro"
+msgid "Appearance"
+msgstr "Aparência"
 
-#: src/Widgets/AppMenu.vala:38
+#: src/Widgets/AppMenu.vala:40
+msgid "System Colors"
+msgstr "Thema do sistema"
+
+#: src/Widgets/AppMenu.vala:43
 msgid "Dark Mode"
 msgstr "Tema escuro"
 
-#: src/Widgets/AppMenu.vala:64
+#: src/Widgets/AppMenu.vala:81
 msgid "Create a backup"
 msgstr "Criar um backup"
 
-#: src/Widgets/AppMenu.vala:70
+#: src/Widgets/AppMenu.vala:87
 msgid "Restore backup"
 msgstr "Restaurar um backup"
 
-#: src/Widgets/AppMenu.vala:76
+#: src/Widgets/AppMenu.vala:93
 msgid "Sync options"
 msgstr "Opções de Nuvem"
 
-#: src/Widgets/AppMenu.vala:82
+#: src/Widgets/AppMenu.vala:99
 msgid "About"
 msgstr "Sobre"
 
@@ -176,47 +180,47 @@ msgstr "Endereço :"
 msgid "* Country :"
 msgstr "* País :"
 
-#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:130
+#: src/Widgets/PenpalDialog.vala:131 src/Widgets/PenpalStatusBar.vala:130
 msgid "Discard Changes"
 msgstr "Descartar alterações"
 
-#: src/Widgets/PenpalDialog.vala:134
+#: src/Widgets/PenpalDialog.vala:135
 msgid "Add Penpal"
 msgstr "Adicionar Penpal"
 
-#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:127
+#: src/Widgets/PenpalDialog.vala:139 src/Widgets/PenpalStatusBar.vala:127
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: src/Widgets/PenpalDialog.vala:197
+#: src/Widgets/PenpalDialog.vala:198
 msgid "Discard Changes?"
 msgstr "Descartar alterações"
 
-#: src/Widgets/PenpalDialog.vala:198
+#: src/Widgets/PenpalDialog.vala:199
 msgid "You will lose all changes made so far."
 msgstr "Todas as alterações serão perdidas."
 
-#: src/Widgets/PenpalDialog.vala:202
+#: src/Widgets/PenpalDialog.vala:203
 msgid "Discard"
 msgstr "Descartar"
 
-#: src/Widgets/PenpalList.vala:69 src/Widgets/Welcome.vala:35
+#: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
 msgid "Search"
 msgstr "Buscar"
 
-#: src/Widgets/PenpalList.vala:76
+#: src/Widgets/PenpalList.vala:73
 msgid "Starred"
 msgstr "Preferidos"
 
-#: src/Widgets/PenpalList.vala:83
+#: src/Widgets/PenpalList.vala:80
 msgid "Penpals"
 msgstr "Penpals"
 
-#: src/Widgets/PenpalList.vala:95
+#: src/Widgets/PenpalList.vala:92
 msgid "No friends yet 😔️"
 msgstr "Você ainda não tem nenhum contato 😔️"
 
-#: src/Widgets/PenpalList.vala:164
+#: src/Widgets/PenpalList.vala:161
 msgid "No matches…"
 msgstr "Nenhum resultado"
 
@@ -292,3 +296,6 @@ msgstr "Adicione um novo penpal e organise sua correspondência"
 #: src/Widgets/Welcome.vala:35
 msgid "Too many penpals? Look up their name!"
 msgstr "Contatos demais? Faça uma busca!"
+
+#~ msgid "Light Mode"
+#~ msgstr "Tema claro"

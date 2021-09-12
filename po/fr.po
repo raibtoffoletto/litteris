@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.raibtoffoletto.litteris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 07:32+0000\n"
+"POT-Creation-Date: 2021-09-12 20:11+0100\n"
 "PO-Revision-Date: 2019-11-13 18:42+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -133,27 +133,31 @@ msgstr ""
 "vous l'ignorer?"
 
 #: src/Widgets/AppMenu.vala:37
-msgid "Light Mode"
-msgstr "Thème clair"
+msgid "Appearance"
+msgstr "Thème"
 
-#: src/Widgets/AppMenu.vala:38
+#: src/Widgets/AppMenu.vala:40
+msgid "System Colors"
+msgstr "Thème du système"
+
+#: src/Widgets/AppMenu.vala:43
 msgid "Dark Mode"
 msgstr "Thème sombre"
 
-#: src/Widgets/AppMenu.vala:64
+#: src/Widgets/AppMenu.vala:81
 msgid "Create a backup"
 msgstr "Créer une sauvegarde"
 
-#: src/Widgets/AppMenu.vala:70
+#: src/Widgets/AppMenu.vala:87
 msgid "Restore backup"
 msgstr "Restaurer une sauvegarde"
 
-#: src/Widgets/AppMenu.vala:76
+#: src/Widgets/AppMenu.vala:93
 #, fuzzy
 msgid "Sync options"
 msgstr "Options"
 
-#: src/Widgets/AppMenu.vala:82
+#: src/Widgets/AppMenu.vala:99
 msgid "About"
 msgstr "À propos"
 
@@ -178,48 +182,48 @@ msgstr "Adresse :"
 msgid "* Country :"
 msgstr "* Pays :"
 
-#: src/Widgets/PenpalDialog.vala:130 src/Widgets/PenpalStatusBar.vala:130
+#: src/Widgets/PenpalDialog.vala:131 src/Widgets/PenpalStatusBar.vala:130
 msgid "Discard Changes"
 msgstr "Annuler les modifications"
 
-#: src/Widgets/PenpalDialog.vala:134
+#: src/Widgets/PenpalDialog.vala:135
 msgid "Add Penpal"
 msgstr "Ajouter le correspondant"
 
-#: src/Widgets/PenpalDialog.vala:138 src/Widgets/PenpalStatusBar.vala:127
+#: src/Widgets/PenpalDialog.vala:139 src/Widgets/PenpalStatusBar.vala:127
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
-#: src/Widgets/PenpalDialog.vala:197
+#: src/Widgets/PenpalDialog.vala:198
 msgid "Discard Changes?"
 msgstr "Annuler les modifications ?"
 
-#: src/Widgets/PenpalDialog.vala:198
+#: src/Widgets/PenpalDialog.vala:199
 #, fuzzy
 msgid "You will lose all changes made so far."
 msgstr "Vous perdrez toutes les modifications que vous avez effectué."
 
-#: src/Widgets/PenpalDialog.vala:202
+#: src/Widgets/PenpalDialog.vala:203
 msgid "Discard"
 msgstr "Annuler"
 
-#: src/Widgets/PenpalList.vala:69 src/Widgets/Welcome.vala:35
+#: src/Widgets/PenpalList.vala:66 src/Widgets/Welcome.vala:35
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/Widgets/PenpalList.vala:76
+#: src/Widgets/PenpalList.vala:73
 msgid "Starred"
 msgstr "Favoris"
 
-#: src/Widgets/PenpalList.vala:83
+#: src/Widgets/PenpalList.vala:80
 msgid "Penpals"
 msgstr "Correspondants"
 
-#: src/Widgets/PenpalList.vala:95
+#: src/Widgets/PenpalList.vala:92
 msgid "No friends yet 😔️"
 msgstr "Pas d'amis pour l'instant 😔️"
 
-#: src/Widgets/PenpalList.vala:164
+#: src/Widgets/PenpalList.vala:161
 msgid "No matches…"
 msgstr "Aucune correspondance…"
 
@@ -296,3 +300,6 @@ msgstr "Ajoutez un nouvel ami et commencez à suivre vos échanges par e-mail."
 #: src/Widgets/Welcome.vala:35
 msgid "Too many penpals? Look up their name!"
 msgstr "Trop de correspondants ? Recherchez-les par nom !"
+
+#~ msgid "Light Mode"
+#~ msgstr "Thème clair"
