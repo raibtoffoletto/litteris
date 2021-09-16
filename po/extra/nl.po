@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-12 20:11+0100\n"
+"POT-Creation-Date: 2021-09-16 20:24+0100\n"
 "PO-Revision-Date: 2020-08-21 19:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
@@ -31,10 +31,6 @@ msgstr "Correspondentiebeheer"
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
 msgid "Penpal Correspondence Organized"
 msgstr "Orden de correspondentie met je penvrienden"
-
-#: data/com.github.raibtoffoletto.litteris.desktop.in:8
-msgid "com.github.raibtoffoletto.litteris"
-msgstr "com.github.raibtoffoletto.litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:11
 msgid "Letter;Postcard;Contacts;"
@@ -122,6 +118,9 @@ msgstr ""
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:88
 msgid "Initial Release"
 msgstr ""
+
+#~ msgid "com.github.raibtoffoletto.litteris"
+#~ msgstr "com.github.raibtoffoletto.litteris"
 
 #~ msgid "Dutch translation by Heimen Stoffels"
 #~ msgstr "Nederlandse vertaling door Heimen Stoffels"

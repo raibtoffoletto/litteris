@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-12 20:11+0100\n"
+"POT-Creation-Date: 2021-09-16 20:24+0100\n"
 "PO-Revision-Date: 2020-08-27 14:39+0100\n"
 "Last-Translator: André Barata <andretiagob@protonmail.com>\n"
 "Language-Team: Portuguese <>\n"
@@ -32,10 +32,6 @@ msgstr "Administrador de correspondência"
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:8
 msgid "Penpal Correspondence Organized"
 msgstr "Organize a sua Correspondência com os seus Amigos por Correspondência"
-
-#: data/com.github.raibtoffoletto.litteris.desktop.in:8
-msgid "com.github.raibtoffoletto.litteris"
-msgstr "com.github.raibtoffoletto.litteris"
 
 #: data/com.github.raibtoffoletto.litteris.desktop.in:11
 #, fuzzy
@@ -124,6 +120,9 @@ msgstr ""
 #: data/com.github.raibtoffoletto.litteris.appdata.xml.in:88
 msgid "Initial Release"
 msgstr ""
+
+#~ msgid "com.github.raibtoffoletto.litteris"
+#~ msgstr "com.github.raibtoffoletto.litteris"
 
 #~ msgid "Dutch translation by Heimen Stoffels"
 #~ msgstr "Tradução ao Holandês por Heimen Stoffels"
