@@ -1,19 +1,19 @@
 app-id: com.github.raibtoffoletto.litteris
 runtime: org.freedesktop.Platform
-runtime-version: '19.08'
+runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
 base: io.elementary.BaseApp
-base-version: juno-19.08
+base-version: juno-20.08
 command: com.github.raibtoffoletto.litteris
 finish-args:
-  #X11
+  # X11
   - --share=ipc
   - --socket=x11
   # Wayland
   - --socket=wayland
-  #Writing to the FS
+  # Writing to the FS
   - --filesystem=home:create
-  #Migrate DConf
+  # Migrate DConf
   - --metadata=X-DConf=migrate-path=/com/github/raibtoffoletto/litteris/
 cleanup:
   - /include
